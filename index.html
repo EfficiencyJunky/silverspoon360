@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silver Spoon 360 Experience</title>
+
+
+
+<!-- CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS -->
+
+  <!-- Bootstrap 4 CSS - Stable 4.5 compiled and minified -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
+  integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
+  crossorigin="anonymous">
+
+
+   <!-- Our CSS -->
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+
+
+<!-- CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS -->
+
+</head>
+<body>
+   
+    <div class="container vertical-align-middle">
+        <div class="d-flex justify-content-center spacer">
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-12 d-flex justify-content-center">
+                <div id="player-parent">
+                    <div class="d-flex justify-content-center mb-2">
+                        <div id="player">
+                        video iFrame will replace this div
+                        </div>
+                    </div>    
+                    <div id="transport-controls" class="transport-controls d-flex align-items-center">
+                        <button id="play-pause" class="play play-pause-button"></button>
+                        <!-- uncomment this line if you want a stop button  --> 
+                        <!-- <button id="stop">▇</button>   -->
+                        <input type="range" min="0" max="100" value="0" id="slider" class="slider ml-2 mr-2 flex-fill" >
+                        <button id="playback-rate">1x</button>
+                    </div>        
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-12 d-flex justify-content-center">
+                <div id="icon-controls-parent" class="transport-controls d-flex align-items-center">
+                    <img class="icon-control" src="" alt="Icon 1">
+                    <img class="icon-control" src="" alt="Icon 2">
+                    <img class="icon-control" src="" alt="Icon 3">
+                    <img class="icon-control" src="" alt="Icon 4">
+                    <img class="icon-control" src="" alt="Icon 5">
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+    <!-- JAVASCRIPT -->
+    <script type="text/javascript" src="js/video-player.js"></script>
+    <script type="text/javascript" src="js/logic.js"></script>
+</body>
+</html>

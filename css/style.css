@@ -1,0 +1,155 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: rosybrown;
+    background-image: url("https://web.archive.org/web/20091019160432/http://www.geocities.com/lmbeharry/index/money.gif");
+    /* background-image: url("https://web.archive.org/web/20060514233806/http://geocities.com:80/mrmikemonies/money9.gif"); */
+    /* background-image: url("https://web.archive.org/web/20090821222621/http://geocities.com/TheTropics/Coast/5164/moneymaking/leftlightning.gif"); */
+}
+
+
+.icon-control{
+    margin:10px 25px;
+    height: 60px;  
+    width: 60px;
+    cursor: pointer;  
+}
+
+
+.spacer {
+    margin: 50px;
+}
+
+
+
+
+
+
+/* ************************** YOUTUBE PLAYER CSS ************************** */
+#player-parent{
+    /* position: relative; */
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);    
+    padding: 8px 8px 4px 8px;
+    border-radius: 5px;
+    /* min-width:400px; */
+    /* font: 12px/14px Arial, Helvetica, sans-serif; */
+    /* background: white; */
+}
+
+
+.transport-controls {
+    margin: 5px 0px;
+}
+  
+.play-pause-button, 
+#stop, 
+#playback-rate{
+    font-family: Arial, Helvetica, sans-serif;
+    height: 2rem;
+    width: 2rem; /* if using "►" or "⎮⎮" for button text */
+    /* width: 4rem; */ /* if using "PLAY" or "PAUSE" for button text */
+    text-align: center;
+    vertical-align: middle;
+    padding: 0px 1px 0px 0px;
+
+    /* background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;       */
+    border-radius: 4px;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    /* padding: 15px 32px; */
+    /* text-align: center; */
+    text-decoration: none;
+    display: inline-block;
+    /* font-size: 16px;       */
+    /* background-color: "green"; */
+
+    /* opacity: 0.9; */
+    /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); */
+    cursor: pointer;
+}
+
+#playback-rate{
+    width: 3rem;
+}
+
+.play-pause-button:hover, 
+#stop:hover, 
+.slider::-webkit-slider-thumb:hover,
+#playback-rate:hover  {
+    /* opacity: 1; */
+    background: #3c8b3e;
+}
+
+#stop{
+    margin-left: 6px;
+}
+
+/* HTML SYMBOLS LIST: http://www.scrollseek.com/wd/html_symbols_complete.html */
+/* ᐅ - 5125 - play button option 1 */
+/* ► - 9658 - play button option 2 */
+/* ⏯ - 9199 - play button option 3 */
+/* ⎮ - 9134 - use 2 for pause */
+/* ຩ - 3753 - stop button option 1 */
+/* ▇ - 9607 - stop button option 2 */
+/* ⏹ - 9209 - stop button option 3 */
+
+.play-pause-button.play::after{
+    content: "►";
+}
+
+.play-pause-button.pause::after{
+    content: "⎮⎮";
+}
+
+
+.slider{
+    -webkit-appearance: none;
+    /* Width of the outside container */
+    /* width: 75%; */
+    /* width: auto; */
+    vertical-align: middle;
+    margin-left: 5px;
+    height: 1rem; /* height of the bar the "thumb" slides on */
+    border-radius: 5px;
+    background: #ffffff;
+    /* outline: none; */
+    opacity: 0.85;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover{
+    opacity: 1;
+}
+
+
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 0.8rem;
+    height: 2rem;
+    border-radius: 25%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 0.8rem;
+    height: 2rem;
+    border-radius: 25%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
