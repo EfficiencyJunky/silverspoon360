@@ -1,8 +1,14 @@
+const _consoleLogsOn = false;
+
+
 // SCALE INITIAL VIDEO SIZE FROM WINDOW SIZE
 let windowScaleFactor = (function (){
-    const scaleFact = (window.innerHeight >= 750) ? 1.0 : 0.85;
+    const scaleFact =   (window.innerHeight >= 650) && (window.innerWidth >= 750) ? 1.2 :
+                        (window.innerHeight >= 650) ? 1.0 : 0.85;
     return (window.innerWidth >= 500) ? scaleFact : 0.65;
 })();
+
+console.log("window scale factor:", windowScaleFactor);
 
 // *******************************************
 // YOUTUBE PLAYER PARAMETERS
@@ -28,16 +34,13 @@ let youTubePlayerOptions = {
 
 
 
-const _consoleLogsOn = false;
-
-
 
 
 // ################## "PRIVATE VARIABLES" ##################
 // ################## "PRIVATE VARIABLES" ##################
 // ################## "PRIVATE VARIABLES" ##################
 let _player;
-const _videoAndUISyncInterval = 250; // time in milliseconds between calls to the UI syncronization callback
+const _videoAndUISyncInterval = secondsPerBeat/4*1000; // time in milliseconds between calls to the UI syncronization callback
 let _videoAndUISyncTimerID;
 const _playbackRatesArray = [0.25, 0.5, 0.75, 1.0, 1.5, 2.0];
 const _defaultPlaybackRateIndex = _playbackRatesArray.indexOf(1.0);
@@ -150,8 +153,8 @@ function onPlayerStateChange(event) {
     switch(playerState){
         // notice we don't have a "break;" for the "PLAYING" state below because we want to update the button in both the ended and paused states. Leaving out the break means the code in both cases will execute if the state is "PLAYING"
         case YT.PlayerState.PLAYING:
-        case YT.PlayerState.BUFFERING:                    
             _startVideoAndUISync();
+        case YT.PlayerState.BUFFERING:            
             setPlayPauseButtonsClass(_pauseButtonClass);
             break;
         // notice we don't have a "break;" below for the "ENEDED" state because we want to update the button in both the ended and paused states. Leaving out the break means the code in both cases will execute if the state is "ENDED"
@@ -463,3 +466,13 @@ function yt_addPlayPauseButton(button){
 
     playPauseButtonList.push(button);
 }
+
+
+function yt_getBeatIndexFromVideoTime(time){
+
+    const beatIndex = time / 60 * bpm;
+
+    return beatIndex;
+
+}
+

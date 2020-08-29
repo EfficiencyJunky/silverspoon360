@@ -27,7 +27,10 @@
 <body>
    
     <div class="container vertical-align-middle">
-        <div class="d-flex justify-content-center spacer">
+        <div id="top-section" class="d-flex justify-content-center spacer">
+            <div hidden>
+                <button value="video-timestamp">get time</button>
+            </div>
         </div>
 
         <div class="row mb-2">
@@ -51,12 +54,17 @@
 
         <div class="row mb-2">
             <div class="col-12 d-flex justify-content-center">
-                <div id="icon-controls-parent" class="transport-controls d-flex align-items-center">
+                <div id="icon-controls-parent" class="transport-controls d-flex flex-wrap flex-sm-nowrap align-items-center">
+                    <!-- <div class="icon-control" >Icon 1</div>
+                    <div class="icon-control" >Icon 2</div>
+                    <div class="icon-control" >Icon 3</div>
+                    <div class="icon-control" >Icon 4</div>
+                    <div class="icon-control" >Icon 5</div> -->
                     <img class="icon-control" src="" alt="Icon 1">
                     <img class="icon-control" src="" alt="Icon 2">
                     <img class="icon-control" src="" alt="Icon 3">
                     <img class="icon-control" src="" alt="Icon 4">
-                    <img class="icon-control" src="" alt="Icon 5">
+                    <!-- <img class="icon-control" src="" alt="Icon 5">                     -->
                 </div>
             </div>
         </div>
@@ -66,6 +74,7 @@
 
     </div>
     <!-- JAVASCRIPT -->
+    <script type="text/javascript" src="js/settings.js"></script>
     <script type="text/javascript" src="js/video-player.js"></script>
     <script type="text/javascript" src="js/logic.js"></script>
 </body>

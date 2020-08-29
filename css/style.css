@@ -4,14 +4,40 @@ html, body {
 
 body {
     background-color: rosybrown;
+    
+    /* Spinning Dollar Sign */
     background-image: url("https://web.archive.org/web/20091019160432/http://www.geocities.com/lmbeharry/index/money.gif");
+    
+    /* Confetti 1 */
+    background-image: url("https://web.archive.org/web/20091027025602/http://us.geocities.com/joannewww/jwbgs/animbg/jwconfetti.gif");
+
+    
+    /* yellow sparkles */
+    background-image: url("https://web.archive.org/web/20091027030741/http://it.geocities.com/fr_erotica/imagini/gold-05.gif");    
+    
+   
+    
+    /* falling money */
+    background-image: url("https://web.archive.org/web/20090901165646/http://www.geocities.com/militantinvestor/falling_money.gif");    
+    background-color: black;
+
+    /* falling money 2 */
+    background-image: url("https://web.archive.org/web/20090830141356/http://www.geocities.com/aznbmxerboi/falling_bills_md_blk_1_.gif");    
+
+    /* black sparkles */
+    background-image: url("https://web.archive.org/web/20091019190805/http://www.geocities.com/srparm69/yellowsparklebg.gif"); 
+
+    /* background-blend-mode: difference; */
+    /* background-size: 600px 400px; */
+
+    /* OTHER */
     /* background-image: url("https://web.archive.org/web/20060514233806/http://geocities.com:80/mrmikemonies/money9.gif"); */
     /* background-image: url("https://web.archive.org/web/20090821222621/http://geocities.com/TheTropics/Coast/5164/moneymaking/leftlightning.gif"); */
 }
 
 
 .icon-control{
-    margin:10px 25px;
+    margin:10px 15px;
     height: 60px;  
     width: 60px;
     cursor: pointer;  
