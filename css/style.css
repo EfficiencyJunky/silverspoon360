@@ -27,9 +27,9 @@ body {
     /* black sparkles */
     background-image: url("https://web.archive.org/web/20091019190805/http://www.geocities.com/srparm69/yellowsparklebg.gif"); 
 
-    /* background-blend-mode: difference; */
+    /* background-blend-mode: darken; */
     /* background-size: 600px 400px; */
-
+    
     /* OTHER */
     /* background-image: url("https://web.archive.org/web/20060514233806/http://geocities.com:80/mrmikemonies/money9.gif"); */
     /* background-image: url("https://web.archive.org/web/20090821222621/http://geocities.com/TheTropics/Coast/5164/moneymaking/leftlightning.gif"); */
@@ -45,12 +45,19 @@ body {
 
 
 .spacer {
-    margin: 50px;
+    margin-bottom: 100px;
 }
 
+.bgnd-mask-img {
+    background-image: url("../img/bgndmask_offwhite.png");
+    height: 100%;
+    margin: 0px;
+}
 
-
-
+.bgnd-mask-color {
+    background-color: rgba(170, 170, 170, 0.4);
+    height: 100%;
+}
 
 
 /* ************************** YOUTUBE PLAYER CSS ************************** */
