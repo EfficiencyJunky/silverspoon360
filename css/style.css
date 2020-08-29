@@ -5,27 +5,34 @@ html, body {
 body {
     background-color: rosybrown;
     
+    
     /* Spinning Dollar Sign */
-    background-image: url("https://web.archive.org/web/20091019160432/http://www.geocities.com/lmbeharry/index/money.gif");
+    background-image: url("../img/gifs/dollar_sign_spin_transparent.gif");
     
     /* Confetti 1 */
-    background-image: url("https://web.archive.org/web/20091027025602/http://us.geocities.com/joannewww/jwbgs/animbg/jwconfetti.gif");
-
+    background-image: url("../img/gifs/confetti_small_transparent.gif");
     
-    /* yellow sparkles */
-    background-image: url("https://web.archive.org/web/20091027030741/http://it.geocities.com/fr_erotica/imagini/gold-05.gif");    
+    /* sparkle black */
+    background-image: url("../img/gifs/sparkle_black.gif");
     
-   
+    /* sparkle yellow */
+    background-image: url("../img/gifs/sparkle_yellow.gif");    
     
-    /* falling money */
-    background-image: url("https://web.archive.org/web/20090901165646/http://www.geocities.com/militantinvestor/falling_money.gif");    
+    /* money falling vertical transparent */
+    background-image: url("../img/gifs/money_falling_vertical_transparent.gif");    
     background-color: black;
 
-    /* falling money 2 */
-    background-image: url("https://web.archive.org/web/20090830141356/http://www.geocities.com/aznbmxerboi/falling_bills_md_blk_1_.gif");    
+    /* money falling horizontal black */
+    background-image: url("../img/gifs/money_falling_horizontal_black.gif");    
 
-    /* black sparkles */
-    background-image: url("https://web.archive.org/web/20091019190805/http://www.geocities.com/srparm69/yellowsparklebg.gif"); 
+    /* money falling horizontal white */
+    background-image: url("../img/gifs/money_falling_horizontal_white.gif"); 
+    
+    /* sparkle black */
+    background-image: url("../img/gifs/sparkle_black.gif");
+
+    /* spoon */
+    /* background-image: url("../img/gifs/spoon_transparent.gif");  */
 
     /* background-blend-mode: darken; */
     /* background-size: 600px 400px; */

@@ -1,29 +1,25 @@
-yt_setUpdateUIFromVideoTimeCallback(updateUIFromVideoTime);
+// *****************************************************
+// GLOBAL VARIABLES
+// *****************************************************
 
-const loveImg = "../img/love.png";
-const wolfImg = "../img/wolf.png";
-const blackSparkles = "https://web.archive.org/web/20091019190805/http://www.geocities.com/srparm69/yellowsparklebg.gif";
-const yellowSparkles = "https://web.archive.org/web/20091027030741/http://it.geocities.com/fr_erotica/imagini/gold-05.gif";
-const fallingMoney = "https://web.archive.org/web/20090901165646/http://www.geocities.com/militantinvestor/falling_money.gif";
-const fallingMoney2 = "https://web.archive.org/web/20090830141356/http://www.geocities.com/aznbmxerboi/falling_bills_md_blk_1_.gif";
-const fallingMoney3 = "https://web.archive.org/web/20090902152207/http://geocities.com/taeoo24/falling_bills_md_wht.gif";
-const greenMoney = "https://web.archive.org/web/20091019160432/http://www.geocities.com/lmbeharry/index/money.gif";
-const confetti = "https://web.archive.org/web/20091027025602/http://us.geocities.com/joannewww/jwbgs/animbg/jwconfetti.gif";
-const silverSpoon = "https://web.archive.org/web/20090829234252/http://geocities.com/Athens/Oracle/5207/anispoon.gif"
+let prevBgndAsset;
 
 
-
-
+// *****************************************************
+// INITIALIZATION
+// *****************************************************
 let iconControls = document.getElementsByClassName('icon-control');
 let body = document.body;
 
 
-for(let i=0; i < iconControls.length; i++){
-    
+for(let i=0; i < iconControls.length; i++){    
     iconControls[i].src = (i%2 === 0) ? loveImg : wolfImg;
     // iconControls[i].style.backgroundImage = `url('${loveImg}')`;
 }
 
+
+// SET THE YOUTUBE VIDEO SYNC CALLBACK
+yt_setUpdateUIFromVideoTimeCallback(updateUIFromVideoTime);
 
 
 
@@ -43,58 +39,53 @@ function updateUIFromVideoTime(time){
         }
     }
 
-    if(beatIndex % 4 === 0 && beatIndex <= 4*16-1){
-        body.style.backgroundImage = `url('${blackSparkles}')`;
+
+    if(beatIndex <= 0){
+        updateBackground(0);
+        return;
     }
-    else if(beatIndex % 4 === 0 && beatIndex <= 8*16-1){
-        body.style.backgroundImage = `url('${greenMoney}')`;
-        body.style.backgroundColor = "green";
+    else if(beatIndex >= bgndSync.length){
+        updateBackground(bgndSync.length-1);
+        return;
     }
-    else if(beatIndex % 4 === 0 && beatIndex <= 12*16-1){
-        body.style.backgroundImage = `url('${fallingMoney}')`;
-        body.style.backgroundColor = "black";
-        body.style.backgroundSize = "600px 400px";
-    }
-    else if(beatIndex % 4 === 0 && beatIndex <= 16*16-1){
-        body.style.backgroundImage = `url('${greenMoney}')`;
-        body.style.backgroundColor = "green";
-        body.style.backgroundSize = "initial";
-    }
-    else if(beatIndex % 4 === 0 && beatIndex <= 16*16-1 + 4*2 + 1){
-        body.style.backgroundImage = `url('${fallingMoney2}')`;
-        body.style.backgroundColor = "green";
-        body.style.backgroundSize = "600px 400px";        
-    }
-    else if(beatIndex % 4 === 3 && beatIndex >= 16*16-1 + 4*2 + 1 && beatIndex <= 16*16-1 + 4*3 + 1){
-        body.style.backgroundImage = `url('${confetti}')`;
-        body.style.backgroundColor = "white";
-        body.style.backgroundSize = "initial";
-    }       
-    else if(beatIndex % 4 === 0 && beatIndex >= 16*16-1 + 4*4 + 1 && beatIndex <= 20*16-1){
-        body.style.backgroundImage = `url('${fallingMoney2}')`;
-        body.style.backgroundColor = "black";
-        body.style.backgroundSize = "600px 400px";
-    }    
-    else if(beatIndex % 4 === 0 && beatIndex >= 20*16-1 && beatIndex <= 24*16-1){
-        body.style.backgroundImage = `url('${yellowSparkles}')`;
-        body.style.backgroundColor = "black";
-        body.style.backgroundSize = "initial";
-    }
-    else if(beatIndex % 4 === 0 && beatIndex >= 20*16-1 && beatIndex <= 28*16-1){
-        body.style.backgroundImage = `url('${blackSparkles}')`;
-        body.style.backgroundColor = "black";
-    }
-    else if(beatIndex % 4 === 2 && beatIndex >= 28*16-1 ){
-        body.style.backgroundImage = `url('${silverSpoon}')`;
-        body.style.backgroundColor = "black";
-    }
+
+    updateBackground(beatIndex);
+
+
+
 
     // console.log("updating ui elements", time, "\nbeats", beatIndex);
 }
 
 
 
+function updateBackground(beatIndex){
 
+    let index = beatIndex;
+    // console.log(beatIndex);
+
+    while(typeof(bgndSync[index]) === "number"){
+        // console.log("decrementing");
+        index--;
+    }
+
+    const bgndAssetName = bgndSync[index];
+    const bgndAsset = bgndAssets[bgndAssetName];
+
+    if(bgndAsset === prevBgndAsset){
+        return;
+    }
+    else{
+        // console.log(bgndAsset);
+    }
+
+    body.style.backgroundImage = `url('${bgndAsset.imgUrl}')`;
+    body.style.backgroundColor = bgndAsset.bgndColor;
+    body.style.backgroundSize = bgndAsset.bgndSize;   
+
+
+    prevBgndAsset = bgndAsset;
+}
 
 
 
