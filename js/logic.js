@@ -1,9 +1,26 @@
 // *****************************************************
-// GLOBAL VARIABLES
+// GLOBAL MUTABLE VARIABLES
 // *****************************************************
 
 let prevBgndAsset;
+let sphereProps;
 
+let testButton01 = document.getElementById('test-button-01');
+testButton01.onclick = function(){
+
+    sphereProps = _player.getSphericalProperties();
+    console.log(sphereProps);
+};
+
+
+let testButton02 = document.getElementById('test-button-02');
+testButton02.onclick = function(){
+
+    sphereProps.fov = 1000;
+    // const sphereProps = {yaw: 319.1234461571927, pitch: 9.632983766328449, roll: 0, fov: 100.00004285756798};
+    _player.setSphericalProperties(sphereProps);
+    
+};
 
 // *****************************************************
 // INITIALIZATION
@@ -31,7 +48,7 @@ for(let i=0; i < rthmIcons.length; i++){
 
 // console.log(rthmIconDivs);
 
-rthmIconDivs[0].style.backgroundColor = rthmAssets.wolf.bgndColor;
+// rthmIconDivs[0].style.backgroundColor = rthmAssets.wolf.bgndColor;
 
 
 

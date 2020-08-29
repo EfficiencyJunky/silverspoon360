@@ -16,7 +16,6 @@ console.log("window scale factor:", windowScaleFactor);
 let videoWidth = 450 * windowScaleFactor; // make sure the "transport-controls" element is set to the same width
 let videoHeight =  Math.round(videoWidth * 0.5625); // 450 * 0.5625 == 253 just so you know
 
-const youTubeID = "dw2s4GqbXZM";
 
 // Learn about the playerVars that can be used for this "youTubePlayerOptions" object here: https://developers.google.com/youtube/player_parameters.html?playerVersion=HTML5
 let youTubePlayerOptions = { 
