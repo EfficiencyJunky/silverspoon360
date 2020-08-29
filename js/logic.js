@@ -8,14 +8,38 @@ let prevBgndAsset;
 // *****************************************************
 // INITIALIZATION
 // *****************************************************
-let iconControls = document.getElementsByClassName('icon-control');
+let rthmIcons = document.getElementById('rhythm-icons-row').getElementsByClassName('icon-control');
+let rthmIconDivs = document.getElementById('rhythm-icons-row').getElementsByClassName('icon-div');
+
+
+
+// let rthmIcons = document.getElementsByClassName('icon-control');
+let leadIcons = document.getElementById('lead-icons-row').getElementsByClassName('icon-control');
 let body = document.body;
 
 
-for(let i=0; i < iconControls.length; i++){    
-    iconControls[i].src = (i%2 === 0) ? loveImg : wolfImg;
-    // iconControls[i].style.backgroundImage = `url('${loveImg}')`;
+for(let i=0; i < rthmIcons.length; i++){    
+
+    const key = rthmIcons[i].alt;
+
+    rthmIcons[i].src = rthmAssets[key].imgUrl;
+    
+    // rthmIcons[i].style.backgroundSize = bgndAsset.bgndSize;      
+    // console.log(rthmIcons[i].alt);
+    
 }
+
+// console.log(rthmIconDivs);
+
+rthmIconDivs[0].style.backgroundColor = rthmAssets.wolf.bgndColor;
+
+
+
+for(let i=0; i < leadIcons.length; i++){    
+    leadIcons[i].src = sharedAssets.locked.imgUrl;    
+}
+
+
 
 
 // SET THE YOUTUBE VIDEO SYNC CALLBACK
@@ -30,17 +54,8 @@ yt_setUpdateUIFromVideoTimeCallback(updateUIFromVideoTime);
 function updateUIFromVideoTime(time){
     const beatIndex = Math.round(yt_getBeatIndexFromVideoTime(time))-1;
 
-    for(let i=0; i < iconControls.length; i++){
-        if(i === (beatIndex % 4)){
-            iconControls[i].src = loveImg;
-        }
-        else{
-            iconControls[i].src = wolfImg;
-        }
-    }
-
-
     if(beatIndex <= 0){
+        updateRthmIconsRow(0);
         updateBackground(0);
         return;
     }
@@ -49,6 +64,7 @@ function updateUIFromVideoTime(time){
         return;
     }
 
+    updateRthmIconsRow(beatIndex);
     updateBackground(beatIndex);
 
 
@@ -59,16 +75,46 @@ function updateUIFromVideoTime(time){
 
 
 
+function updateRthmIconsRow(beatIndex){
+
+
+    // console.log("updatingRhythmIconsRow")
+
+}
+
+
+    // for(let i=0; i < rthmIcons.length; i++){
+    //     if(i === (beatIndex % 4)){
+    //         rthmIcons[i].src = rthmAssets.wolf.imgUrl;
+    //     }
+    //     else{
+    //         rthmIcons[i].src = leadAssets.love.imgUrl;
+    //     }
+    // }
+
+
+
+
+
+
+
+
+
+// This function will update the background based on the beatIndex provided
+// it will look into the bgndSync array with this index and find the appropriate background styling
 function updateBackground(beatIndex){
 
+    // save a reference to the beatIndex
     let index = beatIndex;
     // console.log(beatIndex);
 
+    // if the item in the bgndSync array is a number
+    // decrement the index until we find an Object
     while(typeof(bgndSync[index]) === "number"){
-        // console.log("decrementing");
         index--;
     }
 
+    // use that new index as the key for the bgndAssets object
     const bgndAssetName = bgndSync[index];
     const bgndAsset = bgndAssets[bgndAssetName];
 
@@ -77,12 +123,10 @@ function updateBackground(beatIndex){
     }
     else{
         // console.log(bgndAsset);
+        body.style.backgroundImage = `url('${bgndAsset.imgUrl}')`;
+        body.style.backgroundColor = bgndAsset.bgndColor;
+        body.style.backgroundSize = bgndAsset.bgndSize;        
     }
-
-    body.style.backgroundImage = `url('${bgndAsset.imgUrl}')`;
-    body.style.backgroundColor = bgndAsset.bgndColor;
-    body.style.backgroundSize = bgndAsset.bgndSize;   
-
 
     prevBgndAsset = bgndAsset;
 }

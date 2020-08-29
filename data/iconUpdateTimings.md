@@ -1,0 +1,15 @@
+## Silverspoon 360° notes
+- Drum starts
+- Denny walks through door 
+- Drum fill
+- 2nd half of verse keyboard entrance 
+- Background singers walk in 
+- Tambourine before chorus
+- Bass player in one of the verses 
+- 2nd half of verse keyboard entrance 
+- Background singers in 2nd verse 
+- Tambourine before chorus
+- Confetti on “fool”
+- Uke standing on couch 
+- Trombone solo
+- Denny hits high note

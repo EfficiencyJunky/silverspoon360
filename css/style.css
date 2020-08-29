@@ -12,11 +12,7 @@ body {
     /* Confetti 1 */
     background-image: url("../img/gifs/confetti_small_transparent.gif");
     
-    /* sparkle black */
-    background-image: url("../img/gifs/sparkle_black.gif");
-    
-    /* sparkle yellow */
-    background-image: url("../img/gifs/sparkle_yellow.gif");    
+ 
     
     /* money falling vertical transparent */
     background-image: url("../img/gifs/money_falling_vertical_transparent.gif");    
@@ -30,12 +26,18 @@ body {
     
     /* sparkle black */
     background-image: url("../img/gifs/sparkle_black.gif");
+    
+    /* sparkle yellow */
+    /*background-image: url("../img/gifs/sparkle_yellow.gif");   
+    background-color: rgb(229, 255, 0);
+    background-size: 360px 180px;
+    background-blend-mode: multiply; */
+
 
     /* spoon */
     /* background-image: url("../img/gifs/spoon_transparent.gif");  */
 
-    /* background-blend-mode: darken; */
-    /* background-size: 600px 400px; */
+
     
     /* OTHER */
     /* background-image: url("https://web.archive.org/web/20060514233806/http://geocities.com:80/mrmikemonies/money9.gif"); */
@@ -44,11 +46,17 @@ body {
 
 
 .icon-control{
-    margin:10px 15px;
+    margin:15px 15px;
     height: 60px;  
     width: 60px;
     cursor: pointer;  
 }
+
+.icon-div{
+    border-radius: 5px;
+
+}
+
 
 
 .spacer {
@@ -68,11 +76,17 @@ body {
 
 
 /* ************************** YOUTUBE PLAYER CSS ************************** */
-#player-parent{
-    /* position: relative; */
-    background: rgba(255,255,255,0.8);
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);    
+#player-parent {
     padding: 8px 8px 4px 8px;
+}
+
+
+#player-parent,
+#rhythm-icons-row,
+#lead-icons-row{
+    /* position: relative; */
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);    
     border-radius: 5px;
     /* min-width:400px; */
     /* font: 12px/14px Arial, Helvetica, sans-serif; */
