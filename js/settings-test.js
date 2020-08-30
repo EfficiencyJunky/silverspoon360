@@ -16,3 +16,18 @@ const preChorus_1 = stanza + stanza_half;
 
 // 360 test
 const youTubeID = "FAtdv94yzp4";
+
+
+// Learn about the playerVars that can be used for this "youTubePlayerOptions" object here: https://developers.google.com/youtube/player_parameters.html?playerVersion=HTML5
+let youTubePlayerOptions = {};
+// let youTubePlayerOptions = { 
+//     // 'autoplay': 1, 
+//     'controls': 0, // This parameter indicates whether the video player controls are displayed
+//     'disablekb': 1, // disables keyboard control
+//     'modestbranding': 1, // This parameter lets you use a YouTube player that does not show a YouTube logo
+//     'playsinline': 1, // prevents full screen when pressing play on mobile
+//     'fs': 0, // prevents fullscreen button (doesn't matter if 'controls' is set to 0)
+//     'origin': "https://silverspoon360.com",
+//     'widget_referrer': "https://silverspoon360.com",
+//     'rel': 0 // if the rel parameter is set to 0, related videos will come from the same channel as the video that was just played.
+// };

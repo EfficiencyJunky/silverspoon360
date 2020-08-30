@@ -18,17 +18,17 @@ let videoHeight =  Math.round(videoWidth * 0.5625); // 450 * 0.5625 == 253 just 
 
 
 // Learn about the playerVars that can be used for this "youTubePlayerOptions" object here: https://developers.google.com/youtube/player_parameters.html?playerVersion=HTML5
-let youTubePlayerOptions = { 
-    // 'autoplay': 1, 
-    'controls': 0, 
-    'disablekb': 1,
-    'modestbranding': 1,
-    'playsinline': 1, // prevents full screen when pressing play on mobile
-    'fs': 0, // prevents fullscreen button (doesn't matter if 'controls' is set to 0)
-    'origin': "https://silverspoon360.com",
-    'widget_referrer': "https://silverspoon360.com",
-    'rel': 0
-};
+// let youTubePlayerOptions = { 
+//     // 'autoplay': 1, 
+//     'controls': 0, 
+//     'disablekb': 1,
+//     'modestbranding': 1,
+//     'playsinline': 1, // prevents full screen when pressing play on mobile
+//     'fs': 0, // prevents fullscreen button (doesn't matter if 'controls' is set to 0)
+//     'origin': "https://silverspoon360.com",
+//     'widget_referrer': "https://silverspoon360.com",
+//     'rel': 0
+// };
 
 
 
