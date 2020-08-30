@@ -83,7 +83,9 @@ function updateUIFromVideoTime(time){
 }
 
 
-
+// This function will update the icons in the "lead" row based on the beatIndex provided
+// it will look at each of the "leadAssets" and check to see whether they should be revealed
+// or if they are alredy in their revealed state
 function updateLeadRowIcons(beatIndex){
 
     
@@ -118,16 +120,7 @@ function updateLeadRowIcons(beatIndex){
     });
 
 
-
-    // console.log(assetsToUpdate);
-
 }
-
-
-
-
-
-
 
 
 
@@ -245,23 +238,6 @@ function clearFlashingIconDivAndTimer(){
     flashing = false;
 
 }
-
-
-
-
-
-    // for(let i=0; i < rthmIcons.length; i++){
-    //     if(i === (beatIndex % 4)){
-    //         rthmIcons[i].src = rthmAssets.wolf.imgUrl;
-    //     }
-    //     else{
-    //         rthmIcons[i].src = leadAssets.love.imgUrl;
-    //     }
-    // }
-
-
-
-
 
 
 
