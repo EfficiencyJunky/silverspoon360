@@ -25,7 +25,7 @@ let youTubePlayerOptions = {
     // 'controls': 0, // This parameter indicates whether the video player controls are displayed
     // 'disablekb': 1, // disables keyboard control
     // 'modestbranding': 1, // This parameter lets you use a YouTube player that does not show a YouTube logo
-    'playsinline': 1, // prevents full screen when pressing play on mobile
+    // 'playsinline': 1, // prevents full screen when pressing play on mobile
     'enableOrientationSensor': true
     // 'fs': 0, // prevents fullscreen button (doesn't matter if 'controls' is set to 0)
     // 'origin': "https://silverspoon360.com",
