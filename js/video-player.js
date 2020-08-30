@@ -355,7 +355,7 @@ slider.onchange = function(event){
 
     // in which case we will need to update the cumulative stats and rabbit 
     // when we move the slider and the video is paused
-    // _updateUIFromVideoTimeCallback(vTimeToSeekTo);
+    _updateUIFromVideoTimeCallback(vTimeToSeekTo);
 
 
     _player.seekTo(vTimeToSeekTo, true);

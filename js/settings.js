@@ -8,14 +8,33 @@ const line_half = line/2;
 const stanza = line*4;
 const stanza_half = stanza/2;
 
-const intro_leadin = 0;
-const intro_chorus = stanza_half;
-const verse_1 = stanza;
-const preChorus_1 = stanza + stanza_half;
+// beginnings of each section in beat indexes
+const intro_leadin = 9;
+const intro_chorus = stanza_half + intro_leadin;
+const verse_1 = intro_chorus + stanza_half;
+const preChorus_1 = verse_1 + stanza_half;
+const chorus_1 = preChorus_1 + stanza_half;
+
+const verse_2 = chorus_1 + stanza;
+const preChorus_2 = verse_2 + stanza_half;
+const chorus_2 = preChorus_2 + stanza_half;
+
+const bridge = chorus_2 + stanza;
+const trombone = bridge + stanza_half;
+
+const chorus_3 = trombone + stanza_half;
+
+const outro = chorus_3 + stanza;
 
 
-// Silverspoon
-const youTubeID = "dw2s4GqbXZM";
+
+
+
+// Silverspoon 2D
+// const youTubeID = "dw2s4GqbXZM";
+
+// Silverspoon 360
+const youTubeID = "ZjIdHVr1MzI";
 
 // Learn about the playerVars that can be used for this "youTubePlayerOptions" object here: https://developers.google.com/youtube/player_parameters.html?playerVersion=HTML5
 let youTubePlayerOptions = { 
@@ -29,7 +48,6 @@ let youTubePlayerOptions = {
     'widget_referrer': "https://silverspoon360.com",
     'rel': 0 // if the rel parameter is set to 0, related videos will come from the same channel as the video that was just played.
 };
-
 
 
 

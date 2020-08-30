@@ -109,7 +109,8 @@ const bgndAssets = {
 
 const bgndSync = [
     // yellow and black
-    "sparkleBlack",1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro leadin 1.1
+    // "sparkleBlack",1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro leadin 1.1
+    "sparkleBlack",1,2,3,0,1,2,3,0,1,2,3,0,1,2,3,     0,1,2,3,0,1,2,3,0,      // intro leadin 1.1
     0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro leadin 1.2
     0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro chorus 1.1
     0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro chorus 1.2
@@ -187,50 +188,50 @@ let rthmAssets = {
         "imgUrl": "../img/rthm/drums.png",
         "bgndColor": "initial",
         "sphereProps": {
-            "yaw": 104.96117974670096,
-            "pitch": 0.6482712274179374,
-            "roll": 0,
-            "fov": 100.00004285756798
+            "yaw": 176.25379595510833,
+            "pitch": -11.512807118508452,
+            "roll": 3,
+            "fov": 70.00004285756796
         }
     },    
     "bass": {
         "imgUrl": "../img/rthm/bass.png",
         "bgndColor": "initial",
         "sphereProps": {
-            "yaw": 91.68780522900626,
-            "pitch": 1.7950474518013713,
+            "yaw": 304.14944,
+            "pitch": -33.48277815789478,
             "roll": 0,
-            "fov": 120
+            "fov": 80.00004285756798
         }
     },        
     "keys": {
         "imgUrl": "../img/rthm/keys.png",
         "bgndColor": "initial",
         "sphereProps": {
-            "yaw": 91.68780522900626,
-            "pitch": 1.7950474518013713,
-            "roll": 13,
-            "fov": 25
+            "yaw": 231.19107255532697,
+            "pitch": -11.726442686344978,
+            "roll": 0,
+            "fov": 80.00004285756796
         }
     },       
     "uke": {
         "imgUrl": "../img/rthm/uke.png",
         "bgndColor": "initial",
         "sphereProps": {
-            "yaw": 325.51897503677037,
-            "pitch": 28.052084083499143,
-            "roll": -20,
-            "fov": 110
+            "yaw": 22.487071720741085,
+            "pitch": -3.044921136754331,
+            "roll": 0,
+            "fov": 100.00004285756795
         }
     },       
     "tamb": {
         "imgUrl": "../img/rthm/tamb.png",
         "bgndColor": "initial",
         "sphereProps": {
-            "yaw": 290.72293116069596,
-            "pitch": 15.403039978836466,
+            "yaw": 58.763522511380714,
+            "pitch": 1.4371789670976558,
             "roll": 0,
-            "fov": 90
+            "fov": 40.000042857567955
         }
     },        
     "wolf": {
@@ -238,23 +239,37 @@ let rthmAssets = {
         "bgndColor": "initial",
         "sphereProps": [
             {
-                "yaw": 104.96117974670096,
-                "pitch": 0.6482712274179374,
-                "roll": 0,
-                "fov": 100.00004285756798
+                "yaw": 176.25379595510833,
+                "pitch": -11.512807118508452,
+                "roll": 3,
+                "fov": 70.00004285756796
             },
             {
-                "yaw": 91.68780522900626,
-                "pitch": 1.7950474518013713,
+                "yaw": 304.14944,
+                "pitch": -33.48277815789478,
                 "roll": 0,
-                "fov": 120
+                "fov": 80.00004285756798
             },
             {
-                "yaw": 91.68780522900626,
-                "pitch": 1.7950474518013713,
-                "roll": 13,
-                "fov": 25
+                "yaw": 231.19107255532697,
+                "pitch": -11.726442686344978,
+                "roll": 0,
+                "fov": 80.00004285756796
+            },
+            {
+                "yaw": 22.487071720741085,
+                "pitch": -3.044921136754331,
+                "roll": 0,
+                "fov": 100.00004285756795
+            },
+            {
+                "yaw": 58.763522511380714,
+                "pitch": 1.4371789670976558,
+                "roll": 0,
+                "fov": 40.000042857567955
             }            
+
+
         ],
         "spherePropsIndex": 0
 
@@ -271,16 +286,62 @@ let rthmAssets = {
 // **********************************************************************************
 
 
-const leadAssets = {
+let leadAssets = {
     "love": {
-        "imgUrl": "../img/lead/love.png"
-    }
+        "imgUrl": "../img/lead/love.png",
+        "revealIndex": intro_chorus - bar*2,
+        "revealed": false,
+        "imgElement": undefined,
+        "sphereProps": {
+            "yaw": 324.4689128644255,
+            "pitch": -1.785174858795165,
+            "roll": 0,
+            "fov": 60.00004285756796
+        }   
+    },
+    "bgnd": {
+        "imgUrl": "../img/lead/bgnd.png",
+        "revealIndex": preChorus_1 + bar*3,
+        "revealed": false,
+        "imgElement": undefined,
+        "sphereProps": {
+            "yaw": 310.925148194743,
+            "pitch": -2.529236808228362,
+            "roll": -2,
+            "fov": 60.00004285756796
+        }     
+    },
+    "confetti": {
+        "imgUrl": "../img/lead/confetti.png",
+        "revealIndex": chorus_2,
+        "revealed": false,
+        "imgElement": undefined,
+        "sphereProps": {
+            "yaw": 316.5102018011254,
+            "pitch": 90,
+            "roll": 0,
+            "fov": 119.99999999999999
+        }       
+    },
+    "horn": {
+        "imgUrl": "../img/lead/horn.png",
+        "revealIndex": trombone - bar*2,
+        "revealed": false,
+        "imgElement": undefined,
+        "sphereProps": {
+            "yaw": 131.01751936199207,
+            "pitch": 0.4420139141478718,
+            "roll": 3,
+            "fov": 50
+        }     
+    }            
 }
 
 
 const leadSync = [
     // yellow and black
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro leadin 1.1
+    // 0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro leadin 1.1
+    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3,     0,1,2,3,0,1,2,3,0,      // intro leadin 1.1
     0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro leadin 1.2
     0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro chorus 1.1
     0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro chorus 1.2
@@ -336,7 +397,8 @@ const leadSync = [
 // **********************************************************************************
 const highlightSync = [
     // yellow and black
-    "drums",1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro leadin 1.1
+    // "drums",1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro leadin 1.1
+    "drums",1,2,3,0,1,2,3,0,1,2,3,0,1,2,3,     0,1,2,3,0,1,2,3,0,      // intro leadin 1.1
     0,1,2,3,0,1,2,3,"love",1,2,3,0,1,2,3, // intro leadin 1.2
     0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro chorus 1.1
     0,1,2,3,0,1,"drums",3,0,1,2,3,0,1,2,3, // intro chorus 1.2

@@ -7,6 +7,7 @@ let prevHighlightIconName;
 let sphereProps;
 let dontUpdateHighlightIcon = false;
 
+const initialCameraPosition = rthmAssets.drums.sphereProps;
 
 
 
@@ -38,7 +39,10 @@ for(let i=0; i < rthmIcons.length; i++){
 
 // set initial images for lead icons
 for(let i=0; i < leadIcons.length; i++){    
-    leadIcons[i].src = sharedAssets.locked.imgUrl;    
+    leadIcons[i].src = sharedAssets.locked.imgUrl;
+    
+    const iconName = leadIcons[i].alt;
+    leadAssets[iconName].imgElement = leadIcons[i];
 }
 
 
@@ -57,8 +61,11 @@ function updateUIFromVideoTime(time){
     const beatIndex = Math.round(yt_getBeatIndexFromVideoTime(time))-1;
 
     if(beatIndex <= 0){
+
+        yt_setSphericalProps(initialCameraPosition);
         updateIconHighlight(0);
         updateBackground(0);
+        updateLeadRowIcons(0);
         return;
     }
     else if(beatIndex >= bgndSync.length){
@@ -67,12 +74,61 @@ function updateUIFromVideoTime(time){
         return;
     }
 
+    updateLeadRowIcons(beatIndex);
     updateIconHighlight(beatIndex);
     updateBackground(beatIndex);
 
 
     // console.log("updating ui elements", time, "\nbeats", beatIndex);
 }
+
+
+
+function updateLeadRowIcons(beatIndex){
+
+    
+    const leadAssetsKeys = Object.keys(leadAssets);
+
+    let assetsToUpdate = leadAssetsKeys.filter( (key, i) => {
+
+        const asset = leadAssets[key];
+
+        if(beatIndex < asset.revealIndex){               
+            return false;
+        }
+        else if(asset.revealed){
+            return false;
+        }
+        else{
+            // console.log(asset);
+            return true;
+        }
+
+    });
+
+    if(assetsToUpdate.length === 0){
+        return;
+    }
+
+    
+    assetsToUpdate.forEach(key => {
+        
+        leadAssets[key].imgElement.src = leadAssets[key].imgUrl;
+        leadAssets[key].revealed = true;
+    });
+
+
+
+    // console.log(assetsToUpdate);
+
+}
+
+
+
+
+
+
+
 
 
 
@@ -241,7 +297,5 @@ function updateBackground(beatIndex){
 
     prevBgndAsset = bgndAsset;
 }
-
-
 
 

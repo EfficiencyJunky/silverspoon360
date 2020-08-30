@@ -8,14 +8,31 @@ const line_half = line/2;
 const stanza = line*4;
 const stanza_half = stanza/2;
 
-const intro_leadin = 0;
-const intro_chorus = stanza_half;
-const verse_1 = stanza;
-const preChorus_1 = stanza + stanza_half;
+// beginnings of each section in beat indexes
+const intro_leadin = 9;
+const intro_chorus = stanza_half + intro_leadin;
+const verse_1 = intro_chorus + stanza_half;
+const preChorus_1 = verse_1 + stanza_half;
+const chorus_1 = preChorus_1 + stanza_half;
+
+const verse_2 = chorus_1 + stanza;
+const preChorus_2 = verse_2 + stanza_half;
+const chorus_2 = preChorus_2 + stanza_half;
+
+const bridge = chorus_2 + stanza;
+const trombone = bridge + stanza_half;
+
+const chorus_3 = trombone + stanza_half;
+
+const outro = chorus_3 + stanza;
+
+
+
+
 
 
 // 360 test
-const youTubeID = "8rz-wMLgxrU";
+const youTubeID = "ZjIdHVr1MzI";
 
 
 // Learn about the playerVars that can be used for this "youTubePlayerOptions" object here: https://developers.google.com/youtube/player_parameters.html?playerVersion=HTML5
@@ -64,3 +81,12 @@ testButton02.onclick = function(){
     _player.setSphericalProperties(newView);
     
 };
+
+
+
+const iconDivFlashInterval = 150;
+const numTimesToFlashDiv = 4;
+let iconDivFlashTimerID;
+let iconDivToFlash;
+let timesIconDivFlashed = 0;
+let flashing;
