@@ -29,3 +29,14 @@ let youTubePlayerOptions = {
     'widget_referrer': "https://silverspoon360.com",
     'rel': 0 // if the rel parameter is set to 0, related videos will come from the same channel as the video that was just played.
 };
+
+
+
+
+
+const iconDivFlashInterval = 150;
+const numTimesToFlashDiv = 4;
+let iconDivFlashTimerID;
+let iconDivToFlash;
+let timesIconDivFlashed = 0;
+let flashing;

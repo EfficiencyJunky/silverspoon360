@@ -57,7 +57,7 @@ let playPauseButton = document.getElementById('play-pause');
 let playPauseButtonList = [playPauseButton];
 let stopButton = document.getElementById('stop');
 let playbackRateButton = document.getElementById('playback-rate');
-let fullScreenButton =  document.getElementById('fullscreen');
+// let fullScreenButton = document.getElementById('fullscreen');
 
 // for updating the playPauseButton's class to change its CSS and content
 const _playButtonClass = "play";
@@ -403,15 +403,15 @@ function playbackButtonHandler(event){
 }
 
 
-// PLAYBACK RATE BUTTON HANDLER SETUP
-if(fullScreenButton !== null){
-    fullScreenButton.onclick = fullScreenButtonButtonHandler;
-}
+// FULLSCREEN BUTTON BUTTON HANDLER SETUP -- ACTUALLY THIS DOESN'T WORK
+// if(fullScreenButton !== null){
+//     fullScreenButton.onclick = fullScreenButtonButtonHandler;
+// }
 
-function fullScreenButtonButtonHandler(){
+// function fullScreenButtonButtonHandler(){
 
-    console.log("button presse");
-}
+//     console.log("button presse");
+// }
 
 
 
@@ -426,6 +426,15 @@ function fullScreenButtonButtonHandler(){
 function yt_setUpdateUIFromVideoTimeCallback(callback){
     _updateUIFromVideoTimeCallback = callback;
 }
+
+function yt_setSphericalProps(newProps){
+
+    _player.setSphericalProperties(newProps);
+}
+
+
+
+
 
 
 // YOUTUBE CONTROLS

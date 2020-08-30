@@ -3,45 +3,24 @@
 // *****************************************************
 
 let prevBgndAsset;
+let prevHighlightIconName;
 let sphereProps;
-let textArea = document.getElementById('sphere-props-debug');
-
-let testButton01 = document.getElementById('test-button-01');
-testButton01.onclick = function(){
-
-    sphereProps = _player.getSphericalProperties();
-    
-    textArea.value = JSON.stringify(sphereProps, null, 4);
-    console.log(sphereProps);
-};
 
 
-let testButton02 = document.getElementById('test-button-02');
-testButton02.onclick = function(){
-
-    
-    const newView = JSON.parse(textArea.value);
 
 
-    console.log(newView);
-    // const sphereProps = {yaw: 319.1234461571927, pitch: 9.632983766328449, roll: 0, fov: 100.00004285756798};
-    _player.setSphericalProperties(newView);
-    
-};
 
 // *****************************************************
 // INITIALIZATION
 // *****************************************************
 let rthmIcons = document.getElementById('rhythm-icons-row').getElementsByClassName('icon-control');
-let rthmIconDivs = document.getElementById('rhythm-icons-row').getElementsByClassName('icon-div');
-
-
+let iconDivs = document.getElementsByClassName('icon-div');
 
 // let rthmIcons = document.getElementsByClassName('icon-control');
 let leadIcons = document.getElementById('lead-icons-row').getElementsByClassName('icon-control');
 let body = document.body;
 
-
+// set initial images for rhythm icons
 for(let i=0; i < rthmIcons.length; i++){    
 
     const key = rthmIcons[i].alt;
@@ -50,15 +29,13 @@ for(let i=0; i < rthmIcons.length; i++){
     
     // rthmIcons[i].style.backgroundSize = bgndAsset.bgndSize;      
     // console.log(rthmIcons[i].alt);
-    
 }
 
 // console.log(rthmIconDivs);
 
 // rthmIconDivs[0].style.backgroundColor = rthmAssets.wolf.bgndColor;
 
-
-
+// set initial images for lead icons
 for(let i=0; i < leadIcons.length; i++){    
     leadIcons[i].src = sharedAssets.locked.imgUrl;    
 }
@@ -79,7 +56,7 @@ function updateUIFromVideoTime(time){
     const beatIndex = Math.round(yt_getBeatIndexFromVideoTime(time))-1;
 
     if(beatIndex <= 0){
-        updateRthmIconsRow(0);
+        updateIconHighlight(0);
         updateBackground(0);
         return;
     }
@@ -88,7 +65,7 @@ function updateUIFromVideoTime(time){
         return;
     }
 
-    updateRthmIconsRow(beatIndex);
+    updateIconHighlight(beatIndex);
     updateBackground(beatIndex);
 
 
@@ -99,12 +76,94 @@ function updateUIFromVideoTime(time){
 
 
 
-function updateRthmIconsRow(beatIndex){
+function updateIconHighlight(beatIndex){
+    // save a reference to the beatIndex
+    let index = beatIndex;
+    // console.log(beatIndex);
+
+    // if the item in the highlightSync array is a number
+    // decrement the index until we find an Object
+    while(typeof(highlightSync[index]) === "number"){
+        index--;
+    }
+
+    // use that new index as the key for the highlightSync array to find the name of the icon we want to highlight
+    const highlightIconName = highlightSync[index];
 
 
-    // console.log("updatingRhythmIconsRow")
+
+    if(highlightIconName === prevHighlightIconName){
+        return;
+    }
+    else{
+        // console.log(bgndAsset);
+        for(let i=0; i < iconDivs.length; i++){
+
+            let iconDiv = iconDivs[i];
+            let imgAltText = iconDiv.getElementsByTagName('img')[0].alt
+
+            if(imgAltText === highlightIconName){
+                console.log("hightligh", imgAltText);
+
+                if(iconDivFlashTimerID !== undefined){
+                    clearFlashingIconDivAndTimer();
+                }
+
+                flashing = true;
+                iconDivToFlash = iconDiv;
+                iconDivFlashTimerID = window.setInterval( flashIconDiv, iconDivFlashInterval);
+                
+            }
+        }
+
+    }
+
+    prevHighlightIconName = highlightIconName;
 
 }
+
+
+function flashIconDiv(){
+
+    if(flashing){
+        if(timesIconDivFlashed % 2 === 0){
+            iconDivToFlash.style.backgroundColor = "red";
+        }
+        else{
+            iconDivToFlash.style.backgroundColor = "initial";
+        }
+    }
+
+    
+    if( (timesIconDivFlashed >= numTimesToFlashDiv * 2) && (timesIconDivFlashed % 2 === 0)){
+        flashing = false;
+    }
+    else if(timesIconDivFlashed > numTimesToFlashDiv * 6){
+        clearFlashingIconDivAndTimer();
+    }
+
+
+    timesIconDivFlashed++;
+
+}
+
+function clearFlashingIconDivAndTimer(){
+
+
+    iconDivToFlash.style.backgroundColor = "initial";
+    iconDivToFlash = undefined;
+    
+    clearInterval(iconDivFlashTimerID);
+    iconDivFlashTimerID = undefined;
+
+    timesIconDivFlashed = 0;
+
+    flashing = false;
+
+}
+
+
+
 
 
     // for(let i=0; i < rthmIcons.length; i++){
@@ -146,7 +205,7 @@ function updateBackground(beatIndex){
         return;
     }
     else{
-        // console.log(bgndAsset);
+        // rthmIconDivs[0].style.backgroundColor = rthmAssets.wolf.bgndColor;
         body.style.backgroundImage = `url('${bgndAsset.imgUrl}')`;
         body.style.backgroundColor = bgndAsset.bgndColor;
         body.style.backgroundSize = bgndAsset.bgndSize;        

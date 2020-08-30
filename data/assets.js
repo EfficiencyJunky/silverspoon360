@@ -42,7 +42,7 @@ const sync = [
     // falling money and crazy colors
     0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 3.3
     0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 3.4
-    0,1,2,3,0,1,2,3,0  // outro chorus end with something fun
+    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3  // outro chorus end with something fun
 ]
 
 
@@ -179,35 +179,83 @@ const sharedAssets = {
 }
 
 
-const rthmAssets = {
-    "wolf": {
-        "imgUrl": "../img/rthm/wolf.png",
-        "bgndColor": "red"
-    },
+let rthmAssets = {
     "drums": {
         "imgUrl": "../img/rthm/drums.png",
-        "bgndColor": "red"
+        "bgndColor": "initial",
+        "sphereProps": {
+            "yaw": 104.96117974670096,
+            "pitch": 0.6482712274179374,
+            "roll": 0,
+            "fov": 100.00004285756798
+        }
     },    
     "bass": {
         "imgUrl": "../img/rthm/bass.png",
-        "bgndColor": "initial"
+        "bgndColor": "initial",
+        "sphereProps": {
+            "yaw": 91.68780522900626,
+            "pitch": 1.7950474518013713,
+            "roll": 0,
+            "fov": 120
+        }
     },        
     "keys": {
         "imgUrl": "../img/rthm/keys.png",
-        "bgndColor": "initial"
+        "bgndColor": "initial",
+        "sphereProps": {
+            "yaw": 91.68780522900626,
+            "pitch": 1.7950474518013713,
+            "roll": 13,
+            "fov": 25
+        }
     },       
     "uke": {
         "imgUrl": "../img/rthm/uke.png",
-        "bgndColor": "initial"
+        "bgndColor": "initial",
+        "sphereProps": {
+            "yaw": 325.51897503677037,
+            "pitch": 28.052084083499143,
+            "roll": -20,
+            "fov": 110
+        }
     },       
     "tamb": {
         "imgUrl": "../img/rthm/tamb.png",
-        "bgndColor": "initial"
+        "bgndColor": "initial",
+        "sphereProps": {
+            "yaw": 290.72293116069596,
+            "pitch": 15.403039978836466,
+            "roll": 0,
+            "fov": 90
+        }
     },        
-    "alt": {
+    "wolf": {
         "imgUrl": "../img/rthm/wolf.png",
-        "bgndColor": "initial"
-    }        
+        "bgndColor": "initial",
+        "sphereProps": [
+            {
+                "yaw": 104.96117974670096,
+                "pitch": 0.6482712274179374,
+                "roll": 0,
+                "fov": 100.00004285756798
+            },
+            {
+                "yaw": 91.68780522900626,
+                "pitch": 1.7950474518013713,
+                "roll": 0,
+                "fov": 120
+            },
+            {
+                "yaw": 91.68780522900626,
+                "pitch": 1.7950474518013713,
+                "roll": 13,
+                "fov": 25
+            }            
+        ],
+        "spherePropsIndex": 0
+
+    }
 }
 
 
@@ -266,5 +314,61 @@ const leadSync = [
     // falling money and crazy colors
     0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 3.3
     0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 3.4
-    0,1,2,3,0,1,2,3,0  // outro chorus end with something fun
+    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3  // outro chorus end with something fun
+]
+
+
+
+
+
+
+
+
+
+
+
+
+// **********************************************************************************
+// HIGHLIGHT SYNC
+// **********************************************************************************
+const highlightSync = [
+    // yellow and black
+    "drums",1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro leadin 1.1
+    0,1,2,3,0,1,2,3,"love",1,2,3,0,1,2,3, // intro leadin 1.2
+    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro chorus 1.1
+    0,1,2,3,0,1,2,3,"drums",1,2,3,0,1,2,3, // intro chorus 1.2
+    // green money
+    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // verse 1.1
+    0,1,2,3,0,1,2,3,0,1,2,3,"keys",1,2,3, // verse 1.2
+    // green money + red money
+    0,1,2,3,0,1,2,3,0,1,2,3,"bgnd",1,2,3, // pre-chorus 1.1
+    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // pre-chorus 1.1
+    // falling money
+    0,1,2,3,0,1,2,3,0,1,2,3,"tamb",1,2,3, // chorus 1.1
+    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 1.2
+    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 1.3
+    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 1.4 // silver spoon
+    // green money
+    0,1,2,3,0,1,2,3,"bass",1,2,3,0,1,2,3, // verse 2.1
+    0,1,2,3,0,1,2,3,0,1,2,3,"keys",1,2,3, // verse 2.2
+    // green money + red money
+    0,1,2,3,0,1,2,3,0,1,2,3,"bgnd",1,2,3, // pre-chorus 2.1
+    0,1,2,3,0,1,2,3,0,1,2,3,"tamb",1,2,3, // pre-chorus 2.2
+    // falling money
+    0,1,2,3,"confetti",1,2,3,0,1,2,3,0 /*confetti*/,1,2,3, // chorus 2.1
+    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 2.2
+    0,1,2,3,0,1,"uke",3,0,1,2,3,0,1,2,3, // chorus 2.3
+    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 2.4
+    // yellow lights
+    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // bridge 1.1
+    0,1,2,3,0,1,2,3,0,1,"horn",3,0,1,2,3, // bridge 1.2
+    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // solo 1.1
+    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // solo 1.2
+    // yellow and black
+    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 3.1
+    0,1,2,3,0,1,2,3,"love",1,2,3,0,1,2,3, // chorus 3.2
+    // falling money and crazy colors
+    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 3.3
+    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 3.4
+    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3  // outro chorus end with something fun
 ]
