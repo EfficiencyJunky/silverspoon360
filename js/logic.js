@@ -4,11 +4,14 @@
 
 let prevBgndAsset;
 let sphereProps;
+let textArea = document.getElementById('sphere-props-debug');
 
 let testButton01 = document.getElementById('test-button-01');
 testButton01.onclick = function(){
 
     sphereProps = _player.getSphericalProperties();
+    
+    textArea.value = JSON.stringify(sphereProps, null, 4);
     console.log(sphereProps);
 };
 
@@ -16,9 +19,13 @@ testButton01.onclick = function(){
 let testButton02 = document.getElementById('test-button-02');
 testButton02.onclick = function(){
 
-    sphereProps.fov = 1000;
+    
+    const newView = JSON.parse(textArea.value);
+
+
+    console.log(newView);
     // const sphereProps = {yaw: 319.1234461571927, pitch: 9.632983766328449, roll: 0, fov: 100.00004285756798};
-    _player.setSphericalProperties(sphereProps);
+    _player.setSphericalProperties(newView);
     
 };
 
