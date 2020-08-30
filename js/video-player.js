@@ -350,11 +350,14 @@ slider.onchange = function(event){
     // the second argument tells the video to keep playing from the new position in the case that it was already playing before we told it to seek
     const vTimeToSeekTo = vDuration*sliderValue/100;
 
+    // because seeking throws all sorts of wrenches into things, we need to tell the icon highlighting function to stop trying to do so for a half a second
+    dl_suspendIconHighlightUpdateBriefly(300);
+
     // in which case we will need to update the cumulative stats and rabbit 
     // when we move the slider and the video is paused
-    _updateUIFromVideoTimeCallback(vTimeToSeekTo);
+    // _updateUIFromVideoTimeCallback(vTimeToSeekTo);
 
-    
+
     _player.seekTo(vTimeToSeekTo, true);
     
 

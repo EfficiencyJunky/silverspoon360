@@ -175,6 +175,9 @@ const bgndSync = [
 const sharedAssets = {
     "locked": {
         "imgUrl": "../img/gifs/locked.gif"
+    },
+    "starfox": {
+        "imgUrl": "../img/gifs/starfox.gif"
     }
 }
 
@@ -336,7 +339,7 @@ const highlightSync = [
     "drums",1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro leadin 1.1
     0,1,2,3,0,1,2,3,"love",1,2,3,0,1,2,3, // intro leadin 1.2
     0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro chorus 1.1
-    0,1,2,3,0,1,2,3,"drums",1,2,3,0,1,2,3, // intro chorus 1.2
+    0,1,2,3,0,1,"drums",3,0,1,2,3,0,1,2,3, // intro chorus 1.2
     // green money
     0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // verse 1.1
     0,1,2,3,0,1,2,3,0,1,2,3,"keys",1,2,3, // verse 1.2

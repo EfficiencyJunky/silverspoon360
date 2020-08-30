@@ -45,17 +45,28 @@ body {
 }
 
 
+
+#special-icons-row{
+    margin-left: 20px;
+    display: none !important;
+}
+
+
 .icon-control{
     margin:15px 15px;
     height: 60px;  
     width: 60px;
-    cursor: pointer;  
+    
 }
 
 .icon-div{
-    border-radius: 5px;
-
+    border-radius: 5px;    
+    cursor: pointer;  
 }
+
+/* .icon-div:hover{
+    cursor: pointer;  
+} */
 
 
 
@@ -87,7 +98,8 @@ body {
 
 #player-parent,
 #rhythm-icons-row,
-#lead-icons-row{
+#lead-icons-row,
+#special-icons-row{
     /* position: relative; */
     background: rgba(255,255,255,0.95);
     box-shadow: 0 0 15px rgba(0,0,0,0.2);    
@@ -96,6 +108,12 @@ body {
     /* font: 12px/14px Arial, Helvetica, sans-serif; */
     /* background: white; */
 }
+
+/* #lead-icons-row {
+    cursor: pointer;  
+} */
+
+
 
 
 .transport-controls {

@@ -5,7 +5,7 @@
 let prevBgndAsset;
 let prevHighlightIconName;
 let sphereProps;
-
+let dontUpdateHighlightIcon = false;
 
 
 
@@ -18,6 +18,7 @@ let iconDivs = document.getElementsByClassName('icon-div');
 
 // let rthmIcons = document.getElementsByClassName('icon-control');
 let leadIcons = document.getElementById('lead-icons-row').getElementsByClassName('icon-control');
+let starfox = document.getElementById('starfox').getElementsByClassName('icon-control')[0];
 let body = document.body;
 
 // set initial images for rhythm icons
@@ -41,7 +42,7 @@ for(let i=0; i < leadIcons.length; i++){
 }
 
 
-
+starfox.src = sharedAssets.starfox.imgUrl;
 
 // SET THE YOUTUBE VIDEO SYNC CALLBACK
 yt_setUpdateUIFromVideoTimeCallback(updateUIFromVideoTime);
@@ -62,6 +63,7 @@ function updateUIFromVideoTime(time){
     }
     else if(beatIndex >= bgndSync.length){
         updateBackground(bgndSync.length-1);
+        // updateIconHighlight(highlightSync.length-1);
         return;
     }
 
@@ -69,9 +71,34 @@ function updateUIFromVideoTime(time){
     updateBackground(beatIndex);
 
 
-
-
     // console.log("updating ui elements", time, "\nbeats", beatIndex);
+}
+
+
+
+// because seeking around in the video throws all sorts of wrenches into things 
+// due to the interval timer that updates the UI
+// we need to tell the icon highlighting function to stop for a short period
+// this function is called by the video-player.js
+async function dl_suspendIconHighlightUpdateBriefly(sleepTime){
+
+    if(!sleepTime){
+        sleepTime = 300;
+    }
+    
+    // stop the icon highlight from functioning
+    dontUpdateHighlightIcon = true;
+    
+    // sleep for a short while
+    await sleep(sleepTime);
+    
+    // allow the highlight to function again
+    dontUpdateHighlightIcon = false;
+    
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }    
 }
 
 
@@ -92,7 +119,8 @@ function updateIconHighlight(beatIndex){
 
 
 
-    if(highlightIconName === prevHighlightIconName){
+    if(highlightIconName === prevHighlightIconName || dontUpdateHighlightIcon){
+        prevHighlightIconName = highlightIconName;
         return;
     }
     else{
@@ -103,7 +131,7 @@ function updateIconHighlight(beatIndex){
             let imgAltText = iconDiv.getElementsByTagName('img')[0].alt
 
             if(imgAltText === highlightIconName){
-                console.log("hightligh", imgAltText);
+                // console.log("hightligh", imgAltText);
 
                 if(iconDivFlashTimerID !== undefined){
                     clearFlashingIconDivAndTimer();
