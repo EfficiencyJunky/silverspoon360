@@ -2,10 +2,12 @@
 let rhythmButtons = document.getElementById('rhythm-icons-row');
 let leadButtons = document.getElementById('lead-icons-row');
 let starfoxDiv = document.getElementById('starfox');
+let bonusDiv = document.getElementById('bonus');
 
 rhythmButtons.onclick = rhythmButtonsClickHandler;
 leadButtons.onclick = leadButtonsClickHandler;
 starfoxDiv.onclick = doABarrelRoll;
+bonusDiv.onclick = rhythmButtonsClickHandler;
 
 
 
@@ -22,10 +24,10 @@ function rhythmButtonsClickHandler(event){
     }
 
     let sphereProps;
-    let asset = rthmAssets[img.alt];
+    let asset = (img.alt === "bonus") ? specialAssets[img.alt] : rthmAssets[img.alt];
     // if the image clicked was the special wolf image
     // we want to cycle through the different wolf views
-    if(img.alt === "wolf"){
+    if(img.alt === "wolf" || img.alt === "bonus"){
         // grab a reference to the index and the sphereProps array
         const index = asset.spherePropsIndex;
         const wolfSphereProps = asset.sphereProps;
@@ -204,9 +206,6 @@ async function flyToNewView(sphereProps){
     flyingCurrently = false;
 
 }
-
-
-
 
 
 

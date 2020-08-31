@@ -181,7 +181,29 @@ const specialAssets = {
         "imgUrl": "../img/gifs/starfox.gif"
     },
     "bonus": {
-        "imgUrl": "../img/gifs/bonus.gif"
+        "imgUrl": "../img/gifs/bonus.gif",
+        "imgElement": undefined,        
+        "sphereProps": [
+            {
+                "yaw": 168.17301944381518,
+                "pitch": -26.053727922911758,
+                "roll": 0,
+                "fov": 40
+            },
+            {
+                "yaw": 257.9386170109469,
+                "pitch": 4.344441403877287,
+                "roll": 3,
+                "fov": 35.00004285756796
+            },
+            {
+                "yaw": 150.58010058371224,
+                "pitch": -5.716049165462029,
+                "roll": 0,
+                "fov": 120
+            }                        
+        ],
+        "spherePropsIndex": 0        
     }    
 }
 
@@ -214,7 +236,7 @@ let rthmAssets = {
         "spherePropsBeatIndexes":[
             0,
             verse_1 - bar*2,
-            verse_1 + bar*2
+            verse_1 + beat*3
         ]        
     },    
     "bass": {
@@ -455,7 +477,7 @@ let leadAssets = {
         "spherePropsBeatIndexes": [
             0, 
             intro_chorus + line,             
-            verse_1 - bar, 
+            verse_1 - bar*2 + beat*2, 
             verse_1 + line, 
             trombone, 
             chorus_3, 
