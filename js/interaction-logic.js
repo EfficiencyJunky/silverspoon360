@@ -1,11 +1,11 @@
 // let rhythmButtons = document.getElementById('rhythm-icons-row').getElementsByClassName('icon-div');
 let rhythmButtons = document.getElementById('rhythm-icons-row');
 let leadButtons = document.getElementById('lead-icons-row');
-
+let starfoxDiv = document.getElementById('starfox');
 
 rhythmButtons.onclick = rhythmButtonsClickHandler;
 leadButtons.onclick = leadButtonsClickHandler;
-
+starfoxDiv.onclick = doABarrelRoll;
 
 function rhythmButtonsClickHandler(event){
 
@@ -89,9 +89,11 @@ function leadButtonsClickHandler(event){
         else{
             sphereProps = leadAssets[img.alt].sphereProps;
         }
+
+        console.log(img.alt);
     }
     else{
-        console.log("not revealed");
+        console.log("locked ;)");
         return;
     }
 
@@ -99,3 +101,87 @@ function leadButtonsClickHandler(event){
 
 
 }
+
+
+
+// when someone presses the starfox button this will make the camera do a "roll" flip (aka barrel roll)
+async function doABarrelRoll(event){
+
+    // if we're already rolling, deny the new roll
+    // eventually we can do some smarter math and solve this but I'm lazy today
+    if(rollingCurrently){
+        return;
+    }
+    else{
+        rollingCurrently = true;
+    }
+
+    let rollTime = barrelRollTimeMS; 
+
+    // we don't need to update the view for EVERY single degree so we can cut that down here
+    const degreesPerUpdate = (clockwise) ? barrelRollDegreesPerUpdate : -barrelRollDegreesPerUpdate;
+    const sleepTime = rollTime / 360 * Math.abs(degreesPerUpdate);
+
+    // roll is set from 
+    //      0 (right side up) 
+    //      to -180 (upside down rotating clockwise) 
+    //      or  180 (upside down rotating counterclockwise)
+    let sphereProps = yt_getSphericalProps();
+    
+    const currentRoll = sphereProps.roll;
+    let targetRoll = currentRoll + degreesPerUpdate;
+
+    for(i=0; i < Math.round(360/Math.abs(degreesPerUpdate)); i++){
+
+        if(targetRoll >= 180){
+            targetRoll = targetRoll - 360;
+        }
+        else if(targetRoll <= -180){
+            targetRoll = targetRoll + 360;
+        }
+
+        sphereProps.roll = targetRoll;
+
+        yt_setSphericalProps(sphereProps)
+
+        await sleep(sleepTime);
+
+        targetRoll = targetRoll + degreesPerUpdate;
+
+    }
+
+    clockwise = !clockwise;
+
+    rollingCurrently = false;
+
+}
+
+
+
+// because seeking around in the video throws all sorts of wrenches into things 
+// due to the interval timer that updates the UI
+// we need to tell the icon highlighting function to stop for a short period
+// this function is called by the video-player.js
+async function blayblahhhhh(sleepTime){
+
+    if(!sleepTime){
+        sleepTime = 300;
+    }
+    
+    // stop the icon highlight from functioning
+    dontUpdateHighlightIcon = true;
+    
+    // sleep for a short while
+    await sleep(sleepTime);
+    
+    // allow the highlight to function again
+    dontUpdateHighlightIcon = false;
+    
+}
+
+
+
+
+
+
+

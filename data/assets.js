@@ -179,7 +179,10 @@ const specialAssets = {
     },
     "starfox": {
         "imgUrl": "../img/gifs/starfox.gif"
-    }
+    },
+    "bonus": {
+        "imgUrl": "../img/gifs/bonus.gif"
+    }    
 }
 
 
@@ -300,10 +303,10 @@ let leadAssets = {
         "imgElement": undefined,
         "sphereProps": [
             {
-                "yaw": 324.4689128644255,
-                "pitch": -1.785174858795165,
-                "roll": 0,
-                "fov": 60.00004285756796
+                "yaw": 319.5819874681481,
+                "pitch": -2.0331955086062288,
+                "roll": -2,
+                "fov": 60
             },
             {
                 "yaw": 200.06194992354864,

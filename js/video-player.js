@@ -435,6 +435,10 @@ function yt_setSphericalProps(newProps){
     _player.setSphericalProperties(newProps);
 }
 
+function yt_getSphericalProps(){
+
+    return _player.getSphericalProperties();
+}
 
 
 

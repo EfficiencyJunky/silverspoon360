@@ -14,13 +14,18 @@ const initialCameraPosition = rthmAssets.drums.sphereProps;
 // *****************************************************
 // INITIALIZATION
 // *****************************************************
+let body = document.body;
 let rthmIcons = document.getElementById('rhythm-icons-row').getElementsByClassName('icon-control');
+let leadIcons = document.getElementById('lead-icons-row').getElementsByClassName('icon-control');
+
+// gets the entire div for all iconDivs so that we can flash the background color red to call attention to it
 let iconDivs = document.getElementsByClassName('icon-div');
 
-// let rthmIcons = document.getElementsByClassName('icon-control');
-let leadIcons = document.getElementById('lead-icons-row').getElementsByClassName('icon-control');
-let starfox = document.getElementById('starfox').getElementsByClassName('icon-control')[0];
-let body = document.body;
+
+let specialIconsRowDiv = document.getElementById('special-icons-row');
+let starfoxImg = document.getElementById('starfox').getElementsByClassName('icon-control')[0];
+let bonusImg = document.getElementById('bonus').getElementsByClassName('icon-control')[0];
+
 
 // initialize rthAssets and load rthmIcon "<img>" element into rthmAssets.{asset}.imgElement
 for(let i=0; i < rthmIcons.length; i++){    
@@ -55,7 +60,8 @@ for(let i=0; i < leadIcons.length; i++){
     leadAsset.imgElement.src = specialAssets.locked.imgUrl;
 }
 
-starfox.src = specialAssets.starfox.imgUrl;
+starfoxImg.src = specialAssets.starfox.imgUrl;
+bonusImg.src = specialAssets.bonus.imgUrl;
 
 
 // SET THE YOUTUBE VIDEO SYNC CALLBACK
@@ -78,8 +84,12 @@ function updateUIFromVideoTime(time){
         updateLeadRowIcons(0);
         return;
     }
-    else if(beatIndex >= bgndSync.length){
+    else if(beatIndex >= bgndSync.length){        
         updateBackground(bgndSync.length-1);
+        if(!starfoxUnlocked){
+            unlockStarfox();
+            starfoxUnlocked = true;
+        }
         // updateIconHighlight(highlightSync.length-1);
         return;
     }
@@ -91,6 +101,14 @@ function updateUIFromVideoTime(time){
 
     // console.log("updating ui elements", time, "\nbeats", beatIndex);
 }
+
+function unlockStarfox(){
+    console.log("unlocking Starfox");
+    specialIconsRowDiv.setAttribute("style", "display: flex !important");
+}
+
+
+
 
 
 // This function will update the icons in the "lead" row based on the beatIndex provided
@@ -154,10 +172,6 @@ async function dl_suspendIconHighlightUpdateBriefly(sleepTime){
     // allow the highlight to function again
     dontUpdateHighlightIcon = false;
     
-
-    function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }    
 }
 
 

@@ -58,3 +58,17 @@ let iconDivFlashTimerID;
 let iconDivToFlash;
 let timesIconDivFlashed = 0;
 let flashing;
+
+
+
+const barrelRollTimeMS = 300;
+const barrelRollDegreesPerUpdate = 4;
+let clockwise = true;
+let rollingCurrently = false;
+let starfoxUnlocked = false;
+
+
+// a function that allows an async function to sleep for a number of ms
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}    
