@@ -7,6 +7,8 @@ rhythmButtons.onclick = rhythmButtonsClickHandler;
 leadButtons.onclick = leadButtonsClickHandler;
 starfoxDiv.onclick = doABarrelRoll;
 
+
+
 function rhythmButtonsClickHandler(event){
 
     let clickedElement = event.target;
@@ -20,29 +22,28 @@ function rhythmButtonsClickHandler(event){
     }
 
     let sphereProps;
+    let asset = rthmAssets[img.alt];
     // if the image clicked was the special wolf image
     // we want to cycle through the different wolf views
     if(img.alt === "wolf"){
         // grab a reference to the index and the sphereProps array
-        const index = rthmAssets["wolf"].spherePropsIndex;
-        const wolfSphereProps = rthmAssets["wolf"].sphereProps;
+        const index = asset.spherePropsIndex;
+        const wolfSphereProps = asset.sphereProps;
 
         // get the sphereProps at that location
         sphereProps = wolfSphereProps[index];
 
         // increment the index or set to 0 if it's longer than the array length
-        rthmAssets["wolf"].spherePropsIndex = (index + 1 < wolfSphereProps.length) ? index + 1 : 0;
+        asset.spherePropsIndex = (index + 1 < wolfSphereProps.length) ? index + 1 : 0;
     }
     else{
-        sphereProps = rthmAssets[img.alt].sphereProps;
+        sphereProps = _getSpherePropsFromAsset(asset);
     }
     
     console.log(img.alt);
 
     flyToNewView(sphereProps);
-
     // yt_setSphericalProps(sphereProps);
-
 
 }
 
@@ -62,35 +63,11 @@ function leadButtonsClickHandler(event){
 
 
     let sphereProps;
+    let asset = leadAssets[img.alt];
     // if the image clicked was the special wolf image
     // we want to cycle through the different wolf views
-    if(leadAssets[img.alt].revealed){
-        
-        // if they clicked on "love" we need to grab the correct sphere props for the time of the video
-        if(img.alt === "love"){
-            // get the current time in beats from Youtube player
-            const beatIndex = yt_getBeatIndexFromVideoTime();
-
-            const spbIndexes = leadAssets.love.spherePropsBeatIndexes;
-            
-            // find out which index to use based on that time
-            for(let i=0; (i+1) < spbIndexes.length; i++){
-                const spbIndexCur = spbIndexes[i];
-                const spbIndexNext = spbIndexes[i+1];
-
-                if(spbIndexCur <= beatIndex && beatIndex < spbIndexNext){
-                    sphereProps = leadAssets.love.sphereProps[i];
-                    break;
-                }
-                else{
-                    sphereProps = leadAssets.love.sphereProps[i+1];
-                }
-            }
-
-        }
-        else{
-            sphereProps = leadAssets[img.alt].sphereProps;
-        }
+    if(asset.revealed){
+        sphereProps = _getSpherePropsFromAsset(asset);
 
         console.log(img.alt);
     }
@@ -104,8 +81,42 @@ function leadButtonsClickHandler(event){
 }
 
 
-async function flyToNewView(sphereProps){
+function _getSpherePropsFromAsset(asset){
 
+    // if they clicked on an asset who's sphereProps is an array (like in the case of "love")
+    // then we should check to see which 
+    if(Array.isArray(asset.sphereProps) && asset.spherePropsBeatIndexes){
+        // get the current time in beats from Youtube player
+        const beatIndex = yt_getBeatIndexFromVideoTime();
+
+        const spbIndexes = asset.spherePropsBeatIndexes;
+        
+        // find out which index to use based on that time
+        for(let i=0; (i+1) < spbIndexes.length; i++){
+            const spbIndexCur = spbIndexes[i];
+            const spbIndexNext = spbIndexes[i+1];
+
+            if(spbIndexCur <= beatIndex && beatIndex < spbIndexNext){
+                return asset.sphereProps[i];
+            }
+        }
+
+        // if we didn't find our item in the for loop above, then it must be the last one in the list
+        // or in the case that our array is only 1 item long, we won't even enter the loop above
+        // this will deal with that edge case
+        return asset.sphereProps[spbIndexes.length - 1];
+    }
+    else{
+        return asset.sphereProps;
+    }
+
+}
+
+
+
+
+// this function makes transitions between camera angles nice and smooooooooth
+async function flyToNewView(sphereProps){
 
     // if we're already rolling, deny the new roll
     // eventually we can do some smarter math and solve this but I'm lazy today
@@ -138,20 +149,20 @@ async function flyToNewView(sphereProps){
     else if(panDiff <= -180){
         panDiff = (panTarget + 360) - panCurrent;
     }
-    const panIncrement = panDiff/flyToIncrements;
+    const panIncrement = panDiff/flyToNumIncrements;
     
     
     // calculate the tilt increment
     let tiltDiff = tiltTarget - tiltCurrent;
-    const tiltIncrement = tiltDiff/flyToIncrements;
+    const tiltIncrement = tiltDiff/flyToNumIncrements;
     
     // calculate the zoom increment
     let zoomDiff = zoomTarget - zoomCurrent;
-    const zoomIncrement = zoomDiff/flyToIncrements;
+    const zoomIncrement = zoomDiff/flyToNumIncrements;
     
     // calculate the rotate increment
     let rotateDiff = rotateTarget - rotateCurrent;
-    const rotateIncrement = rotateDiff/flyToIncrements;
+    const rotateIncrement = rotateDiff/flyToNumIncrements;
 
 
     // create a temp sphereProps object (otherwise we might overwrite the one stored in our Asset)
@@ -163,7 +174,7 @@ async function flyToNewView(sphereProps){
     rotateCurrent = rotateCurrent + rotateIncrement;
 
     // move the camera
-    for(i=0; i < flyToIncrements; i++){
+    for(i=0; i < flyToNumIncrements; i++){
 
         if(panCurrent >= 360){
             panCurrent = panCurrent - 360;

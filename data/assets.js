@@ -191,23 +191,75 @@ let rthmAssets = {
         "imgUrl": "../img/rthm/drums.png",
         "bgndColor": "initial",
         "imgElement": undefined,
-        "sphereProps": {
-            "yaw": 176.25379595510833,
-            "pitch": -11.512807118508452,
-            "roll": 3,
-            "fov": 70.00004285756796
-        }
+        "sphereProps": [
+            {
+                "yaw": 176.25379595510833,
+                "pitch": -11.512807118508452,
+                "roll": 3,
+                "fov": 70.00004285756796
+            },
+            {
+                "yaw": 176.30033766955844,
+                "pitch": -7.585817187317396,
+                "roll": 3,
+                "fov": 50
+            },
+            {
+                "yaw": 176.25379595510833,
+                "pitch": -11.512807118508452,
+                "roll": 3,
+                "fov": 70.00004285756796
+            }                        
+        ],
+        "spherePropsBeatIndexes":[
+            0,
+            verse_1 - bar*2,
+            verse_1 + bar*2
+        ]        
     },    
     "bass": {
         "imgUrl": "../img/rthm/bass.png",
         "bgndColor": "initial",
         "imgElement": undefined,
-        "sphereProps": {
-            "yaw": 304.14944,
-            "pitch": -33.48277815789478,
-            "roll": 0,
-            "fov": 80.00004285756798
-        }
+        "sphereProps": [
+            {
+                "yaw": 304.14944,
+                "pitch": -33.48277815789478,
+                "roll": 0,
+                "fov": 80.00004285756798
+            },
+            {
+                "yaw": 308.24514817216306,
+                "pitch": -28.191671906774697,
+                "roll": 0,
+                "fov": 80.00004285756796
+            },
+            {
+                "yaw": 305.0802827664007,
+                "pitch": -35.13624886136981,
+                "roll": 0,
+                "fov": 80.00004285756796
+            },
+            {
+                "yaw": 295.65000226617326,
+                "pitch": -42.12216202992917,
+                "roll": 0,
+                "fov": 90
+            },
+            {
+                "yaw": 295.87107730475924,
+                "pitch": -40.15866662143556,
+                "roll": 0,
+                "fov": 95
+            }
+        ],
+        "spherePropsBeatIndexes":[
+            0,
+            chorus_1 - 2*bar,
+            bridge,
+            chorus_3 + bar,
+            chorus_3 + stanza_half
+        ]        
     },        
     "keys": {
         "imgUrl": "../img/rthm/keys.png",
@@ -224,12 +276,67 @@ let rthmAssets = {
         "imgUrl": "../img/rthm/uke.png",
         "bgndColor": "initial",
         "imgElement": undefined,
-        "sphereProps": {
-            "yaw": 22.487071720741085,
-            "pitch": -3.044921136754331,
-            "roll": 0,
-            "fov": 100.00004285756795
-        }
+        "sphereProps": [
+            {
+                "yaw": 32.21286364800597,
+                "pitch": -10.733559904224906,
+                "roll": 0,
+                "fov": 110
+            },
+            {
+                "yaw": 27.376020411940626,
+                "pitch": -22.650544761611723,
+                "roll": 0,
+                "fov": 90
+            },
+            {
+                "yaw": 18.160638434618974,
+                "pitch": -8.767873202901715,
+                "roll": 0,
+                "fov": 85
+            },
+            {
+                "yaw": 22.487071720741085,
+                "pitch": -3.044921136754331,
+                "roll": 0,
+                "fov": 100.00004285756795
+            },
+            {
+                "yaw": 16.52967881364896,
+                "pitch": -18.09150108377195,
+                "roll": 0,
+                "fov": 80
+            },
+            {
+                "yaw": 10.944666673486603,
+                "pitch": -13.803072855485317,
+                "roll": 0,
+                "fov": 119.99999999999999
+            },
+            {
+                "yaw": 20.997763164973954,
+                "pitch": -1.4020492228940353,
+                "roll": 0,
+                "fov": 100
+            },
+            {
+                "yaw": 16.34357016148781,
+                "pitch": -31.63135481945862,
+                "roll": 0,
+                "fov": 100
+            }                                    
+
+        ],
+        "spherePropsBeatIndexes":[
+            0,
+            verse_1,
+            verse_2 - bar,
+            chorus_2 - beat*2,
+            bridge,
+            chorus_3,
+            chorus_3 + line,
+            outro + beat*2
+        ]
     },       
     "tamb": {
         "imgUrl": "../img/rthm/tamb.png",
@@ -309,6 +416,12 @@ let leadAssets = {
                 "fov": 60
             },
             {
+                "yaw": 299.79966710855444,
+                "pitch": -2.7886121632433833,
+                "roll": -2,
+                "fov": 59.99999999999999
+            },            
+            {
                 "yaw": 200.06194992354864,
                 "pitch": -9.315384072608648,
                 "roll": 4,
@@ -341,6 +454,7 @@ let leadAssets = {
         ],
         "spherePropsBeatIndexes": [
             0, 
+            intro_chorus + line,             
             verse_1 - bar, 
             verse_1 + line, 
             trombone, 
@@ -467,7 +581,7 @@ const highlightSync = [
     0,1,2,3,0,1,2,3,0,1,2,3,"keys",1,2,3, // verse 2.2
     // green money + red money
     0,1,2,3,0,1,2,3,0,1,2,3,"bgnd",1,2,3, // pre-chorus 2.1
-    0,1,2,3,0,1,2,3,0,1,2,3,"tamb",1,2,3, // pre-chorus 2.2
+    0,1,2,3,0,1,2,3,0,1,2,"tamb",0,1,2,3, // pre-chorus 2.2
     // falling money
     0,1,2,3,"confetti",1,2,3,0,1,2,3,0 /*confetti*/,1,2,3, // chorus 2.1
     0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 2.2
