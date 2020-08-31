@@ -7,7 +7,7 @@ let prevHighlightIconName;
 let sphereProps;
 let dontUpdateHighlightIcon = false;
 
-const initialCameraPosition = _getSpherePropsFromAsset(rthmAssets.drums);
+const initialCameraPosition = specialAssets.bonus.sphereProps[0];
 
 
 
