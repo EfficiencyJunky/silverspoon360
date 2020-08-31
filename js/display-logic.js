@@ -22,31 +22,41 @@ let leadIcons = document.getElementById('lead-icons-row').getElementsByClassName
 let starfox = document.getElementById('starfox').getElementsByClassName('icon-control')[0];
 let body = document.body;
 
-// set initial images for rhythm icons
+// initialize rthAssets and load rthmIcon "<img>" element into rthmAssets.{asset}.imgElement
 for(let i=0; i < rthmIcons.length; i++){    
 
-    const key = rthmIcons[i].alt;
+    // get the value of the <img> "alt" property and use that as the iconName
+    const iconName = rthmIcons[i].alt;
 
-    rthmIcons[i].src = rthmAssets[key].imgUrl;
-    
-    // rthmIcons[i].style.backgroundSize = bgndAsset.bgndSize;      
-    // console.log(rthmIcons[i].alt);
+    // grab the rthmAsset with the same name
+    let rthmAsset = rthmAssets[iconName];
+
+    // store the <img> element in the rthmAsset
+    rthmAsset.imgElement = rthmIcons[i];
+
+    // set the "src" property to the actual imageUrl
+    // WE CURRENTLY AREN'T USING THIS FOR THE "rthmAssets" BUT MIGHT LATER
+    rthmAsset.imgElement.src = rthmAsset.imgUrl;
 }
 
-// console.log(rthmIconDivs);
-
-// rthmIconDivs[0].style.backgroundColor = rthmAssets.wolf.bgndColor;
-
-// set initial images for lead icons
+// initialize leadAsset and load leadIcons "<img>" element into leadAsset.{asset}.imgElement
 for(let i=0; i < leadIcons.length; i++){    
-    leadIcons[i].src = sharedAssets.locked.imgUrl;
     
+    // get the value of the <img> "alt" property and use that as the iconName
     const iconName = leadIcons[i].alt;
-    leadAssets[iconName].imgElement = leadIcons[i];
+
+    // grab the leadAsset with the same name
+    let leadAsset = leadAssets[iconName];
+
+    // store the <img> element in the leadAsset
+    leadAsset.imgElement = leadIcons[i];
+
+    // set the "src" property to the "locked" gif in the "specialAssets" object
+    leadAsset.imgElement.src = specialAssets.locked.imgUrl;
 }
 
+starfox.src = specialAssets.starfox.imgUrl;
 
-starfox.src = sharedAssets.starfox.imgUrl;
 
 // SET THE YOUTUBE VIDEO SYNC CALLBACK
 yt_setUpdateUIFromVideoTimeCallback(updateUIFromVideoTime);
@@ -58,7 +68,7 @@ yt_setUpdateUIFromVideoTimeCallback(updateUIFromVideoTime);
 // *****************************************************
 // this is where we update the UI elements according to the videos playback time
 function updateUIFromVideoTime(time){
-    const beatIndex = Math.round(yt_getBeatIndexFromVideoTime(time))-1;
+    const beatIndex = yt_getBeatIndexFromVideoTime(time) - 1;
 
     if(beatIndex <= 0){
 

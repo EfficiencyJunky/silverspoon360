@@ -488,9 +488,13 @@ function yt_addPlayPauseButton(button){
 
 function yt_getBeatIndexFromVideoTime(time){
 
+    if(time === undefined){
+        time = _player.getCurrentTime();
+    }
+
     const beatIndex = time / 60 * bpm;
 
-    return beatIndex;
+    return Math.round(beatIndex);
 
 }
 

@@ -66,6 +66,7 @@ testButton01.onclick = function(){
     
     textArea.value = JSON.stringify(sphereProps, null, 4);
     console.log(sphereProps);
+    console.log("beatindex", yt_getBeatIndexFromVideoTime() - 1);
 };
 
 
@@ -73,12 +74,15 @@ let testButton02 = document.getElementById('test-button-02');
 testButton02.onclick = function(){
 
     
-    const newView = JSON.parse(textArea.value);
+    const newSphereProps = JSON.parse(textArea.value);
 
 
-    console.log(newView);
+    console.log(newSphereProps);
+    console.log("beatindex", yt_getBeatIndexFromVideoTime() - 1);
+
+
     // const sphereProps = {yaw: 319.1234461571927, pitch: 9.632983766328449, roll: 0, fov: 100.00004285756798};
-    _player.setSphericalProperties(newView);
+    _player.setSphericalProperties(newSphereProps);
     
 };
 

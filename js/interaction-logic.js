@@ -63,14 +63,37 @@ function leadButtonsClickHandler(event){
     // if the image clicked was the special wolf image
     // we want to cycle through the different wolf views
     if(leadAssets[img.alt].revealed){
-        sphereProps = leadAssets[img.alt].sphereProps;
+        
+        // if they clicked on "love" we need to grab the correct sphere props for the time of the video
+        if(img.alt === "love"){
+            // get the current time in beats from Youtube player
+            const beatIndex = yt_getBeatIndexFromVideoTime();
+
+            const spbIndexes = leadAssets.love.spherePropsBeatIndexes;
+            
+            // find out which index to use based on that time
+            for(let i=0; (i+1) < spbIndexes.length; i++){
+                const spbIndexCur = spbIndexes[i];
+                const spbIndexNext = spbIndexes[i+1];
+
+                if(spbIndexCur <= beatIndex && beatIndex < spbIndexNext){
+                    sphereProps = leadAssets.love.sphereProps[i];
+                    break;
+                }
+                else{
+                    sphereProps = leadAssets.love.sphereProps[i+1];
+                }
+            }
+
+        }
+        else{
+            sphereProps = leadAssets[img.alt].sphereProps;
+        }
     }
     else{
         console.log("not revealed");
         return;
     }
-    
-    console.log("revealed", img.alt);
 
     yt_setSphericalProps(sphereProps);
 

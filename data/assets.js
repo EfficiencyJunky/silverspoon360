@@ -173,7 +173,7 @@ const bgndSync = [
 // **********************************************************************************
 // SHARED AND RHYTHM ROW ASSETS
 // **********************************************************************************
-const sharedAssets = {
+const specialAssets = {
     "locked": {
         "imgUrl": "../img/gifs/locked.gif"
     },
@@ -187,6 +187,7 @@ let rthmAssets = {
     "drums": {
         "imgUrl": "../img/rthm/drums.png",
         "bgndColor": "initial",
+        "imgElement": undefined,
         "sphereProps": {
             "yaw": 176.25379595510833,
             "pitch": -11.512807118508452,
@@ -197,6 +198,7 @@ let rthmAssets = {
     "bass": {
         "imgUrl": "../img/rthm/bass.png",
         "bgndColor": "initial",
+        "imgElement": undefined,
         "sphereProps": {
             "yaw": 304.14944,
             "pitch": -33.48277815789478,
@@ -207,6 +209,7 @@ let rthmAssets = {
     "keys": {
         "imgUrl": "../img/rthm/keys.png",
         "bgndColor": "initial",
+        "imgElement": undefined,
         "sphereProps": {
             "yaw": 231.19107255532697,
             "pitch": -11.726442686344978,
@@ -217,6 +220,7 @@ let rthmAssets = {
     "uke": {
         "imgUrl": "../img/rthm/uke.png",
         "bgndColor": "initial",
+        "imgElement": undefined,
         "sphereProps": {
             "yaw": 22.487071720741085,
             "pitch": -3.044921136754331,
@@ -227,6 +231,7 @@ let rthmAssets = {
     "tamb": {
         "imgUrl": "../img/rthm/tamb.png",
         "bgndColor": "initial",
+        "imgElement": undefined,
         "sphereProps": {
             "yaw": 58.763522511380714,
             "pitch": 1.4371789670976558,
@@ -237,6 +242,7 @@ let rthmAssets = {
     "wolf": {
         "imgUrl": "../img/rthm/wolf.png",
         "bgndColor": "initial",
+        "imgElement": undefined,
         "sphereProps": [
             {
                 "yaw": 176.25379595510833,
@@ -292,28 +298,52 @@ let leadAssets = {
         "revealIndex": intro_chorus - bar*2,
         "revealed": false,
         "imgElement": undefined,
-        "sphereProps": 
+        "sphereProps": [
             {
                 "yaw": 324.4689128644255,
                 "pitch": -1.785174858795165,
                 "roll": 0,
                 "fov": 60.00004285756796
-            }
-        // "sphereProps": [
-        //     {
-        //         "yaw": 324.4689128644255,
-        //         "pitch": -1.785174858795165,
-        //         "roll": 0,
-        //         "fov": 60.00004285756796
-        //     },
-        //     {
-        //         "yaw": 200.27138943378793,
-        //         "pitch": -2.246800602031616,
-        //         "roll": 4,
-        //         "fov": 90
-        //     }           
-        // ],
-        // "spherePropsTimeIndex": 0
+            },
+            {
+                "yaw": 200.06194992354864,
+                "pitch": -9.315384072608648,
+                "roll": 4,
+                "fov": 90
+            },
+            {
+                "yaw": 131.7427496654642,
+                "pitch": -6.505642310818288,
+                "roll": 4,
+                "fov": 100
+            },
+            {
+                "yaw": 200.3334552227225,
+                "pitch": -7.167033013219744,
+                "roll": 4,
+                "fov": 60
+            },
+            {
+                "yaw": 200.3334552227225,
+                "pitch": -7.167033013219744,
+                "roll": 4,
+                "fov": 90
+            },
+            {
+                "yaw": 131.7427496654642,
+                "pitch": -6.505642310818288,
+                "roll": 4,
+                "fov": 100
+            }                                
+        ],
+        "spherePropsBeatIndexes": [
+            0, 
+            verse_1 - bar, 
+            verse_1 + line, 
+            trombone, 
+            chorus_3, 
+            chorus_3 + bar*3
+        ]
     },
     "bgnd": {
         "imgUrl": "../img/lead/bgnd.png",
