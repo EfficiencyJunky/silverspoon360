@@ -68,6 +68,15 @@ let rollingCurrently = false;
 let starfoxUnlocked = false;
 
 
+const flyToTimeMS = 300;
+const flyToIncrements = 75;
+const flyToSleepTime = Math.round(flyToTimeMS/flyToIncrements);
+
+let flyingCurrently = false;
+
+
+
+
 // a function that allows an async function to sleep for a number of ms
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));

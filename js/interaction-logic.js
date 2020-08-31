@@ -39,7 +39,9 @@ function rhythmButtonsClickHandler(event){
     
     console.log(img.alt);
 
-    yt_setSphericalProps(sphereProps);
+    flyToNewView(sphereProps);
+
+    // yt_setSphericalProps(sphereProps);
 
 
 }
@@ -97,10 +99,105 @@ function leadButtonsClickHandler(event){
         return;
     }
 
+    flyToNewView(sphereProps);
+    // yt_setSphericalProps(sphereProps);
+}
+
+
+async function flyToNewView(sphereProps){
+
+
+    // if we're already rolling, deny the new roll
+    // eventually we can do some smarter math and solve this but I'm lazy today
+    if(flyingCurrently){
+        return;
+    }
+    else{
+        flyingCurrently = true;
+    }
+
+    // target sphereProps
+    const panTarget = sphereProps.yaw;
+    const tiltTarget = sphereProps.pitch;
+    const zoomTarget = sphereProps.fov;
+    const rotateTarget = sphereProps.roll;
+    
+    // current sphere props
+    const currentSphereProps = yt_getSphericalProps();
+    let panCurrent = currentSphereProps.yaw;
+    let tiltCurrent = currentSphereProps.pitch;
+    let zoomCurrent = currentSphereProps.fov;
+    let rotateCurrent = currentSphereProps.roll;
+
+
+    // calculate the pan increment (make sure we go the shortest route)
+    let panDiff = panTarget - panCurrent;
+    if(panDiff >= 180){
+        panDiff = (panTarget - 360) - panCurrent;
+    }
+    else if(panDiff <= -180){
+        panDiff = (panTarget + 360) - panCurrent;
+    }
+    const panIncrement = panDiff/flyToIncrements;
+    
+    
+    // calculate the tilt increment
+    let tiltDiff = tiltTarget - tiltCurrent;
+    const tiltIncrement = tiltDiff/flyToIncrements;
+    
+    // calculate the zoom increment
+    let zoomDiff = zoomTarget - zoomCurrent;
+    const zoomIncrement = zoomDiff/flyToIncrements;
+    
+    // calculate the rotate increment
+    let rotateDiff = rotateTarget - rotateCurrent;
+    const rotateIncrement = rotateDiff/flyToIncrements;
+
+
+    // create a temp sphereProps object (otherwise we might overwrite the one stored in our Asset)
+    // and set the first values for our first update
+    let spherePropsTemp = {};
+    panCurrent = panCurrent + panIncrement;
+    tiltCurrent = tiltCurrent + tiltIncrement;
+    zoomCurrent = zoomCurrent + zoomIncrement;
+    rotateCurrent = rotateCurrent + rotateIncrement;
+
+    // move the camera
+    for(i=0; i < flyToIncrements; i++){
+
+        if(panCurrent >= 360){
+            panCurrent = panCurrent - 360;
+        }
+        else if(panCurrent <= 0){
+            panCurrent = panCurrent + 360;
+        }
+
+        spherePropsTemp["yaw"] = panCurrent;
+        spherePropsTemp["pitch"] = tiltCurrent;
+        spherePropsTemp["fov"] = zoomCurrent;
+        spherePropsTemp["roll"] = rotateCurrent;
+
+        yt_setSphericalProps(spherePropsTemp);
+
+        await sleep(flyToSleepTime);
+
+        panCurrent = panCurrent + panIncrement;
+        tiltCurrent = tiltCurrent + tiltIncrement;
+        zoomCurrent = zoomCurrent + zoomIncrement;
+        rotateCurrent = rotateCurrent + rotateIncrement;
+
+    }
+
     yt_setSphericalProps(sphereProps);
 
+    flyingCurrently = false;
 
 }
+
+
+
+
+
 
 
 
@@ -158,26 +255,6 @@ async function doABarrelRoll(event){
 
 
 
-// because seeking around in the video throws all sorts of wrenches into things 
-// due to the interval timer that updates the UI
-// we need to tell the icon highlighting function to stop for a short period
-// this function is called by the video-player.js
-async function blayblahhhhh(sleepTime){
-
-    if(!sleepTime){
-        sleepTime = 300;
-    }
-    
-    // stop the icon highlight from functioning
-    dontUpdateHighlightIcon = true;
-    
-    // sleep for a short while
-    await sleep(sleepTime);
-    
-    // allow the highlight to function again
-    dontUpdateHighlightIcon = false;
-    
-}
 
 
 
