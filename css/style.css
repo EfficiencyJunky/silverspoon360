@@ -1,4 +1,4 @@
-html, body {
+html, body, #bgnd-overlay-with-cutouts {
     height: 100%;
 }
 
@@ -78,16 +78,28 @@ body {
     padding-bottom: 30px;
 }
 
+/* this is a div on top of our body that mimics the body */
+/* since we change the background of the body for the animated gifs */
+/* this is the div that we display on top of that to create the mask */
 .bgnd-mask-img {
-    background-image: url("../img/bgndmask_offwhite.png");
+    background: 
+    /* top, transparent grey color faked with gradient */ 
+    linear-gradient(
+        rgba(170, 170, 170, 0.4), 
+        rgba(170, 170, 170, 0.4)
+    ),
+    /* bottom, image mask with cutouts showing through to body bgnd image */
+    url("../img/bgndmask_offwhite.png");
+
     height: 100%;
+    width: 100%;
     margin: 0px;
+
+    /* this is clutch otherwise the background image would not continue on scroll */
+    overflow-y: scroll;
+    /* top: 0; right: 0; bottom: 0; left: 0; */
 }
 
-.bgnd-mask-color {
-    background-color: rgba(170, 170, 170, 0.4);
-    height: 100%;
-}
 
 
 /* ************************** YOUTUBE PLAYER CSS ************************** */

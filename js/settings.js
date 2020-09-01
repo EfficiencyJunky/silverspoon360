@@ -48,6 +48,10 @@ let youTubePlayerOptions = {
 
 
 
+let pageFirstLoad = true;
+
+
+
 
 const iconDivFlashInterval = 150;
 const numTimesToFlashDiv = 4;

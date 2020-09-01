@@ -498,7 +498,7 @@ let leadAssets = {
     },
     "confetti": {
         "imgUrl": "../img/lead/confetti.png",
-        "revealIndex": chorus_2,
+        "revealIndex": chorus_2 + bar + beat,
         "revealed": false,
         "imgElement": undefined,
         "sphereProps": {
@@ -510,7 +510,7 @@ let leadAssets = {
     },
     "horn": {
         "imgUrl": "../img/lead/horn.png",
-        "revealIndex": trombone - bar*2,
+        "revealIndex": trombone - bar*2 + beat,
         "revealed": false,
         "imgElement": undefined,
         "sphereProps": {
@@ -521,57 +521,6 @@ let leadAssets = {
         }     
     }            
 }
-
-
-const leadSync = [
-    // yellow and black
-    // 0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro leadin 1.1
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3,     0,1,2,3,0,1,2,3,0,      // intro leadin 1.1
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro leadin 1.2
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro chorus 1.1
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro chorus 1.2
-    // green money
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // verse 1.1
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // verse 1.2
-    // green money + red money
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // pre-chorus 1.1
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // pre-chorus 1.1
-    // falling money
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 1.1
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 1.2
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 1.3
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 1.4 // silver spoon
-    // green money
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // verse 2.1
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // verse 2.2
-    // green money + red money
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // pre-chorus 2.1
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // pre-chorus 2.2
-    // falling money
-    0,1,2,3,0,1,2,3,0,1,2,3,0 /*confetti*/,1,2,3, // chorus 2.1
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 2.2
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 2.3
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 2.4
-    // yellow lights
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // bridge 1.1
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // bridge 1.2
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // solo 1.1
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // solo 1.2
-    // yellow and black
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 3.1
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 3.2
-    // falling money and crazy colors
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 3.3
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 3.4
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3  // outro chorus end with something fun
-]
-
-
-
-
-
-
-
 
 
 
@@ -603,15 +552,15 @@ const highlightSync = [
     0,1,2,3,0,1,2,3,0,1,2,3,"keys",1,2,3, // verse 2.2
     // green money + red money
     0,1,2,3,0,1,2,3,0,1,2,3,"bgnd",1,2,3, // pre-chorus 2.1
-    0,1,2,3,0,1,2,3,0,1,2,"tamb",0,1,2,3, // pre-chorus 2.2
+    0,1,2,3,0,1,2,3,0,1,"tamb",3,0,1,2,3, // pre-chorus 2.2
     // falling money
-    0,1,2,3,"confetti",1,2,3,0,1,2,3,0 /*confetti*/,1,2,3, // chorus 2.1
+    0,1,2,3,0,"confetti",2,3,0,1,2,3,0 /*confetti*/,1,2,3, // chorus 2.1
     0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 2.2
     0,1,2,3,0,1,"uke",3,0,1,2,3,0,1,2,3, // chorus 2.3
     0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 2.4
     // yellow lights
     0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // bridge 1.1
-    0,1,2,3,0,1,2,3,0,1,"horn",3,0,1,2,3, // bridge 1.2
+    0,1,2,3,0,1,2,3,0,"horn",2,3,0,1,2,3, // bridge 1.2
     0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // solo 1.1
     0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // solo 1.2
     // yellow and black

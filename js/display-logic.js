@@ -7,6 +7,7 @@ let prevHighlightIconName;
 let sphereProps;
 let dontUpdateHighlightIcon = false;
 
+
 const initialCameraPosition = specialAssets.bonus.sphereProps[0];
 
 
@@ -77,8 +78,10 @@ function updateUIFromVideoTime(time){
     const beatIndex = yt_getBeatIndexFromVideoTime(time) - 1;
 
     if(beatIndex <= 0){
-
-        yt_setSphericalProps(initialCameraPosition);
+        if(pageFirstLoad){
+            yt_setSphericalProps(initialCameraPosition);
+            pageFirstLoad = false;
+        }
         updateIconHighlight(0);
         updateBackground(0);
         updateLeadRowIcons(0);
