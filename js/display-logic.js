@@ -104,6 +104,7 @@ function updateUIFromVideoTime(time){
     if(beatIndex <= 0){
         if(pageFirstLoad){
             yt_setSphericalProps(initialCameraPosition);
+            il_setZoomAndRollProps(initialCameraPosition);
             pageFirstLoad = false;
         }
         updateIconHighlight(0);

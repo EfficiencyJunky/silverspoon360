@@ -9,6 +9,10 @@ leadButtons.onclick = leadButtonsClickHandler;
 starfoxDiv.onclick = doABarrelRoll;
 bonusDiv.onclick = rhythmButtonsClickHandler;
 
+let latestFov;
+let latestRoll;
+
+
 yt_setZoomOutButtonCallback(zoomOut);
 
 function rhythmButtonsClickHandler(event){
@@ -44,6 +48,8 @@ function rhythmButtonsClickHandler(event){
     
     console.log(img.alt);
 
+    latestFov = sphereProps.fov;
+    latestRoll = sphereProps.roll;
     flyToNewView(sphereProps);
     // yt_setSphericalProps(sphereProps);
 
@@ -78,6 +84,8 @@ function leadButtonsClickHandler(event){
         return;
     }
 
+    latestFov = sphereProps.fov;
+    latestRoll = sphereProps.roll;
     flyToNewView(sphereProps);
     // yt_setSphericalProps(sphereProps);
 }
@@ -212,23 +220,38 @@ async function flyToNewView(sphereProps){
 function zoomOut(event, sphereProps){
 
     const currentZoom = sphereProps.fov;
+    let newZoom;
+    let newRoll;
 
     // if the zoom is all the way out already don't do anything
     if(currentZoom >= 119){
-        return;
+        // return;
+        newZoom = latestFov;
+        newRoll = latestRoll;
+    }
+    else{
+        newZoom = 120;
+        newRoll = 0;
     }
     
     // make a deep copy of sphere props with the FOV set to 120 and roll set to 0
     const newSphereProps = {
         "yaw": sphereProps.yaw,
         "pitch": sphereProps.pitch,
-        "fov": 120,
-        "roll": 0
+        "fov": newZoom,
+        "roll": newRoll
     }
     
     flyToNewView(newSphereProps);
 
 }
+
+
+function il_setZoomAndRollProps(initialCameraPosition){
+    latestFov = initialCameraPosition.fov;
+    latestRoll = initialCameraPosition.roll;
+}
+
 
 
 

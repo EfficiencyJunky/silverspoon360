@@ -116,7 +116,7 @@
 
 #zoom-out{
     width: 4rem;
-    text-decoration: line-through;
+    /* text-decoration: line-through; */
     margin-left: 6px;
 }
 
