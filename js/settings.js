@@ -12,7 +12,27 @@ function getWindowScaleFactor(newWWidth, newWHeight){
     return (newWWidth >= 500) ? scaleFact : 0.65;
 }
 
+// a function that allows an async function to sleep for a number of ms
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
+
+// icon blue
+const videoPlayerControlsColor = "#00A2FF";
+const videoPlayerControlsHoverColor = "#0078bd";
+// const videoPlayerControlsColor = "#ffd700";
+// const videoPlayerControlsHoverColor = "#daa520";
+
+
+
+// if we don't want a hover color 
+const iconColor = videoPlayerControlsColor;
+const iconHoverColor = videoPlayerControlsHoverColor;
+const iconHoverClass = 'icon-hover-color';
+
+
+// icon styles for different breakpoints
 const iconStylesForSmallScreens = `margin:12px 12px;
                                    height: 52px;
                                    width: 52px;
@@ -81,9 +101,6 @@ const secondsPerBeat = 60/bpm;
 
 
 
-
-
-
 const iconDivFlashInterval = 150;
 const numTimesToFlashDiv = 4;
 let iconDivFlashTimerID;
@@ -92,12 +109,6 @@ let timesIconDivFlashed = 0;
 let flashing;
 
 
-
-const barrelRollTimeMS = 300;
-const barrelRollDegreesPerUpdate = 4;
-let clockwise = true;
-let rollingCurrently = false;
-let starfoxUnlocked = false;
 
 
 const flyToTimeMS = 300;
@@ -108,7 +119,11 @@ let flyingCurrently = false;
 
 
 
-// a function that allows an async function to sleep for a number of ms
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}    
+const barrelRollTimeMS = 300;
+const barrelRollDegreesPerUpdate = 4;
+let clockwise = true;
+let rollingCurrently = false;
+let starfoxUnlocked = false;
+
+
+

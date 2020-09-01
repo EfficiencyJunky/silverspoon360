@@ -201,13 +201,19 @@ const bgndSync = [
 // **********************************************************************************
 const specialAssets = {
     "locked": {
-        "imgUrl": "../img/gifs/locked.gif"
+        "imgUrl": "../img/gifs/locked.gif",
+        "bgndColor": "initial",
+        "hasHover": false
     },
     "starfox": {
-        "imgUrl": "../img/gifs/starfox.gif"
+        "imgUrl": "../img/gifs/starfox.gif",
+        "bgndColor": "initial",
+        "hasHover": false
     },
     "bonus": {
         "imgUrl": "../img/gifs/bonus.gif",
+        "bgndColor": "initial",
+        "hasHover": false,
         "imgElement": undefined,        
         "sphereProps": [
             {
@@ -237,7 +243,8 @@ const specialAssets = {
 let rthmAssets = {
     "drums": {
         "imgUrl": "../img/rthm/drums.png",
-        "bgndColor": "initial",
+        "bgndColor": iconColor,
+        "hasHover": true,
         "imgElement": undefined,
         "sphereProps": [
             {
@@ -267,7 +274,8 @@ let rthmAssets = {
     },    
     "bass": {
         "imgUrl": "../img/rthm/bass.png",
-        "bgndColor": "initial",
+        "bgndColor": iconColor,
+        "hasHover": true,
         "imgElement": undefined,
         "sphereProps": [
             {
@@ -311,7 +319,8 @@ let rthmAssets = {
     },        
     "keys": {
         "imgUrl": "../img/rthm/keys.png",
-        "bgndColor": "initial",
+        "bgndColor": iconColor,
+        "hasHover": true,
         "imgElement": undefined,
         "sphereProps": {
             "yaw": 231.19107255532697,
@@ -322,7 +331,8 @@ let rthmAssets = {
     },       
     "uke": {
         "imgUrl": "../img/rthm/uke.png",
-        "bgndColor": "initial",
+        "bgndColor": iconColor,
+        "hasHover": true,
         "imgElement": undefined,
         "sphereProps": [
             {
@@ -388,7 +398,8 @@ let rthmAssets = {
     },       
     "tamb": {
         "imgUrl": "../img/rthm/tamb.png",
-        "bgndColor": "initial",
+        "bgndColor": iconColor,
+        "hasHover": true,
         "imgElement": undefined,
         "sphereProps": {
             "yaw": 58.763522511380714,
@@ -399,7 +410,8 @@ let rthmAssets = {
     },        
     "wolf": {
         "imgUrl": "../img/rthm/wolf.png",
-        "bgndColor": "initial",
+        "bgndColor": iconColor,
+        "hasHover": false,
         "imgElement": undefined,
         "sphereProps": [
             {
@@ -453,6 +465,8 @@ let rthmAssets = {
 let leadAssets = {
     "love": {
         "imgUrl": "../img/lead/love.png",
+        "bgndColor": "initial",
+        "hasHover": false,
         "revealIndex": intro_chorus - bar*2,
         "revealed": false,
         "imgElement": undefined,
@@ -512,6 +526,8 @@ let leadAssets = {
     },
     "bgnd": {
         "imgUrl": "../img/lead/bgnd.png",
+        "bgndColor": iconColor,
+        "hasHover": true,
         "revealIndex": preChorus_1 + bar*3,
         "revealed": false,
         "imgElement": undefined,
@@ -524,6 +540,8 @@ let leadAssets = {
     },
     "confetti": {
         "imgUrl": "../img/lead/confetti.png",
+        "bgndColor": iconColor,
+        "hasHover": true,
         "revealIndex": chorus_2 + bar + beat,
         "revealed": false,
         "imgElement": undefined,
@@ -536,6 +554,8 @@ let leadAssets = {
     },
     "horn": {
         "imgUrl": "../img/lead/horn.png",
+        "bgndColor": "initial",
+        "hasHover": true,
         "revealIndex": trombone - bar*2 + beat,
         "revealed": false,
         "imgElement": undefined,

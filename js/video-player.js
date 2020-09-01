@@ -23,6 +23,7 @@ let stopButton = document.getElementById('stop');
 let playbackRateButton = document.getElementById('playback-rate');
 // let fullScreenButton = document.getElementById('fullscreen');
 
+
 // for updating the playPauseButton's class to change its CSS and content
 const _playButtonClass = "play";
 const _pauseButtonClass = "pause";
@@ -446,7 +447,7 @@ function yt_pauseYouTubeVideo(){
 }
 
 
-
+// PLAYER TRANSPORT CONTROLS
 function yt_addPlayPauseButton(button){
 
     const playerState = _player.getPlayerState();
@@ -475,3 +476,47 @@ function yt_addPlayPauseButton(button){
 
 
 
+function yt_setTransportControlsColors(baseColor, hoverColor){
+
+    hoverColor = (hoverColor) ? hoverColor : baseColor;
+
+    var css =
+    `
+    .play-pause-button, 
+    #stop, 
+    #playback-rate,
+    #fullscreen {
+        background-color: ${baseColor};
+    
+    }
+    
+    .slider::-webkit-slider-thumb {
+        background-color: ${baseColor};
+    
+    }
+    .slider::-moz-range-thumb {
+        background-color: ${baseColor};
+    
+    }
+    
+    .play-pause-button:hover, 
+    #stop:hover, 
+    .slider::-webkit-slider-thumb:hover,
+    #playback-rate:hover,
+    #fullscreen:hover  {
+        background: ${hoverColor};
+    }
+    `;
+
+    let style = document.createElement('style');
+    
+    if (style.styleSheet) {
+        style.styleSheet.cssText = css;
+    } else {
+        style.appendChild(document.createTextNode(css));
+    }
+    
+    document.getElementsByTagName('head')[0].appendChild(style);    
+
+
+}

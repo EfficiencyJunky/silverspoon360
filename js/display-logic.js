@@ -32,6 +32,8 @@ let starfoxImg = document.getElementById('starfox').getElementsByClassName('icon
 let bonusImg = document.getElementById('bonus').getElementsByClassName('icon-control')[0];
 
 
+
+
 // initialize rthAssets and load rthmIcon "<img>" element into rthmAssets.{asset}.imgElement
 for(let i=0; i < rthmIcons.length; i++){    
 
@@ -48,9 +50,11 @@ for(let i=0; i < rthmIcons.length; i++){
     // WE CURRENTLY AREN'T USING THIS FOR THE "rthmAssets" BUT MIGHT LATER
     rthmAsset.imgElement.src = rthmAsset.imgUrl;
 
-    // if(windowScaleFactor <= 0.65){
-    //     rthmAsset.imgElement.setAttribute("style", iconStylesForSmallScreens);
-    // }
+    // add the hover color class so the icons will have a hover color
+    if(rthmAsset.hasHover){    
+        rthmAsset.imgElement.classList.add('icon-hover-color');
+    }
+
 }
 
 // initialize leadAsset and load leadIcons "<img>" element into leadAsset.{asset}.imgElement
@@ -66,8 +70,8 @@ for(let i=0; i < leadIcons.length; i++){
     leadAsset.imgElement = leadIcons[i];
 
     // set the "src" property to the "locked" gif in the "specialAssets" object
+    // leadAsset.imgElement.src = leadAssets[iconName].imgUrl;
     leadAsset.imgElement.src = specialAssets.locked.imgUrl;
-
 
 }
 
@@ -76,14 +80,6 @@ starfoxImg.src = specialAssets.starfox.imgUrl;
 bonusImg.src = specialAssets.bonus.imgUrl;
 
 
-if(windowScaleFactor <= 0.65){
-    let allIconImgs = document.getElementsByClassName('icon-control');
-    
-    for(let i=0; i < allIconImgs.length; i++){   
-        allIconImgs[i].setAttribute("style", iconStylesForSmallScreens);
-    }
-}
-
 
 // SET THE YOUTUBE VIDEO SYNC CALLBACK
 yt_setUpdateUIFromVideoTimeCallback(updateUIFromVideoTime);
@@ -91,6 +87,11 @@ yt_setUpdateUIFromVideoTimeCallback(updateUIFromVideoTime);
 // this will tell the display to update but not update the video player
 adjustUIDimensions(undefined, updateVideoPlayer = false);
 
+// this will update the video player transport controls colors
+yt_setTransportControlsColors(videoPlayerControlsColor, videoPlayerControlsHoverColor);
+
+// this will create the CSS for the hover color for our icons
+createIconHoverColorCSS(iconHoverColor, iconHoverClass);
 
 // *****************************************************
 // FUNCTIONS
@@ -162,8 +163,69 @@ function adjustUIDimensions(event, updateVideoPlayer = true){
     let allIconImgs = document.getElementsByClassName('icon-control');
         
     for(let i=0; i < allIconImgs.length; i++){   
+
+        // get the value of the <img> "alt" property and use that as the iconName
+        const iconName = allIconImgs[i].alt;
+
+        // initialize the background color variable
+        let bgndColor;
+        let hasHover;
+
+        // we need to check which kind of asset it is and set it's background color accordingly
+        if(Object.keys(leadAssets).includes(iconName)){
+            // if the asset is revealed, use it's color
+            // else use the color for the "locked" specialAsset
+            if(leadAssets[iconName].revealed){
+                bgndColor = leadAssets[iconName].bgndColor;
+                hasHover = leadAssets[iconName].hasHover;
+            }
+            else{
+                bgndColor = specialAssets.locked.bgndColor;
+                hasHover = specialAssets.locked.hasHover;
+            }            
+        }
+        else if(Object.keys(rthmAssets).includes(iconName)){
+            bgndColor = rthmAssets[iconName].bgndColor;
+            hasHover = rthmAssets[iconName].hasHover;
+        }
+        else if(Object.keys(specialAssets).includes(iconName)){
+            bgndColor = specialAssets[iconName].bgndColor;
+            hasHover = specialAssets[iconName].hasHover;
+        }
+
+        // set the styles accordingly
         allIconImgs[i].setAttribute("style", iconStylesForNewWindowSize);
+        allIconImgs[i].style.backgroundColor = bgndColor;
+
+        // add the hover color class so the icons will have a hover color
+        if(hasHover){    
+            allIconImgs[i].classList.add(iconHoverClass);
+        }     
     }
+
+}
+
+
+
+function createIconHoverColorCSS(hoverColor, hoverClass){
+
+    var css =
+    `
+    .${hoverClass}:hover  {
+        background-color: ${hoverColor} !important;
+    }
+    `;
+
+    let style = document.createElement('style');
+    
+    if (style.styleSheet) {
+        style.styleSheet.cssText = css;
+    } else {
+        style.appendChild(document.createTextNode(css));
+    }
+    
+    document.getElementsByTagName('head')[0].appendChild(style);    
+
 
 }
 
@@ -204,6 +266,11 @@ function updateLeadRowIcons(beatIndex){
     assetsToUpdate.forEach(key => {
         
         leadAssets[key].imgElement.src = leadAssets[key].imgUrl;
+        leadAssets[key].imgElement.style.backgroundColor = leadAssets[key].bgndColor;
+        // add the hover color class so the icons will have a hover color
+        if(leadAssets[key].hasHover){   
+            leadAssets[key].imgElement.classList.add(iconHoverClass);
+        }     
         leadAssets[key].revealed = true;
     });
 
