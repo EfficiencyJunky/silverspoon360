@@ -1,31 +1,43 @@
-const bpm = 145;
-const secondsPerBeat = 60/bpm;
+// SCALE INITIAL VIDEO SIZE FROM WINDOW SIZE
+const wWidth = window.innerWidth;
+const wHeight = window.innerHeight;
 
-const beat = 1;
-const bar = beat*4;
-const line = bar*4;
-const line_half = line/2;
-const stanza = line*4;
-const stanza_half = stanza/2;
+const windowScaleFactor = getWindowScaleFactor(wWidth, wHeight);
 
-// beginnings of each section in beat indexes
-const intro_leadin = 9;
-const intro_chorus = intro_leadin + stanza_half;
-const verse_1 = intro_chorus + stanza_half;
-const preChorus_1 = verse_1 + stanza_half;
-const chorus_1 = preChorus_1 + stanza_half;
+function getWindowScaleFactor(newWWidth, newWHeight){
+    const scaleFact =   (newWHeight >= 950) && (newWWidth >= 1200) ? 2 :
+                        (newWHeight >= 800) && (newWWidth >= 900) ? 1.6 :
+                        (newWHeight >= 650) && (newWWidth >= 750) ? 1.2 :
+                        (newWHeight >= 650) ? 1.0 : 0.85;
+    return (newWWidth >= 500) ? scaleFact : 0.65;
+}
 
-const verse_2 = chorus_1 + stanza;
-const preChorus_2 = verse_2 + stanza_half;
-const chorus_2 = preChorus_2 + stanza_half;
 
-const bridge = chorus_2 + stanza;
-const trombone = bridge + stanza_half;
+const iconStylesForSmallScreens = `margin:12px 12px;
+                                   height: 52px;
+                                   width: 52px;
+                                  `
+                                  
+const iconStylesForRegularScreens = `margin:15px 15px;
+                                     height: 60px;
+                                     width: 60px;
+                                    `
 
-const chorus_3 = trombone + stanza_half;
+const iconStylesForLargeScreens = `margin:18px 18px;
+                                   height: 70px;
+                                   width: 70px;
+                                  `                                    
 
-const outro = chorus_3 + stanza;
+console.log("innerHeight:", wHeight);
+console.log("innerWidth:", wWidth);
+console.log("window scale factor:", windowScaleFactor);
 
+
+// *******************************************
+// YOUTUBE PLAYER PARAMETERS
+// *******************************************
+let videoWidth = 450 * windowScaleFactor; // make sure the "transport-controls" element is set to the same width
+let videoHeight =  Math.round(videoWidth * 0.5625); // 450 * 0.5625 == 253 just so you know
 
 // Silverspoon 2D
 // const youTubeID = "dw2s4GqbXZM";
@@ -48,7 +60,26 @@ let youTubePlayerOptions = {
 
 
 
-let pageFirstLoad = true;
+// Learn about the playerVars that can be used for this "youTubePlayerOptions" object here: https://developers.google.com/youtube/player_parameters.html?playerVersion=HTML5
+// let youTubePlayerOptions = { 
+//     // 'autoplay': 1, 
+//     'controls': 0, 
+//     'disablekb': 1,
+//     'modestbranding': 1,
+//     'playsinline': 1, // prevents full screen when pressing play on mobile
+//     'fs': 0, // prevents fullscreen button (doesn't matter if 'controls' is set to 0)
+//     'origin': "https://silverspoon360.com",
+//     'widget_referrer': "https://silverspoon360.com",
+//     'rel': 0
+// };
+
+
+const bpm = 145;
+const secondsPerBeat = 60/bpm;
+
+
+
+
 
 
 

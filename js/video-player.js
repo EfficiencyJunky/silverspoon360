@@ -1,40 +1,5 @@
 const _consoleLogsOn = false;
 
-
-// SCALE INITIAL VIDEO SIZE FROM WINDOW SIZE
-let windowScaleFactor = (function (){
-    const scaleFact =   (window.innerHeight >= 650) && (window.innerWidth >= 750) ? 1.2 :
-                        (window.innerHeight >= 650) ? 1.0 : 0.85;
-    return (window.innerWidth >= 500) ? scaleFact : 0.65;
-})();
-
-console.log("window scale factor:", windowScaleFactor);
-
-// *******************************************
-// YOUTUBE PLAYER PARAMETERS
-// *******************************************
-let videoWidth = 450 * windowScaleFactor; // make sure the "transport-controls" element is set to the same width
-let videoHeight =  Math.round(videoWidth * 0.5625); // 450 * 0.5625 == 253 just so you know
-
-
-// Learn about the playerVars that can be used for this "youTubePlayerOptions" object here: https://developers.google.com/youtube/player_parameters.html?playerVersion=HTML5
-// let youTubePlayerOptions = { 
-//     // 'autoplay': 1, 
-//     'controls': 0, 
-//     'disablekb': 1,
-//     'modestbranding': 1,
-//     'playsinline': 1, // prevents full screen when pressing play on mobile
-//     'fs': 0, // prevents fullscreen button (doesn't matter if 'controls' is set to 0)
-//     'origin': "https://silverspoon360.com",
-//     'widget_referrer': "https://silverspoon360.com",
-//     'rel': 0
-// };
-
-
-
-
-
-
 // ################## "PRIVATE VARIABLES" ##################
 // ################## "PRIVATE VARIABLES" ##################
 // ################## "PRIVATE VARIABLES" ##################
@@ -45,7 +10,6 @@ const _playbackRatesArray = [0.25, 0.5, 0.75, 1.0, 1.5, 2.0];
 const _defaultPlaybackRateIndex = _playbackRatesArray.indexOf(1.0);
 let _playbackRateIndex = _defaultPlaybackRateIndex;
 let _updateUIFromVideoTimeCallback;
-
 
 
 // ################## MOCK CONSTRUCTOR ##################
@@ -430,6 +394,11 @@ function yt_setUpdateUIFromVideoTimeCallback(callback){
     _updateUIFromVideoTimeCallback = callback;
 }
 
+function yt_setVideoPlayerSize(videoWidth, videoHeight){
+    _player.setSize(videoWidth, videoHeight);    
+}
+
+
 function yt_setSphericalProps(newProps){
 
     _player.setSphericalProperties(newProps);
@@ -441,6 +410,20 @@ function yt_getSphericalProps(){
 }
 
 
+function yt_getBeatIndexFromVideoTime(time){
+
+    if(_player === undefined){
+        return 0;
+    }
+    else if(time === undefined){
+        time = _player.getCurrentTime();
+    }
+
+    const beatIndex = time / 60 * bpm;
+
+    return Math.round(beatIndex);
+
+}
 
 
 
@@ -490,18 +473,5 @@ function yt_addPlayPauseButton(button){
 }
 
 
-function yt_getBeatIndexFromVideoTime(time){
 
-    if(_player === undefined){
-        return 0;
-    }
-    else if(time === undefined){
-        time = _player.getCurrentTime();
-    }
-
-    const beatIndex = time / 60 * bpm;
-
-    return Math.round(beatIndex);
-
-}
 

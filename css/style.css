@@ -1,4 +1,4 @@
-html, body, #bgnd-overlay-with-cutouts {
+html, body{
     height: 100%;
 }
 
@@ -56,7 +56,11 @@ body {
     margin:15px 15px;
     height: 60px;  
     width: 60px;
-    
+
+    /* on smaller screens the javascript will set these settings for the icons */
+    /* margin:12px 12px;
+    height: 52px;  
+    width: 52px;     */
 }
 
 .icon-div{
@@ -106,6 +110,7 @@ body {
 #player-parent {
     padding: 8px 8px 4px 8px;
 }
+
 
 
 #player-parent,

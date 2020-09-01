@@ -24,7 +24,7 @@
 <!-- CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS -->
 
 </head>
-<body >
+<body>
 <div id="bgnd-overlay-with-cutouts" class="bgnd-mask-img">
 
     <div class="container vertical-align-middle">
@@ -39,9 +39,11 @@
             <div class="col-12 d-flex justify-content-center">
                 <div id="player-parent">
                     <div class="d-flex mb-2 justify-content-center">
-                        <div id="player">
-                        video iFrame will replace this div
-                        </div>
+                        <!-- <div class="video-responsive"> -->
+                            <div id="player">
+                            video iFrame will replace this div
+                            </div>
+                        <!-- </div> -->
                     </div>    
                     <div id="transport-controls" class="transport-controls d-flex align-items-center">
                         <button id="play-pause" class="play play-pause-button"></button>
@@ -74,7 +76,7 @@
 
         <div class="row mb-2">
             <div class="col-12 d-flex justify-content-center">
-                <div id="lead-icons-row" class="d-flex flex-column flex-sm-row justify-content-center">
+                <div id="lead-icons-row" class="d-flex flex-sm-row justify-content-center">
                     <div class="d-flex">
                         <div class="icon-div"><img class="icon-control" src="" alt="love"></div>
                         <div class="icon-div"><img class="icon-control" src="" alt="bgnd"></div>
@@ -97,24 +99,12 @@
 
 </div>
 
-<script>
-    // function wh()
-    // {
-    //     let height = window.innerHeight;
-    //     let width = window.innerWidth;
-
-    //     document.getElementById("bgnd-overlay-with-cutouts").style.height = height;
-    //     document.getElementById("bgnd-overlay-with-cutouts").style.width = width;
-    // }
-</script>
-
-
 
 <!-- JAVASCRIPT -->
 <script type="text/javascript" src="js/settings.js"></script>
 <script type="text/javascript" src="data/assets.js"></script>
 <script type="text/javascript" src="js/video-player.js"></script>
-<script type="text/javascript" src="js/interaction-logic.js"></script>
 <script type="text/javascript" src="js/display-logic.js"></script>
+<script type="text/javascript" src="js/interaction-logic.js"></script>
 </body>
 </html>

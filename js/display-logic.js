@@ -7,7 +7,8 @@ let prevHighlightIconName;
 let sphereProps;
 let dontUpdateHighlightIcon = false;
 
-
+// first page load variables
+let pageFirstLoad = true;
 const initialCameraPosition = specialAssets.bonus.sphereProps[0];
 
 
@@ -15,10 +16,13 @@ const initialCameraPosition = specialAssets.bonus.sphereProps[0];
 // *****************************************************
 // INITIALIZATION
 // *****************************************************
+
+window.onresize = adjustUIDimensions;
+
 let body = document.body;
 let rthmIcons = document.getElementById('rhythm-icons-row').getElementsByClassName('icon-control');
-let leadIcons = document.getElementById('lead-icons-row').getElementsByClassName('icon-control');
-
+let leadIconsRowDiv = document.getElementById('lead-icons-row');
+let leadIcons = leadIconsRowDiv.getElementsByClassName('icon-control');
 // gets the entire div for all iconDivs so that we can flash the background color red to call attention to it
 let iconDivs = document.getElementsByClassName('icon-div');
 
@@ -43,6 +47,10 @@ for(let i=0; i < rthmIcons.length; i++){
     // set the "src" property to the actual imageUrl
     // WE CURRENTLY AREN'T USING THIS FOR THE "rthmAssets" BUT MIGHT LATER
     rthmAsset.imgElement.src = rthmAsset.imgUrl;
+
+    // if(windowScaleFactor <= 0.65){
+    //     rthmAsset.imgElement.setAttribute("style", iconStylesForSmallScreens);
+    // }
 }
 
 // initialize leadAsset and load leadIcons "<img>" element into leadAsset.{asset}.imgElement
@@ -59,15 +67,29 @@ for(let i=0; i < leadIcons.length; i++){
 
     // set the "src" property to the "locked" gif in the "specialAssets" object
     leadAsset.imgElement.src = specialAssets.locked.imgUrl;
+
+
 }
+
 
 starfoxImg.src = specialAssets.starfox.imgUrl;
 bonusImg.src = specialAssets.bonus.imgUrl;
 
 
+if(windowScaleFactor <= 0.65){
+    let allIconImgs = document.getElementsByClassName('icon-control');
+    
+    for(let i=0; i < allIconImgs.length; i++){   
+        allIconImgs[i].setAttribute("style", iconStylesForSmallScreens);
+    }
+}
+
+
 // SET THE YOUTUBE VIDEO SYNC CALLBACK
 yt_setUpdateUIFromVideoTimeCallback(updateUIFromVideoTime);
 
+// this will tell the display to update but not update the video player
+adjustUIDimensions(undefined, updateVideoPlayer = false);
 
 
 // *****************************************************
@@ -105,9 +127,44 @@ function updateUIFromVideoTime(time){
     // console.log("updating ui elements", time, "\nbeats", beatIndex);
 }
 
-function unlockStarfox(){
-    console.log("unlocking Starfox");
-    specialIconsRowDiv.setAttribute("style", "display: flex !important");
+
+function adjustUIDimensions(event, updateVideoPlayer = true){
+
+    const newWHeight = window.innerHeight;
+    const newWWidth = window.innerWidth;
+
+    // console.log("w:h", newWWidth, newWHeight);
+
+    const newWScaleFactor = getWindowScaleFactor(newWWidth, newWHeight);
+    
+    // scale video
+    videoWidth = 450 * newWScaleFactor; // make sure the "transport-controls" element is set to the same width
+    videoHeight =  Math.round(videoWidth * 0.5625); // 450 * 0.5625 == 253 just so you know
+
+
+    if(updateVideoPlayer){
+        yt_setVideoPlayerSize(videoWidth, videoHeight);
+    }
+
+    // scale icons
+    let iconStylesForNewWindowSize;
+    if(newWScaleFactor <= 0.65){
+        iconStylesForNewWindowSize = iconStylesForSmallScreens;
+    }
+    else if(0.65 < newWScaleFactor && newWScaleFactor <= 1.2){
+        iconStylesForNewWindowSize = iconStylesForRegularScreens;
+    }
+    else{
+        iconStylesForNewWindowSize = iconStylesForLargeScreens;
+    }
+
+
+    let allIconImgs = document.getElementsByClassName('icon-control');
+        
+    for(let i=0; i < allIconImgs.length; i++){   
+        allIconImgs[i].setAttribute("style", iconStylesForNewWindowSize);
+    }
+
 }
 
 
@@ -151,30 +208,6 @@ function updateLeadRowIcons(beatIndex){
     });
 
 
-}
-
-
-
-
-// because seeking around in the video throws all sorts of wrenches into things 
-// due to the interval timer that updates the UI
-// we need to tell the icon highlighting function to stop for a short period
-// this function is called by the video-player.js
-async function dl_suspendIconHighlightUpdateBriefly(sleepTime){
-
-    if(!sleepTime){
-        sleepTime = 300;
-    }
-    
-    // stop the icon highlight from functioning
-    dontUpdateHighlightIcon = true;
-    
-    // sleep for a short while
-    await sleep(sleepTime);
-    
-    // allow the highlight to function again
-    dontUpdateHighlightIcon = false;
-    
 }
 
 
@@ -268,6 +301,27 @@ function clearFlashingIconDivAndTimer(){
 
 
 
+// because seeking around in the video throws all sorts of wrenches into things 
+// due to the interval timer that updates the UI
+// we need to tell the icon highlighting function to stop for a short period
+// this function is called by the video-player.js
+async function dl_suspendIconHighlightUpdateBriefly(sleepTime){
+
+    if(!sleepTime){
+        sleepTime = 300;
+    }
+    
+    // stop the icon highlight from functioning
+    dontUpdateHighlightIcon = true;
+    
+    // sleep for a short while
+    await sleep(sleepTime);
+    
+    // allow the highlight to function again
+    dontUpdateHighlightIcon = false;
+    
+}
+
 
 
 // This function will update the background based on the beatIndex provided
@@ -302,3 +356,8 @@ function updateBackground(beatIndex){
 }
 
 
+function unlockStarfox(){
+    console.log("unlocking Starfox");
+    leadIconsRowDiv.classList.add("flex-column");
+    specialIconsRowDiv.setAttribute("style", "display: flex !important");
+}
