@@ -552,16 +552,23 @@ let leadAssets = {
                 "roll": 0,
                 "fov": 120
             },
-            {
-                "yaw": 149.61770862289245,
-                "pitch": -3.560884411788115,
-                "roll": 3,
-                "fov": 120
-            }     
+            // {
+            //     "yaw": 149.61770862289245,
+            //     "pitch": -3.560884411788115,
+            //     "roll": 3,
+            //     "fov": 120
+            // },
+            // {
+            //     "yaw": 316,
+            //     "pitch": 90,
+            //     "roll": 0,
+            //     "fov": 120
+            // }              
         ],
         "spherePropsBeatIndexes": [
             0,
-            chorus_2 + line - beat*2
+            // chorus_2 + line - beat*2,
+            // chorus_3 + line*3 - beat*2
         ]     
     },
     "horn": {

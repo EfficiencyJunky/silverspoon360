@@ -419,6 +419,10 @@ function yt_setVideoPlayerSize(videoWidth, videoHeight){
     _player.setSize(videoWidth, videoHeight);    
 }
 
+function yt_setPlaybackRateButtonVisibility(setHidden){
+    playbackRateButton.hidden = setHidden;
+};
+
 
 function yt_setSphericalProps(newProps){
 

@@ -117,6 +117,7 @@ function updateUIFromVideoTime(time){
         updateBackground(bgndSync.length-1);
         if(!starfoxUnlocked){
             unlockStarfox();
+            yt_setPlaybackRateButtonVisibility(setHidden = false);
             starfoxUnlocked = true;
         }
         // updateIconHighlight(highlightSync.length-1);
