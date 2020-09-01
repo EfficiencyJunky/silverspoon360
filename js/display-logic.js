@@ -31,8 +31,9 @@ let specialIconsRowDiv = document.getElementById('special-icons-row');
 let starfoxImg = document.getElementById('starfox').getElementsByClassName('icon-control')[0];
 let bonusImg = document.getElementById('bonus').getElementsByClassName('icon-control')[0];
 
-
-
+let ftueIconText = document.getElementsByClassName('ftue-icon-text')[0];
+ftueIconText.hidden = true;
+let ftue = true;
 
 // initialize rthAssets and load rthmIcon "<img>" element into rthmAssets.{asset}.imgElement
 for(let i=0; i < rthmIcons.length; i++){    
@@ -358,9 +359,17 @@ function flashIconDiv(){
     if(flashing){
         if(timesIconDivFlashed % 2 === 0){
             iconDivToFlash.style.backgroundColor = "red";
+
+            if(ftue){
+                ftueIconText.hidden = false;
+            }
         }
         else{
             iconDivToFlash.style.backgroundColor = "initial";
+            
+            if(ftue){
+                ftueIconText.hidden = true;
+            }            
         }
     }
 
@@ -370,6 +379,11 @@ function flashIconDiv(){
     }
     else if(timesIconDivFlashed > numTimesToFlashDiv * 6){
         clearFlashingIconDivAndTimer();
+        if(ftue){
+            ftueIconText.hidden = true;
+            ftue = false;
+        }             
+
     }
 
 

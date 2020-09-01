@@ -20,9 +20,12 @@ function rhythmButtonsClickHandler(event){
     let clickedElement = event.target;
     let img;
 
-    if(clickedElement.nodeName === "DIV"){
-        img = clickedElement.getElementsByTagName('img')[0];
+    if(clickedElement.nodeName === "DIV" && clickedElement.classList.contains('ftue-icon-text')){
+        img = rthmAssets.drums.imgElement;
     }
+    else if(clickedElement.nodeName === "DIV"){
+        img = clickedElement.getElementsByTagName('img')[0];
+    }    
     else{
         img = clickedElement;
     }

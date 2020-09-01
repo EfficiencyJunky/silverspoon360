@@ -545,12 +545,24 @@ let leadAssets = {
         "revealIndex": chorus_2 + bar + beat,
         "revealed": false,
         "imgElement": undefined,
-        "sphereProps": {
-            "yaw": 316.5102018011254,
-            "pitch": 90,
-            "roll": 0,
-            "fov": 119.99999999999999
-        }       
+        "sphereProps": [
+            {
+                "yaw": 316,
+                "pitch": 90,
+                "roll": 0,
+                "fov": 120
+            },
+            {
+                "yaw": 149.61770862289245,
+                "pitch": -3.560884411788115,
+                "roll": 3,
+                "fov": 120
+            }     
+        ],
+        "spherePropsBeatIndexes": [
+            0,
+            chorus_2 + line - beat*2
+        ]     
     },
     "horn": {
         "imgUrl": "../img/lead/horn.png",
