@@ -10,6 +10,7 @@ const _playbackRatesArray = [0.25, 0.5, 0.75, 1.0, 1.5, 2.0];
 const _defaultPlaybackRateIndex = _playbackRatesArray.indexOf(1.0);
 let _playbackRateIndex = _defaultPlaybackRateIndex;
 let _updateUIFromVideoTimeCallback;
+let _zoomOutButtonCallback;
 
 
 // ################## MOCK CONSTRUCTOR ##################
@@ -22,6 +23,7 @@ let playPauseButtonList = [playPauseButton];
 let stopButton = document.getElementById('stop');
 let playbackRateButton = document.getElementById('playback-rate');
 // let fullScreenButton = document.getElementById('fullscreen');
+let zoomOutButton = document.getElementById('zoom-out');
 
 
 // for updating the playPauseButton's class to change its CSS and content
@@ -282,6 +284,10 @@ if(playPauseButton !== null){
 if(stopButton !== null){
     stopButton.onclick = videoTransportButtonsHandler;
 }
+if(zoomOutButton !== null){
+    zoomOutButton.onclick = zoomOutButtonHandler;
+}
+
 
 
 function videoTransportButtonsHandler(event) {
@@ -299,6 +305,16 @@ function videoTransportButtonsHandler(event) {
 
     }
 
+}
+
+
+function zoomOutButtonHandler(event){
+    if(_zoomOutButtonCallback){
+        _zoomOutButtonCallback(event, _player.getSphericalProperties());
+    }
+    else{
+        console.log("no zoom button callback");
+    }
 }
 
 
@@ -395,6 +411,10 @@ function yt_setUpdateUIFromVideoTimeCallback(callback){
     _updateUIFromVideoTimeCallback = callback;
 }
 
+function yt_setZoomOutButtonCallback(callback){
+    _zoomOutButtonCallback = callback;
+}
+
 function yt_setVideoPlayerSize(videoWidth, videoHeight){
     _player.setSize(videoWidth, videoHeight);    
 }
@@ -485,7 +505,8 @@ function yt_setTransportControlsColors(baseColor, hoverColor){
     .play-pause-button, 
     #stop, 
     #playback-rate,
-    #fullscreen {
+    #fullscreen,
+    #zoom-out {
         background-color: ${baseColor};
     
     }
@@ -503,7 +524,8 @@ function yt_setTransportControlsColors(baseColor, hoverColor){
     #stop:hover, 
     .slider::-webkit-slider-thumb:hover,
     #playback-rate:hover,
-    #fullscreen:hover  {
+    #fullscreen:hover,
+    #zoom-out:hover  {
         background: ${hoverColor};
     }
     `;

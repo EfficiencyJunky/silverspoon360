@@ -50,11 +50,6 @@ for(let i=0; i < rthmIcons.length; i++){
     // WE CURRENTLY AREN'T USING THIS FOR THE "rthmAssets" BUT MIGHT LATER
     rthmAsset.imgElement.src = rthmAsset.imgUrl;
 
-    // add the hover color class so the icons will have a hover color
-    if(rthmAsset.hasHover){    
-        rthmAsset.imgElement.classList.add('icon-hover-color');
-    }
-
 }
 
 // initialize leadAsset and load leadIcons "<img>" element into leadAsset.{asset}.imgElement
@@ -91,7 +86,13 @@ adjustUIDimensions(undefined, updateVideoPlayer = false);
 yt_setTransportControlsColors(videoPlayerControlsColor, videoPlayerControlsHoverColor);
 
 // this will create the CSS for the hover color for our icons
-createIconHoverColorCSS(iconHoverColor, iconHoverClass);
+
+if(typeof(iconBgndImageURL) !== "undefined" && iconBgndImageURL !== false){
+    createIconHoverColorCSS(iconHoverClass, iconBgndImageHoverOverlay, iconBgndImageURL);
+}
+else{
+    createIconHoverColorCSS(iconHoverClass, iconHoverColor);
+}
 
 // *****************************************************
 // FUNCTIONS
@@ -169,7 +170,7 @@ function adjustUIDimensions(event, updateVideoPlayer = true){
 
         // initialize the background color variable
         let bgndColor;
-        let hasHover;
+        let hoverClass;
 
         // we need to check which kind of asset it is and set it's background color accordingly
         if(Object.keys(leadAssets).includes(iconName)){
@@ -177,20 +178,20 @@ function adjustUIDimensions(event, updateVideoPlayer = true){
             // else use the color for the "locked" specialAsset
             if(leadAssets[iconName].revealed){
                 bgndColor = leadAssets[iconName].bgndColor;
-                hasHover = leadAssets[iconName].hasHover;
+                hoverClass = leadAssets[iconName].hoverClass;
             }
             else{
                 bgndColor = specialAssets.locked.bgndColor;
-                hasHover = specialAssets.locked.hasHover;
+                hoverClass = specialAssets.locked.hoverClass;
             }            
         }
         else if(Object.keys(rthmAssets).includes(iconName)){
             bgndColor = rthmAssets[iconName].bgndColor;
-            hasHover = rthmAssets[iconName].hasHover;
+            hoverClass = rthmAssets[iconName].hoverClass;
         }
         else if(Object.keys(specialAssets).includes(iconName)){
             bgndColor = specialAssets[iconName].bgndColor;
-            hasHover = specialAssets[iconName].hasHover;
+            hoverClass = specialAssets[iconName].hoverClass;
         }
 
         // set the styles accordingly
@@ -198,8 +199,8 @@ function adjustUIDimensions(event, updateVideoPlayer = true){
         allIconImgs[i].style.backgroundColor = bgndColor;
 
         // add the hover color class so the icons will have a hover color
-        if(hasHover){    
-            allIconImgs[i].classList.add(iconHoverClass);
+        if(hoverClass){    
+            allIconImgs[i].classList.add(hoverClass);
         }     
     }
 
@@ -207,7 +208,7 @@ function adjustUIDimensions(event, updateVideoPlayer = true){
 
 
 
-function createIconHoverColorCSS(hoverColor, hoverClass){
+function createIconHoverColorCSS(hoverClass, hoverColor, bgndImageURL = false){
 
     var css =
     `
@@ -215,6 +216,24 @@ function createIconHoverColorCSS(hoverColor, hoverClass){
         background-color: ${hoverColor} !important;
     }
     `;
+
+    // IF WE WANT TO USE A BACKGROUND IMAGE
+    if(bgndImageURL){
+        
+        var css =
+        `
+        .${hoverClass}:hover  {
+            background-image:
+                linear-gradient(
+                    ${hoverColor}, 
+                    ${hoverColor}
+                ),
+                url(${bgndImageURL}) !important;
+        }
+        `;
+    }
+
+    // console.log(css);
 
     let style = document.createElement('style');
     
@@ -245,12 +264,15 @@ function updateLeadRowIcons(beatIndex){
 
         const asset = leadAssets[key];
 
+        // don't update if the beatindex is before the asset's reveal time
         if(beatIndex < asset.revealIndex){               
             return false;
         }
+        // don't update if the asset is already revealed
         else if(asset.revealed){
             return false;
         }
+        // otherwise, do update
         else{
             // console.log(asset);
             return true;
@@ -258,6 +280,7 @@ function updateLeadRowIcons(beatIndex){
 
     });
 
+    // if there are no asssets to update don't continue
     if(assetsToUpdate.length === 0){
         return;
     }
@@ -267,10 +290,12 @@ function updateLeadRowIcons(beatIndex){
         
         leadAssets[key].imgElement.src = leadAssets[key].imgUrl;
         leadAssets[key].imgElement.style.backgroundColor = leadAssets[key].bgndColor;
-        // add the hover color class so the icons will have a hover color
-        if(leadAssets[key].hasHover){   
-            leadAssets[key].imgElement.classList.add(iconHoverClass);
-        }     
+        
+        // if the asset has a hover animation, add the hover class 
+        // so this animation is set
+        if(leadAssets[key].hoverClass){   
+            leadAssets[key].imgElement.classList.add(leadAssets[key].hoverClass);
+        }
         leadAssets[key].revealed = true;
     });
 

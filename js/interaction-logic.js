@@ -9,7 +9,7 @@ leadButtons.onclick = leadButtonsClickHandler;
 starfoxDiv.onclick = doABarrelRoll;
 bonusDiv.onclick = rhythmButtonsClickHandler;
 
-
+yt_setZoomOutButtonCallback(zoomOut);
 
 function rhythmButtonsClickHandler(event){
 
@@ -208,6 +208,27 @@ async function flyToNewView(sphereProps){
 }
 
 
+// zooms out the current view
+function zoomOut(event, sphereProps){
+
+    const currentZoom = sphereProps.fov;
+
+    // if the zoom is all the way out already don't do anything
+    if(currentZoom >= 119){
+        return;
+    }
+    
+    // make a deep copy of sphere props with the FOV set to 120 and roll set to 0
+    const newSphereProps = {
+        "yaw": sphereProps.yaw,
+        "pitch": sphereProps.pitch,
+        "fov": 120,
+        "roll": 0
+    }
+    
+    flyToNewView(newSphereProps);
+
+}
 
 
 

@@ -25,7 +25,8 @@
 .play-pause-button, 
 #stop, 
 #playback-rate,
-#fullscreen {
+#fullscreen,
+#zoom-out {
     background-color: #00A2FF;
 
 }
@@ -43,7 +44,8 @@
 #stop:hover, 
 .slider::-webkit-slider-thumb:hover,
 #playback-rate:hover,
-#fullscreen:hover  {
+#fullscreen:hover,
+#zoom-out:hover  {
     background: #0078bd;
 }
 
@@ -51,7 +53,8 @@
 .play-pause-button, 
 #stop, 
 #playback-rate,
-#fullscreen{
+#fullscreen,
+#zoom-out{
     font-family: Arial, Helvetica, sans-serif;
     height: 2rem;
     width: 2rem; /* if using "►" or "⎮⎮" for button text */
@@ -110,6 +113,14 @@
 .play-pause-button.pause::after{
     content: "⎮⎮";
 }
+
+#zoom-out{
+    width: 4rem;
+    text-decoration: line-through;
+    margin-left: 6px;
+}
+
+
 
 
 .slider{

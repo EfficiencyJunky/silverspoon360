@@ -66,10 +66,12 @@ body {
     margin:15px 15px;
     height: 60px;  
     width: 60px;
+    /* background-color: "#00A2FF"; */ /* icon blue */
+    /* background-image: url(../img/lead/love.png); */
 }
 
 
-.person-icon:hover{
+.icon-image-hover:hover{
     /* filter: grayscale(50%); */
     /* filter: saturate(150%); */
     filter: contrast(85%);
@@ -77,7 +79,7 @@ body {
 
 }
 
-.special-icon:hover{
+.special-icon-hover:hover{
     /* filter: grayscale(50%); */
     /* filter: saturate(150%); */
     /* filter: contrast(50%); */

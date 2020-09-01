@@ -6,8 +6,8 @@ const windowScaleFactor = getWindowScaleFactor(wWidth, wHeight);
 
 function getWindowScaleFactor(newWWidth, newWHeight){
     const scaleFact =   (newWHeight >= 950) && (newWWidth >= 1200) ? 2 :
-                        (newWHeight >= 800) && (newWWidth >= 900) ? 1.6 :
-                        (newWHeight >= 650) && (newWWidth >= 750) ? 1.2 :
+                        (newWHeight >= 840) && (newWWidth >= 900) ? 1.6 :
+                        (newWHeight >= 700) && (newWWidth >= 750) ? 1.2 :
                         (newWHeight >= 650) ? 1.0 : 0.85;
     return (newWWidth >= 500) ? scaleFact : 0.65;
 }
@@ -21,16 +21,26 @@ function sleep(ms) {
 // icon blue
 const videoPlayerControlsColor = "#00A2FF";
 const videoPlayerControlsHoverColor = "#0078bd";
+
+// icon gold
 // const videoPlayerControlsColor = "#ffd700";
 // const videoPlayerControlsHoverColor = "#daa520";
 
 
-
-// if we don't want a hover color 
+// the base color for our basic icons
 const iconColor = videoPlayerControlsColor;
-const iconHoverColor = videoPlayerControlsHoverColor;
-const iconHoverClass = 'icon-hover-color';
 
+// the hover settings for our basic icons
+const iconHoverClass = 'icon-hover';
+const iconHoverColor = videoPlayerControlsHoverColor;
+
+// FOR IMAGE HOVER ON BASIC ICONS
+// uncomment these lines if we want our icons to have a hover that is made from an image
+// const iconBgndImageHoverOverlay = 'rgba(170, 170, 170, 0.4)';
+// const iconBgndImageURL = '../img/lead/love.png';
+
+// the class to add a hover effect for our icons with images (the people)
+const iconImageHoverClass = 'icon-image-hover';
 
 // icon styles for different breakpoints
 const iconStylesForSmallScreens = `margin:12px 12px;
