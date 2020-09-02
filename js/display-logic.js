@@ -138,12 +138,15 @@ function adjustUIDimensions(event, updateVideoPlayer = true){
     const newWHeight = window.innerHeight;
     const newWWidth = window.innerWidth;
 
-    // console.log("w:h", newWWidth, newWHeight);
+    
 
     const newWScaleFactor = getWindowScaleFactor(newWWidth, newWHeight);
     
+    // console.log("w:h:sf", newWWidth, newWHeight, newWScaleFactor);
+    // console.log("w:h", newWWidth, newWHeight);
+
     // scale video
-    videoWidth = 450 * newWScaleFactor; // make sure the "transport-controls" element is set to the same width
+    videoWidth = baseVideoWidth * newWScaleFactor; // make sure the "transport-controls" element is set to the same width
     videoHeight =  Math.round(videoWidth * 0.5625); // 450 * 0.5625 == 253 just so you know
 
 
@@ -153,14 +156,20 @@ function adjustUIDimensions(event, updateVideoPlayer = true){
 
     // scale icons
     let iconStylesForNewWindowSize;
-    if(newWScaleFactor <= 0.65){
+    if(newWScaleFactor <= 0.85){
+        iconStylesForNewWindowSize = iconStylesForXtraSmallScreens;
+    }
+    else if(0.85 < newWScaleFactor && newWScaleFactor <= 1.0){
         iconStylesForNewWindowSize = iconStylesForSmallScreens;
     }
-    else if(0.65 < newWScaleFactor && newWScaleFactor <= 1.2){
+    else if(1.0 < newWScaleFactor && newWScaleFactor <= 1.2){
         iconStylesForNewWindowSize = iconStylesForRegularScreens;
     }
-    else{
+    else if(1.2 < newWScaleFactor && newWScaleFactor <= 1.6){
         iconStylesForNewWindowSize = iconStylesForLargeScreens;
+    }
+    else{
+        iconStylesForNewWindowSize = iconStylesForXtraLargeScreens;
     }
 
 

@@ -8,8 +8,10 @@ function getWindowScaleFactor(newWWidth, newWHeight){
     const scaleFact =   (newWHeight >= 950) && (newWWidth >= 1200) ? 2 :
                         (newWHeight >= 840) && (newWWidth >= 900) ? 1.6 :
                         (newWHeight >= 700) && (newWWidth >= 750) ? 1.2 :
-                        (newWHeight >= 650) ? 1.0 : 0.85;
-    return (newWWidth >= 500) ? scaleFact : 0.65;
+                        (newWHeight >= 650) && (newWWidth >= 575) ? 1.0 : 
+                        (newWHeight >= 600) && (newWWidth >= 480) ? 0.85 :
+                        (newWHeight > 490) && (newWWidth > 360) ? 0.70 : 0.58;
+    return scaleFact;
 }
 
 // a function that allows an async function to sleep for a number of ms
@@ -43,9 +45,14 @@ const iconHoverColor = videoPlayerControlsHoverColor;
 const iconImageHoverClass = 'icon-image-hover';
 
 // icon styles for different breakpoints
-const iconStylesForSmallScreens = `margin:12px 12px;
-                                   height: 52px;
-                                   width: 52px;
+const iconStylesForXtraSmallScreens = `margin:12px 12px;
+                                       height: 52px;
+                                       width: 52px;
+                                      `
+
+const iconStylesForSmallScreens = `margin:13px 13px;
+                                   height: 55px;
+                                   width: 55px;
                                   `
                                   
 const iconStylesForRegularScreens = `margin:15px 15px;
@@ -56,7 +63,12 @@ const iconStylesForRegularScreens = `margin:15px 15px;
 const iconStylesForLargeScreens = `margin:18px 18px;
                                    height: 70px;
                                    width: 70px;
-                                  `                                    
+                                  `
+                                  
+const iconStylesForXtraLargeScreens = `margin:20px 20px;
+                                       height: 80px;
+                                       width: 80px;
+                                      `                                            
 
 console.log("innerHeight:", wHeight);
 console.log("innerWidth:", wWidth);
@@ -66,7 +78,9 @@ console.log("window scale factor:", windowScaleFactor);
 // *******************************************
 // YOUTUBE PLAYER PARAMETERS
 // *******************************************
-let videoWidth = 450 * windowScaleFactor; // make sure the "transport-controls" element is set to the same width
+const baseVideoWidth = 500;
+
+let videoWidth = baseVideoWidth * windowScaleFactor; // make sure the "transport-controls" element is set to the same width
 let videoHeight =  Math.round(videoWidth * 0.5625); // 450 * 0.5625 == 253 just so you know
 
 // Silverspoon 2D
