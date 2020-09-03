@@ -100,7 +100,9 @@ else{
 // *****************************************************
 // this is where we update the UI elements according to the videos playback time
 function updateUIFromVideoTime(time){
-    const beatIndex = yt_getBeatIndexFromVideoTime(time) - 1;
+    const timeWithOffset = (time + video_start_time_offset >= 0) ? time + video_start_time_offset : 0;
+
+    const beatIndex = yt_getBeatIndexFromVideoTime(timeWithOffset) - 1;
 
     if(beatIndex <= 0){
         if(pageFirstLoad){
@@ -113,7 +115,7 @@ function updateUIFromVideoTime(time){
         updateLeadRowIcons(0);
         return;
     }
-    else if(beatIndex >= bgndSync.length){        
+    else if(beatIndex >= end_of_video){        
         updateBackground(bgndSync.length-1);
         if(!starfoxUnlocked){
             unlockStarfox();

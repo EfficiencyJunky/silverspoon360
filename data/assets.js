@@ -1,3 +1,13 @@
+// VIDEO TIME SYNC AND PAN/TILT/ROLL/ZOOM OFFSETS
+const video_start_time_offset = -0.1;
+const intro_beat_offset = 0;
+const yawOffset = -171;
+const pitchOffset = 0;
+const rollOffset = 0;
+const fovOffset = 0;
+
+
+// BEAT SYNCRONIZATION VALUES
 const beat = 1;
 const bar = beat*4;
 const line = bar*4;
@@ -5,9 +15,9 @@ const line_half = line/2;
 const stanza = line*4;
 const stanza_half = stanza/2;
 
+
 // beginnings of each section in beat indexes
-const intro_leadin = 9;
-const intro_chorus = intro_leadin + stanza_half;
+const intro_chorus = intro_beat_offset + stanza_half;
 const verse_1 = intro_chorus + stanza_half;
 const preChorus_1 = verse_1 + stanza_half;
 const chorus_1 = preChorus_1 + stanza_half;
@@ -22,6 +32,8 @@ const trombone = bridge + stanza_half;
 const chorus_3 = trombone + stanza_half;
 
 const outro = chorus_3 + stanza;
+
+const end_of_video = outro + bar*2;
 
 
 
@@ -135,8 +147,8 @@ const bgndAssets = {
 
 const bgndSync = [
     // yellow and black
-    // "sparkleBlack",1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro leadin 1.1
-    "sparkleBlack",1,2,3,0,1,2,3,0,1,2,3,0,1,2,3,     0,1,2,3,0,1,2,3,0,      // intro leadin 1.1
+    // "sparkleBlack",1,2,3,0,1,2,3,0,1,2,3,0,1,2,3,    0,1,2,3,0,1,2,3,0,      // intro leadin 1.1
+    "sparkleBlack",1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro leadin 1.1
     0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro leadin 1.2
     0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro chorus 1.1
     0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro chorus 1.2
@@ -217,16 +229,16 @@ const specialAssets = {
         "imgElement": undefined,        
         "sphereProps": [
             {
-                "yaw": 168.17301944381518,
-                "pitch": -26.053727922911758,
+                "yaw": 359,
+                "pitch": -26,
                 "roll": 0,
                 "fov": 40
             },
             {
-                "yaw": 257.9386170109469,
-                "pitch": 4.344441403877287,
-                "roll": 3,
-                "fov": 35.00004285756796
+                "yaw": 83,
+                "pitch": 9,
+                "roll": 0,
+                "fov": 35
             },
             // {
             //     "yaw": 150.58010058371224,
@@ -248,23 +260,23 @@ let rthmAssets = {
         "imgElement": undefined,
         "sphereProps": [
             {
-                "yaw": 176.25379595510833,
-                "pitch": -11.512807118508452,
-                "roll": 3,
-                "fov": 70.00004285756796
-            },
+                "yaw": 6,
+                "pitch": -12,
+                "roll": 0,
+                "fov": 70
+            },            
             {
-                "yaw": 176.30033766955844,
-                "pitch": -7.585817187317396,
-                "roll": 3,
+                "yaw": 5.5,
+                "pitch": -7,
+                "roll": 0,
                 "fov": 50
             },
             {
-                "yaw": 176.25379595510833,
-                "pitch": -11.512807118508452,
-                "roll": 3,
-                "fov": 70.00004285756796
-            }                        
+                "yaw": 6,
+                "pitch": -12,
+                "roll": 0,
+                "fov": 70
+            }                      
         ],
         "spherePropsBeatIndexes":[
             0,
@@ -279,32 +291,32 @@ let rthmAssets = {
         "imgElement": undefined,
         "sphereProps": [
             {
-                "yaw": 304.14944,
-                "pitch": -33.48277815789478,
+                "yaw": 131,
+                "pitch": -30,
                 "roll": 0,
-                "fov": 80.00004285756798
+                "fov": 80
             },
             {
-                "yaw": 308.24514817216306,
-                "pitch": -28.191671906774697,
+                "yaw": 136,
+                "pitch": -25,
                 "roll": 0,
-                "fov": 80.00004285756796
+                "fov": 80
             },
             {
-                "yaw": 305.0802827664007,
-                "pitch": -35.13624886136981,
+                "yaw": 133,
+                "pitch": -31,
                 "roll": 0,
-                "fov": 80.00004285756796
+                "fov": 80
             },
             {
-                "yaw": 295.65000226617326,
-                "pitch": -42.12216202992917,
+                "yaw": 123,
+                "pitch": -39,
                 "roll": 0,
                 "fov": 90
             },
             {
-                "yaw": 295.87107730475924,
-                "pitch": -40.15866662143556,
+                "yaw": 124,
+                "pitch": -36,
                 "roll": 0,
                 "fov": 95
             }
@@ -323,10 +335,10 @@ let rthmAssets = {
         "hoverClass": iconHoverClass,
         "imgElement": undefined,
         "sphereProps": {
-            "yaw": 231.19107255532697,
-            "pitch": -11.726442686344978,
+            "yaw": 60,
+            "pitch": -9,
             "roll": 0,
-            "fov": 80.00004285756796
+            "fov": 80
         }
     },       
     "uke": {
@@ -336,50 +348,50 @@ let rthmAssets = {
         "imgElement": undefined,
         "sphereProps": [
             {
-                "yaw": 32.21286364800597,
-                "pitch": -10.733559904224906,
+                "yaw": 221,
+                "pitch": -11,
                 "roll": 0,
                 "fov": 110
             },
             {
-                "yaw": 27.376020411940626,
-                "pitch": -22.650544761611723,
+                "yaw": 215,
+                "pitch": -25,
                 "roll": 0,
                 "fov": 90
             },
             {
-                "yaw": 18.160638434618974,
-                "pitch": -8.767873202901715,
+                "yaw": 207,
+                "pitch": -10,
                 "roll": 0,
                 "fov": 85
             },
             {
-                "yaw": 22.487071720741085,
-                "pitch": -3.044921136754331,
-                "roll": 0,
-                "fov": 100.00004285756795
-            },
-            {
-                "yaw": 16.52967881364896,
-                "pitch": -18.09150108377195,
-                "roll": 0,
-                "fov": 80
-            },
-            {
-                "yaw": 10.944666673486603,
-                "pitch": -13.803072855485317,
-                "roll": 0,
-                "fov": 119.99999999999999
-            },
-            {
-                "yaw": 20.997763164973954,
-                "pitch": -1.4020492228940353,
+                "yaw": 211,
+                "pitch": -3,
                 "roll": 0,
                 "fov": 100
             },
             {
-                "yaw": 16.34357016148781,
-                "pitch": -31.63135481945862,
+                "yaw": 203,
+                "pitch": -19,
+                "roll": 0,
+                "fov": 80
+            },
+            {
+                "yaw": 200,
+                "pitch": -9,
+                "roll": 0,
+                "fov": 120
+            },
+            {
+                "yaw": 210,
+                "pitch": -1,
+                "roll": 0,
+                "fov": 100
+            },
+            {
+                "yaw": 205,
+                "pitch": -32,
                 "roll": 0,
                 "fov": 100
             }                                    
@@ -402,10 +414,10 @@ let rthmAssets = {
         "hoverClass": iconHoverClass,
         "imgElement": undefined,
         "sphereProps": {
-            "yaw": 58.763522511380714,
-            "pitch": 1.4371789670976558,
+            "yaw": 248,
+            "pitch": -2,
             "roll": 0,
-            "fov": 40.000042857567955
+            "fov": 40
         }
     },        
     "wolf": {
@@ -415,34 +427,34 @@ let rthmAssets = {
         "imgElement": undefined,
         "sphereProps": [
             {
-                "yaw": 176.25379595510833,
-                "pitch": -11.512807118508452,
-                "roll": 3,
-                "fov": 70.00004285756796
+                "yaw": 6,
+                "pitch": -12,
+                "roll": 0,
+                "fov": 70
             },
             {
-                "yaw": 231.19107255532697,
-                "pitch": -11.726442686344978,
+                "yaw": 60,
+                "pitch": -9,
                 "roll": 0,
-                "fov": 80.00004285756796
+                "fov": 80
             },
             {
-                "yaw": 304.14944,
-                "pitch": -33.48277815789478,
+                "yaw": 131,
+                "pitch": -30,
                 "roll": 0,
-                "fov": 80.00004285756798
+                "fov": 80
             },
             {
-                "yaw": 22.487071720741085,
-                "pitch": -3.044921136754331,
+                "yaw": 215,
+                "pitch": -3,
                 "roll": 0,
-                "fov": 100.00004285756795
+                "fov": 100
             },
             {
-                "yaw": 58.763522511380714,
-                "pitch": 1.4371789670976558,
+                "yaw": 248,
+                "pitch": -2,
                 "roll": 0,
-                "fov": 40.000042857567955
+                "fov": 40
             }            
 
 
@@ -472,47 +484,47 @@ let leadAssets = {
         "imgElement": undefined,
         "sphereProps": [
             {
-                "yaw": 319.5819874681481,
-                "pitch": -2.0331955086062288,
-                "roll": -2,
+                "yaw": 149,
+                "pitch": 0.55,
+                "roll": 1,
                 "fov": 60
-            },
-            {
-                "yaw": 299.79966710855444,
-                "pitch": -2.7886121632433833,
-                "roll": -2,
-                "fov": 59.99999999999999
             },            
             {
-                "yaw": 200.06194992354864,
-                "pitch": -9.315384072608648,
-                "roll": 4,
+                "yaw": 129,
+                "pitch": 0.55,
+                "roll": 1,
+                "fov": 60
+            },            
+            {
+                "yaw": 29,
+                "pitch": -8,
+                "roll": 0,
                 "fov": 90
             },
             {
-                "yaw": 131.7427496654642,
-                "pitch": -6.505642310818288,
-                "roll": 4,
+                "yaw": 321,
+                "pitch": -10,
+                "roll": 2,
                 "fov": 100
             },
             {
-                "yaw": 200.3334552227225,
-                "pitch": -7.167033013219744,
-                "roll": 4,
+                "yaw": 29,
+                "pitch": -6,
+                "roll": 0,
                 "fov": 60
             },
             {
-                "yaw": 200.3334552227225,
-                "pitch": -7.167033013219744,
-                "roll": 4,
+                "yaw": 29,
+                "pitch": -6,
+                "roll": 0,
                 "fov": 90
             },
             {
-                "yaw": 131.7427496654642,
-                "pitch": -6.505642310818288,
-                "roll": 4,
+                "yaw": 321,
+                "pitch": -10,
+                "roll": 2,
                 "fov": 100
-            }                                
+            },                              
         ],
         "spherePropsBeatIndexes": [
             0, 
@@ -532,10 +544,10 @@ let leadAssets = {
         "revealed": false,
         "imgElement": undefined,
         "sphereProps": {
-            "yaw": 310.925148194743,
-            "pitch": -2.529236808228362,
-            "roll": -2,
-            "fov": 60.00004285756796
+            "yaw": 140,
+            "pitch": 0,
+            "roll": 0,
+            "fov": 60
         }     
     },
     "confetti": {
@@ -547,28 +559,63 @@ let leadAssets = {
         "imgElement": undefined,
         "sphereProps": [
             {
-                "yaw": 316,
-                "pitch": 90,
+                "yaw": 39,
+                "pitch": -8,
                 "roll": 0,
                 "fov": 120
             },
-            // {
-            //     "yaw": 149.61770862289245,
-            //     "pitch": -3.560884411788115,
-            //     "roll": 3,
-            //     "fov": 120
-            // },
-            // {
-            //     "yaw": 316,
-            //     "pitch": 90,
-            //     "roll": 0,
-            //     "fov": 120
-            // }              
+            {
+                "yaw": 332,
+                "pitch": -5,
+                "roll": 0,
+                "fov": 120
+            },
+            {
+                "yaw": 324,
+                "pitch": 90,
+                "roll": 2,
+                "fov": 120
+            },
+            {
+                "yaw": 332,
+                "pitch": -5,
+                "roll": 0,
+                "fov": 120
+            },
+            {
+                "yaw": 7,
+                "pitch": -7,
+                "roll": 0,
+                "fov": 120
+            },
+            {
+                "yaw": 332,
+                "pitch": -5,
+                "roll": 0,
+                "fov": 120
+            },                        
+            {
+                "yaw": 324,
+                "pitch": 90,
+                "roll": 2,
+                "fov": 120
+            },
+            {
+                "yaw": 332,
+                "pitch": -5,
+                "roll": 0,
+                "fov": 120
+            }                                      
         ],
         "spherePropsBeatIndexes": [
             0,
-            // chorus_2 + line - beat*2,
-            // chorus_3 + line*3 - beat*2
+            verse_1 + line,
+            chorus_2 + bar + beat,
+            chorus_2 + line,
+            trombone,
+            chorus_3 + bar*3,
+            chorus_3 + stanza_half - beat*2,
+            chorus_3 + stanza_half + bar,
         ]     
     },
     "horn": {
@@ -579,9 +626,9 @@ let leadAssets = {
         "revealed": false,
         "imgElement": undefined,
         "sphereProps": {
-            "yaw": 131.01751936199207,
-            "pitch": 0.4420139141478718,
-            "roll": 3,
+            "yaw": 320,
+            "pitch": -1,
+            "roll": 0,
             "fov": 50
         }     
     }            
@@ -596,8 +643,8 @@ let leadAssets = {
 // **********************************************************************************
 const highlightSync = [
     // yellow and black
-    // "drums",1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro leadin 1.1
-    "drums",1,2,3,0,1,2,3,0,1,2,3,0,1,2,3,     0,1,2,3,0,1,2,3,0,      // intro leadin 1.1
+    // "drums",1,2,3,0,1,2,3,0,1,2,3,0,1,2,3,     0,1,2,3,0,1,2,3,0,      // intro leadin 1.1
+    "drums",1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro leadin 1.1
     0,1,2,3,0,1,2,3,"love",1,2,3,0,1,2,3, // intro leadin 1.2
     0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // intro chorus 1.1
     0,1,2,3,0,1,"drums",3,0,1,2,3,0,1,2,3, // intro chorus 1.2
