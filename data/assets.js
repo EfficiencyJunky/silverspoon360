@@ -180,7 +180,7 @@ const bgndSync = [
     "dollarSpinGrn","dollarSpinGrn","dollarSpinRed",3, // pre-chorus 2.2.1
     "dollarSpinGrn","dollarSpinGrn","dollarSpinRed",3, // pre-chorus 2.2.2
     "dollarSpinGrn","dollarSpinGrn","dollarSpinRed",3, // pre-chorus 2.2.2
-    "dollarSpinGrn","dollarSpinBlk",2,3, // pre-chorus 2.2.2
+    "dollarSpinGrn",1,"dollarSpinBlk",3, // pre-chorus 2.2.2
     // falling money
     "moneyFallHblk",1,2,3,          // chorus 2.1.1
     0,1,2,3,                        // chorus 2.1.2

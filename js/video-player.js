@@ -4,7 +4,8 @@ const _consoleLogsOn = false;
 // ################## "PRIVATE VARIABLES" ##################
 // ################## "PRIVATE VARIABLES" ##################
 let _player;
-const _videoAndUISyncInterval = secondsPerBeat/4*1000; // time in milliseconds between calls to the UI syncronization callback
+// const _videoAndUISyncInterval = secondsPerBeat/4*1000; // time in milliseconds between calls to the UI syncronization callback
+const _videoAndUISyncInterval = (secondsPerBeat/displayUpdatesPerBeat) * 1000; // time in milliseconds between calls to the UI syncronization callback
 let _videoAndUISyncTimerID;
 const _playbackRatesArray = [0.25, 0.5, 0.75, 1.0, 1.5, 2.0];
 const _defaultPlaybackRateIndex = _playbackRatesArray.indexOf(1.0);

@@ -34,6 +34,7 @@ let bonusImg = document.getElementById('bonus').getElementsByClassName('icon-con
 let ftueIconText = document.getElementsByClassName('ftue-icon-text')[0];
 ftueIconText.hidden = true;
 let ftue = true;
+const show_ftue = intro_chorus - line;
 
 // initialize rthAssets and load rthmIcon "<img>" element into rthmAssets.{asset}.imgElement
 for(let i=0; i < rthmIcons.length; i++){    
@@ -125,7 +126,12 @@ function updateUIFromVideoTime(time){
         // updateIconHighlight(highlightSync.length-1);
         return;
     }
-
+    // this presents the FTUE "click" text from flashing if the person seeks to a later part of the video before the FTUE has a chance to show itself
+    else if(beatIndex >= show_ftue && ftue){
+        ftue = false;
+        ftueIconText.hidden = true;
+    }
+    
     updateLeadRowIcons(beatIndex);
     updateIconHighlight(beatIndex);
     updateBackground(beatIndex);

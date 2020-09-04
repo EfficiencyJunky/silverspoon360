@@ -121,6 +121,7 @@ let youTubePlayerOptions = {
 
 const bpm = 145;
 const secondsPerBeat = 60/bpm;
+const displayUpdatesPerBeat = 4;
 
 
 
@@ -137,7 +138,8 @@ let flashing;
 
 
 const flyToTimeMS = 300;
-const flyToNumIncrements = 75;
+const flyToNumIncrements = 25;
+// const flyToNumIncrements = 75;
 const flyToSleepTime = Math.round(flyToTimeMS/flyToNumIncrements);
 let flyingCurrently = false;
 
