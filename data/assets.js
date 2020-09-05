@@ -33,7 +33,8 @@ const chorus_3 = trombone + stanza_half;
 
 const outro = chorus_3 + stanza;
 
-const end_of_video = outro + bar*2;
+// const end_of_video = outro + bar*2; //  use this when youTubeID = "HjaqZ2JQeXg"
+const end_of_video = outro + line + bar + beat*3;
 
 
 
@@ -200,7 +201,8 @@ const bgndSync = [
     // falling money and crazy colors
     "moneyFallHblk",1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 3.3
     0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 3.4
-    0,1,2,3,"spoon",1,2,3,0,1,2,"sparkleBlack",0,1,2,3  // chorus 3.4 extra turn + extra time
+    0,1,2,3,"spoon",1,2,3,0,1,2,"sparkleBlack",0,1,2,3,// chorus 3.4 extra turn 
+    0,1,2,3,0,1,2,3,0  // + extra time
 ]
 
 
@@ -681,5 +683,6 @@ const highlightSync = [
     // falling money and crazy colors
     0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 3.3
     0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3, // chorus 3.4
-    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3  // outro chorus end with something fun
+    0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3,// chorus 3.4 extra turn 
+    0,1,2,3,0,1,2,3,0  // + extra time  
 ]
