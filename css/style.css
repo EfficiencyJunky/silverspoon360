@@ -46,7 +46,8 @@ body {
 
 #rhythm-icons-row,
 #lead-icons-row,
-#special-icons-row{
+#special-icons-row,
+#social-icons{
     /* position: relative; */
     background: rgba(255,255,255,0.95);
     box-shadow: 0 0 15px rgba(0,0,0,0.2);    
@@ -161,3 +162,15 @@ body {
 }
 
 
+#social-icons i{
+    font-size: 1.2em;
+    padding:10px;
+}
+
+#social-icons a{
+    color: initial;
+}
+
+/* #social-icons i:hover{
+    background-image: url(../img/lead/love.png);
+} */
