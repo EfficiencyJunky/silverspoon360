@@ -143,6 +143,7 @@ body {
 /* since we change the background of the body for the animated gifs */
 /* this is the div that we display on top of that to create the mask */
 .bgnd-mask-img {
+    /* background-color: white; */
     background: 
     /* top, transparent grey color faked with gradient */ 
     linear-gradient(
@@ -174,3 +175,11 @@ body {
 /* #social-icons i:hover{
     background-image: url(../img/lead/love.png);
 } */
+
+#lead-icons-ftue-video-mask{
+    /* width: 300px; */
+    overflow:hidden;
+    display:block;
+    height: 85px;
+    margin-bottom: 5px;
+}
