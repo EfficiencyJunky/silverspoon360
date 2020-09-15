@@ -47,7 +47,8 @@ body {
 #rhythm-icons-row,
 #lead-icons-row,
 #special-icons-row,
-#social-icons{
+#social-icons,
+#title-section{
     /* position: relative; */
     background: rgba(255,255,255,0.95);
     box-shadow: 0 0 15px rgba(0,0,0,0.2);    
@@ -168,6 +169,7 @@ body {
     padding:10px;
 }
 
+
 #social-icons a{
     color: initial;
 }
@@ -182,4 +184,44 @@ body {
     display:block;
     height: 85px;
     margin-bottom: 5px;
+}
+
+
+
+
+
+
+
+
+#info-button{
+    background: rgba(255,255,255,0.95);
+    /* box-shadow: 0 0 15px rgba(0,0,0,0.2);     */
+    border-radius: 5px;    
+    /* color: rgb(58, 109, 151); */
+    color: #00A2FF;
+    height: 1.6rem;
+    font-size: 1em;
+    position: absolute;
+    cursor: pointer; 
+    top: -2.1rem;
+    padding:5px;
+    /* padding-top: 2px !important; */
+    vertical-align: middle;
+    border-color: lightslategray;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-bottom-width: 0px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    /* box-shadow: 0px 0px 50px lightslategray; */
+    /* padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px; */
+    /* font-size: 0.8rem; */
+}
+
+
+#info-button:hover  {
+    color: #0078bd;
 }

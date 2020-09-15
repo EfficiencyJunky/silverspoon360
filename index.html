@@ -47,6 +47,20 @@
    <link rel="stylesheet" type="text/css" href="css/style.css">
    <link rel="stylesheet" type="text/css" href="css/video-player-styles.css">
    
+   <style>
+        #info-button-player{
+            /* color: #00A2FF; */
+            color: #6e6e6e;
+            font-size: 1.2em;
+            margin-left: 6px;
+            cursor: pointer;     
+        }
+
+        #info-button-player:hover  {
+            color: #0078bd;
+            /* color: #00A2FF; */
+        }
+   </style>
    
 <!-- CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS -->
    
@@ -62,29 +76,26 @@
 <div id="bgnd-overlay-with-cutouts" class="bgnd-mask-img">
 
     <div class="container vertical-align-middle">
-        <!-- <div class="row mb-4 justify-content-center"></div> -->
-        <div class="row mb-4 mt-4">
-            <div class="col-12 d-flex justify-content-center">        
-                <div id="social-icons" class="d-flex justify-content-center">
-                    
-                        <!-- <i class="fab fa-instagram"></i> -->
-                        <a href="https://www.instagram.com/wolfandloveyou" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/wolfandlove" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://open.spotify.com/artist/1MSnah0LJXsCQrCsZNrFYz?si=y168Z2isQCyhLBTo75Hrig" target="_blank"><i class="fab fa-spotify"></i></a>
-                    <!-- </div>
-                    <div class="d-flex justify-content-center"> -->
-                        <a href="https://soundcloud.com/wolfandlove" target="_blank"><i class="fab fa-soundcloud"></i></a>
-                        <a href="https://music.apple.com/us/artist/wolf-and-love/1452663240" target="_blank"><i class="fas fa-music"></i></a>
-                        <!-- <a href="http://twitter.com/wolfandloveyou" target="_blank"><i class="fab fa-twitter"></i></a> -->
-                        <a href="https://www.youtube.com/channel/UCN-AjUgErXaMT_PDWcxWYUA" target="_blank"><i class="fab fa-youtube"></i></a>
-                    
+        <!-- <div class="row mb-4 justify-content-center">
+            <div class="col-12 d-flex justify-content-center">
+                <div id="title-section" class="d-flex  justify-content-center">
+                
+                    <img class="wolf-love-brand-header" src="img/brand/wl_logo.png" alt="brand">
+
+                    <div>
+                        Silverspoon<br>
+                        360° Experience
+                    </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <div class="row mb-4">
+        <div class="row mb-4 mt-4">
             <div class="col-12 d-flex justify-content-center">
                 <div id="player-parent">
+                    <!-- <div class="d-flex flex-row-reverse" style="position :relative; height:0px" >
+                        <i id="info-button" class="fas fa-info-circle" onclick="$('#info-modal').modal('show');"></i>
+                    </div>                     -->
                     <div class="d-flex mb-2 justify-content-center">
                         <!-- <div class="video-responsive"> -->
                             <div id="player">
@@ -99,6 +110,7 @@
                         <input id="slider" type="range" min="0" max="100" value="0" class="slider ml-2 mr-2 flex-fill" >
                         <button id="playback-rate" hidden>1x</button>
                         <button id="zoom-out">zoom</button>
+                        <i id="info-button-player" class="fas fa-info-circle"></i>
                     </div>        
                 </div>
             </div>
@@ -125,7 +137,7 @@
             </div>
         </div>
 
-        <div class="row mb-2">
+        <div class="row mb-4">
             <div class="col-12 d-flex justify-content-center">
                 <div id="lead-icons-row" class="d-flex flex-sm-row justify-content-center">
                     <div class="d-flex">
@@ -145,17 +157,33 @@
             </div>
         </div>
 
+        <div class="row mb-4 mt-5">
+            <div class="col-12 d-flex justify-content-center">        
+                <div id="social-icons" class="d-flex justify-content-center">                    
+                        <!-- <i class="fab fa-instagram"></i> -->
+                        <a href="https://www.instagram.com/wolfandloveyou" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/wolfandlove" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.youtube.com/channel/UCN-AjUgErXaMT_PDWcxWYUA" target="_blank"><i class="fab fa-youtube"></i></a>                
+                        <a href="https://open.spotify.com/artist/1MSnah0LJXsCQrCsZNrFYz?si=y168Z2isQCyhLBTo75Hrig" target="_blank"><i class="fab fa-spotify"></i></a>
+                    <!-- </div>
+                    <div class="d-flex justify-content-center"> -->
+                        <!-- <a href="https://soundcloud.com/wolfandlove" target="_blank"><i class="fab fa-soundcloud"></i></a> -->
+                        <a href="https://music.apple.com/us/artist/wolf-and-love/1452663240" target="_blank"><i class="fas fa-music"></i></a>
+                        <!-- <a href="http://twitter.com/wolfandloveyou" target="_blank"><i class="fab fa-twitter"></i></a> -->
+                </div>
+            </div>
+        </div>
 
     </div>
 
 </div>
 
 
-<div id="ftue-modal" class="modal hide fade" tabindex="-1">
+<div id="info-modal" class="modal hide fade" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Welcome to the Silverspoon 360 Experience!</h5>
+                <h5 class="modal-title">Welcome to the Silverspoon 360° Experience!</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -165,21 +193,27 @@
                     <li>Click the flashing red icons to re-create the video as<br>
                         Wolf & Love imagined it <small>(or choose your own adventure)</small>
                     </li>
-                        <video width="250" autoplay loop muted poster="media/ftue/rthm_icons_ftue_img.png">
-                            <source src="/media/ftue/rthm_icons_ftue.mp4" type="video/mp4">
-                            <source src="/media/ftue/rthm_icons_ftue.webm" type="video/webm">
+                        <video width="250px" autoplay loop muted poster="media/info/rthm_icons_ftue_img.png">
+                            <source src="/media/info/rthm_icons_ftue.mp4" type="video/mp4">
+                            <source src="/media/info/rthm_icons_ftue.webm" type="video/webm">
                             Sorry, your browser doesn't support embedded videos.
                         </video>
                     <li>
                         The locked icons will be revealed as the video plays
                     </li>
                         <div id="lead-icons-ftue-video-mask">
-                            <video height="90" autoplay loop muted poster="media/ftue/lead_icons_ftue_img_1.png">
-                                <source src="/media/ftue/lead_icons_ftue.mp4" type="video/mp4">
+                            <video height="90px" autoplay loop muted poster="media/info/lead_icons_ftue_img_1.png">
+                                <source src="/media/info/lead_icons_ftue.mp4" type="video/mp4">
                                 Sorry, your browser doesn't support embedded videos.
                             </video>
                         </div>
                     <li>Click and drag around the video to move the camera</li>
+                        <video height="150px" autoplay loop muted poster="media/info/lead_icons_ftue_img_1.png" style="padding:15px;">
+                            <source src="/media/info/drag_video.mp4" type="video/mp4">
+                            Sorry, your browser doesn't support embedded videos.
+                        </video>                    
+                    <li>Click the <img height="40px" src="media/info/zoom.png"> button to zoom in/out from close-ups</li>
+                        
                     <li>Watch to the end to unlock special features :)</li>
                 </ol>
                 
@@ -208,6 +242,44 @@
 </div>
 
 
+<div id="mobile-device-modal" class="modal hide fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Not optimized for Mobile Web!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-12">
+                        Level 1: .col-sm-9
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+                            Level 2: .col-8 .col-sm-6
+                            </div>
+                            <div class="col-4 col-sm-6">
+                            Level 2: .col-4 .col-sm-6
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Let's Rock!</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
 
     <!-- jQuery, Popper.js, and Bootstrap.js - FOR BOOTSTRAP 4 -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
@@ -228,10 +300,28 @@
     <script type="text/javascript" src="js/display-logic.js"></script>
     <script type="text/javascript" src="js/interaction-logic.js"></script>
 
-    <script type="text/javascript" >
-        // $(window).on('load',function(){
-            $('#ftue-modal').modal('show');
-        // });    
+    <script type="text/javascript">
+        document.getElementById("info-button-player").onclick = infoButtonClickHandler;
+
+        function infoButtonClickHandler(event){
+            yt_pauseYouTubeVideo();
+            $('#info-modal').modal('show');
+        }
     </script>
+
+    <script type="text/javascript">
+        $(window).on('load',function(){
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+
+            if(windowWidth <= 420 && windowHeight >= 550){
+                $('#mobile-device-modal').modal('show');
+            }
+            
+        });    
+    </script>
+    <!-- <script type="text/javascript">
+        $('#info-modal').modal('show');
+    </script> -->    
 </body>
 </html>
