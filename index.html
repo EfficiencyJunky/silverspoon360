@@ -419,22 +419,12 @@
     <script type="text/javascript">
         document.getElementById("info-button-player").onclick = infoButtonClickHandler;
 
+        let infoModal = $('#info-modal');
+
         function infoButtonClickHandler(event){
             yt_pauseYouTubeVideo();
-            $('#info-modal').modal('show');
+            infoModal.modal('show');
         }
-    </script>
-
-    <script type="text/javascript">
-        $(window).on('load',function(){
-            const windowWidth = window.innerWidth;
-            const windowHeight = window.innerHeight;
-
-            if(windowWidth <= 420 && windowHeight >= 550){
-                $('#mobile-device-modal').modal('show');
-            }
-            
-        });    
     </script>
 
     <script>
@@ -457,7 +447,19 @@
             // button.focus();
         }
     </script>
+    
 
+    <script type="text/javascript">
+        $(window).on('load',function(){
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+
+            if(windowWidth <= 420 && windowHeight >= 550){
+                $('#mobile-device-modal').modal('show');
+            }
+            
+        });    
+    </script>
 
     <!-- <script type="text/javascript">
         $('#congrats-modal').modal('show');
