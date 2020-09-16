@@ -233,6 +233,8 @@ body {
     background-color: #f7f7f7;
     color: #202020;
     border: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .url_copy_box code{
@@ -242,17 +244,27 @@ body {
 .no-pad-right{
     padding-right:0px;
 }
+.no-pad-left{
+    padding-left:2px;
+}
 
 .no-margin-left-right{
     margin-left:-20px;
     margin-right:-20px;
 }
 
-#url-textarea{
-    min-width: 70%;
+.no-margin-left{
+    margin-left:-10px;
+}
+
+.url-textarea{
+    /* min-width: 70%; */
+    min-width: 14rem;
     height: 1.5rem;
-    margin-left: 0.8rem;  
-    margin-right: 1rem;  
+    /* margin-left: 0.8rem;  
+    margin-right: 1rem;   */
+    margin-left: 0.6rem;  
+    margin-right: 0.6rem;  
     resize: none;
     border: none;
     font-size: 85%;
@@ -270,4 +282,9 @@ body {
 
 .modal-body{
     overflow: hidden;
+}
+
+
+#mobile-device-warning-header .modal-body{
+    overflow: visible !important;
 }

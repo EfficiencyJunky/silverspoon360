@@ -112,6 +112,42 @@
 <div id="bgnd-overlay-with-cutouts" class="bgnd-mask-img">
 
     <div class="container vertical-align-middle">
+        
+        <!-- MOBILE DEVICE WARNING HEADER POPUP -->
+        <div id="mobile-device-warning-header" class="modal-content collapse">
+            <div class="modal-header justify-content-center">
+                <h5 class="modal-title mr-1" style="font-size: 1.1rem">
+                <!-- <h5 class="modal-title"> -->
+                    <!-- <i class="fas fa-exclamation-triangle mr-1" style="color:red;"></i> -->
+                    <span class="mr-2" style="font-size: 1.2rem">😭</span>
+                    Not working on Mobile Web
+                    <span class="ml-1" style="font-size: 1.2rem">😭</span>
+                    <!-- <i class="fas fa-exclamation-triangle ml-1" style="color:red;"></i> -->
+                </h5>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div>
+                        To enjoy the Silverspoon 360 Experience, please visit this webpage on your desktop or laptop computer.
+                    </div>
+                    <div class="d-flex flex-row align-items-center mt-2 url_copy_box no-pad-right no-margin-left-right">
+                        <textarea id="copy-url-textarea-mobile" class="url-textarea" readonly>https://silverspoon360.com</textarea>
+                        <button id="copy-url-button-mobile" type="button" class="btn btn-primary ml-auto">Tap to copy</button>
+                    </div>
+                    <div class="mt-2 justify-content-center">
+                        <small>*Tap the button above to copy this website to your clipboard. Then send it to yourself to open on a computer!</small><br>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="d-flex justify-content-center"> -->
+                <button id="mobile-device-warning-dismiss-button" type="button" class="btn btn-secondary btn-sm">dismiss</button>
+            <!-- </div> -->
+        </div>
+
+
         <!-- <div class="row mb-4 justify-content-center">
             <div class="col-12 d-flex justify-content-center">
                 <div id="title-section" class="d-flex  justify-content-center">
@@ -147,7 +183,11 @@
                         <button id="playback-rate" hidden>1x</button>
                         <button id="zoom-out">zoom</button>
                         <i id="info-button-player" class="fas fa-info-circle"></i>
-                    </div>        
+                    </div>
+                    <!-- MOBILE DEVICE WARNING PLAYER POPUP -->
+                    <div id="mobile-device-warning-player" class="collapse" style="text-align: center;">
+                        <small>Unfortunately...YouTube has not made 360° videos compatible with mobile browsers. sorry!<br>The camera controls below may not function.</small>
+                    </div>
                 </div>
             </div>
         </div>
@@ -297,21 +337,21 @@
                     We had a ton of fun making this "quarantine inspired" music video experience. If it made you smile, then we'd love if you did one or all of the following:<br><br>
                 </div>
                 <div>
-                    <ol>
+                    <!-- <ol class="no-margin-left"> -->
+                    <ol class="no-margin-left">
                         <li class="mb-3">
                             <div>
                                 <strong>Share the fun!</strong> Send this website to someone else who might need a little quarantine fun-infusion
                             </div>
-                            <div class="col-12 d-flex align-items-center mt-2 url_copy_box no-pad-right">
-                                <code>
-                                    https://silverspoon360.com
-                                </code>
-                                <button id="copy-url-button" type="button" class="btn btn-secondary ml-auto">Click to Copy</button>
+                            <div class="col-12 d-flex align-items-center mt-2 url_copy_box no-pad-right no-pad-left">
+                                <!-- <code>https://silverspoon360.com</code> -->
+                                <textarea id="copy-url-textarea" class="url-textarea" readonly>https://silverspoon360.com</textarea>
+                                <button id="copy-url-button" type="button" class="btn btn-secondary ml-auto">Click to copy</button>
                             </div>
                         </li>
-                        <li class="mb-3"><strong>Watch again with Bonus Features!</strong> Discover the things you may have missed...this time with a couple new toys to play with.
+                        <li class="mb-3"><strong>Watch again with Bonus Features!</strong> Discover the things you may have missed...this time with new toys to play with.
                             <ul>
-                                <li>
+                                <li class="mt-2">
                                     <div class="mb-2">
                                         <em>New Camera Tricks:</em> Do a barrel roll!
                                     </div>
@@ -320,7 +360,7 @@
                                             Sorry, your browser doesn't support embedded videos.
                                     </video>
                                 </li>
-                                <li>
+                                <li class="mt-2">
                                     <div class="mb-2">
                                         <em>Speed Control:</em> Adjust the video speed to take things up (or down) a notch
                                     </div>
@@ -352,7 +392,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Wooooooot!!</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">dismiss</button>
             </div>
         </div>
     </div>
@@ -362,34 +402,32 @@
 
 
 <!-- MOBILE DEVICE MODAL -->
-<div id="mobile-device-modal" class="modal hide fade" tabindex="-1">
+<!-- <div id="mobile-device-modal" class="modal hide fade" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Not optimized for Mobile Web!</h5>
+                <h5 class="modal-title" style="font-size: 1.1rem">
+                    <i class="fas fa-exclamation-triangle mr-1" style="color:red;"></i>
+                    Not working on Mobile Web
+                    <i class="fas fa-exclamation-triangle ml-1" style="color:red;"></i>
+                </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
+                    <div>
+                        To enjoy the Silverspoon 360 Experience, please visit this webpage on your desktop or laptop computer.
+                    </div>
                     <div class="d-flex flex-row align-items-center mt-2 url_copy_box no-pad-right no-margin-left-right">
-                        <textarea id="url-textarea" readonly>https://silverspoon360.com</textarea>   
+                        <textarea id="copy-url-textarea-mobile" class="url-textarea" readonly>https://silverspoon360.com</textarea>   
                         <button id="copy-url-button-mobile" type="button" class="btn btn-secondary ml-auto">Tap to copy</button>
                     </div>
-                    <!-- <div class="row justify-content-center">
-                        <div class="col-sm-12">
-                        Level 1: .col-sm-9
-                        <div class="row">
-                            <div class="col-8 col-sm-6">
-                            Level 2: .col-8 .col-sm-6
-                            </div>
-                            <div class="col-4 col-sm-6">
-                            Level 2: .col-4 .col-sm-6
-                            </div>
-                        </div>
-                        </div>
-                    </div> -->
+                    <div class="mt-2">
+                        <small>*Tap the button above to copy this website to your clipboard and send it to yourself or share with a friend!</small><br>
+                        <small>**Unfortunately, 360° YouTube videos don't work on mobile web. </small>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -397,7 +435,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
 
@@ -432,104 +470,63 @@
     </script>
 
     <script>
-        document.getElementById("copy-url-button").onclick = copyURLToClipboard; 
-        document.getElementById("copy-url-button-mobile").onclick = copyURLToClipboardMobile; 
-        let urlTextArea = document.getElementById("url-textarea");
+        let buttonCopyText = 'Click to copy';
 
-        function copyURLToClipboard(event) {
-            let textarea = document.createElement('textarea');
-            let button = event.target;
+        $(window).on('load',function(){
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
 
-            textarea.innerHTML = 'https://silverspoon360.com';
-            document.body.appendChild(textarea);
-            textarea.select();
+            if(windowWidth <= 420 && windowHeight >= 550){
+                buttonCopyText = 'Tap to copy';
+                document.getElementById("copy-url-button").innerHTML = buttonCopyText;
+            }
+            
+        });  
 
-            button.innerHTML = 'Copied!';
-            setTimeout(function() { button.innerHTML = 'Click to copy'; }, 1500);
+        document.getElementById("copy-url-button").onclick = copyURLToClipboardInfo; 
+        document.getElementById("copy-url-button-mobile").onclick = copyURLToClipboardMobileWarning;
 
-            textarea.focus(); //SET FOCUS on the TEXTAREA
+        let copyUrlTextArea = document.getElementById("copy-url-textarea");
+        let copyUrlTextAreaMobileWarning = document.getElementById("copy-url-textarea-mobile");
+
+        // function copyURLToClipboard(event) {
+        //     let textarea = document.createElement('textarea');
+        //     let button = event.target;
+
+        //     textarea.innerHTML = 'https://silverspoon360.com';
+        //     document.body.appendChild(textarea);
+        //     textarea.select();
+
+        //     button.innerHTML = 'Copied!';
+        //     setTimeout(function() { button.innerHTML = 'Click to copy'; }, 1500);
+
+        //     textarea.focus(); //SET FOCUS on the TEXTAREA
+        //     document.execCommand('copy');
+        //     document.body.removeChild(textarea);
+        //     // button.focus();
+        // }
+
+        function copyURLToClipboardInfo(event){            
+            copyUrlTextArea.select();
             document.execCommand('copy');
-            document.body.removeChild(textarea);
-            // button.focus();
+            copyUrlTextArea.setSelectionRange(0,0);
+
+            let button = event.target;
+            button.innerHTML = 'Copied!';
+            setTimeout(function() { button.innerHTML = buttonCopyText; }, 1500);
+
         }
 
-        function copyURLToClipboardMobile(event){            
-            urlTextArea.select();
+        function copyURLToClipboardMobileWarning(event){            
+            copyUrlTextAreaMobileWarning.select();
             document.execCommand('copy');
-            urlTextArea.setSelectionRange(0,0);
+            copyUrlTextAreaMobileWarning.setSelectionRange(0,0);
 
             let button = event.target;
             button.innerHTML = 'Copied!';
             setTimeout(function() { button.innerHTML = 'Tap to copy'; }, 1500);
 
         }
-
-        // window.Clipboard = (function(window, document, navigator) {
-        //     var textArea,
-        //         copy;
-            
-
-
-
-        //     function createTextArea(text) {
-        //         textArea = document.createElement('textArea');
-        //         textArea.value = text;
-        //         document.body.appendChild(textArea);
-        //     }
-
-        //     function selectText() {
-        //         var range,
-        //             selection;
-
-        //         if (isOS()) {
-        //             range = document.createRange();
-        //             range.focus();
-        //             range.selectNodeContents(textArea);
-        //             selection = window.getSelection();
-        //             selection.removeAllRanges();
-        //             selection.addRange(range);
-        //             textArea.setSelectionRange(0, 999999);
-        //         } else {
-        //             textArea.select();
-        //         }
-        //         textArea.focus(); //SET FOCUS on the TEXTAREA
-        //     }
-
-        //     function copyToClipboard() {        
-        //         document.execCommand('copy');
-        //         document.body.removeChild(textArea);
-        //     }
-
-        //     // copy = function(text) {
-        //     //     createTextArea(text);
-        //     //     selectText();
-        //     //     copyToClipboard();
-        //     // };
-
-
-        //     copy = function(text) {
-        //         var range,
-        //             selection;
-
-        //         // if (isOS()) {
-        //         //     range = document.createRange();
-        //         //     range.focus();
-        //         //     range.selectNodeContents(textArea);
-        //         //     selection = window.getSelection();
-        //         //     selection.removeAllRanges();
-        //         //     selection.addRange(range);
-        //         //     urlTextArea.setSelectionRange(0, 999999);
-        //         // } else {
-        //             urlTextArea.select();
-        //         // }
-        //         document.execCommand('copy');
-        //         // textArea.focus(); //SET FOCUS on the TEXTAREA
-        //     };
-
-        //     return {
-        //         copy: copy
-        //     };
-        // })(window, document, navigator);
 
     </script>
 
@@ -540,10 +537,19 @@
             const windowHeight = window.innerHeight;
 
             if(windowWidth <= 420 && windowHeight >= 550){
-                $('#mobile-device-modal').modal('show');
+                // $('#mobile-device-modal').modal('show');
+                // document.getElementById("mobile-device-warning").hidden = false;
+                $("#mobile-device-warning-header").collapse("show");
+                $("#mobile-device-warning-player").collapse("show");
+
+                document.getElementById("mobile-device-warning-dismiss-button").onclick = dismissMobileDeviceWarningHeader;
             }
             
         });    
+
+        function dismissMobileDeviceWarningHeader(event){
+            $("#mobile-device-warning-header").collapse("hide");
+        }
     </script>
 
     <!-- <script type="text/javascript">
