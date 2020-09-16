@@ -19,6 +19,11 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+// a function that tests if our userAgent is an ipad or iphone
+function isOS() {
+    return navigator.userAgent.match(/ipad|iphone/i);
+}
+
 
 // icon blue
 const videoPlayerControlsColor = "#00A2FF";

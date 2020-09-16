@@ -292,7 +292,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body" style="overflow: hidden;">
+            <div class="modal-body">
                 <div>
                     We had a ton of fun making this "quarantine inspired" music video experience. If it made you smile, then we'd love if you did one or all of the following:<br><br>
                 </div>
@@ -373,11 +373,14 @@
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <div class="url_copy_box">
-                        <textarea id="url-textarea" readonly>https://silverspoon360.com</textarea>                    
-                        <button id="copy-url-button2" type="button" class="btn btn-secondary ml-auto">Click to Copy</button>
+                    <div class="col-12 d-flex align-items-center mt-2 url_copy_box no-pad-right">
+                        <!-- <code>
+                            https://silverspoon360.com
+                        </code> -->
+                        <textarea id="url-textarea" readonly>https://silverspoon360.com</textarea>   
+                        <button id="copy-url-button-mobile" type="button" class="btn btn-secondary ml-auto">Click to Copy</button>
                     </div>
-                    <div class="row justify-content-center">
+                    <!-- <div class="row justify-content-center">
                         <div class="col-sm-12">
                         Level 1: .col-sm-9
                         <div class="row">
@@ -389,7 +392,7 @@
                             </div>
                         </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="modal-footer">
@@ -433,7 +436,7 @@
 
     <script>
         document.getElementById("copy-url-button").onclick = copyURLToClipboard; 
-        document.getElementById("copy-url-button2").onclick = copyURLToClipboard2; 
+        document.getElementById("copy-url-button-mobile").onclick = copyURLToClipboardMobile; 
         let urlTextArea = document.getElementById("url-textarea");
 
         function copyURLToClipboard(event) {
@@ -453,79 +456,78 @@
             // button.focus();
         }
 
-        function copyURLToClipboard2(event){
-            Clipboard.copy('https://silverspoon360.com');
+        function copyURLToClipboardMobile(event){
+            urlTextArea.select();
+            document.execCommand('copy');
+            urlTextArea.setSelectionRange(0,0);
         }
 
-        window.Clipboard = (function(window, document, navigator) {
-            var textArea,
-                copy;
+        // window.Clipboard = (function(window, document, navigator) {
+        //     var textArea,
+        //         copy;
             
 
-            function isOS() {
-                return navigator.userAgent.match(/ipad|iphone/i);
-            }
-
-            function createTextArea(text) {
-                textArea = document.createElement('textArea');
-                textArea.value = text;
-                document.body.appendChild(textArea);
-            }
-
-            function selectText() {
-                var range,
-                    selection;
-
-                if (isOS()) {
-                    range = document.createRange();
-                    range.focus();
-                    range.selectNodeContents(textArea);
-                    selection = window.getSelection();
-                    selection.removeAllRanges();
-                    selection.addRange(range);
-                    textArea.setSelectionRange(0, 999999);
-                } else {
-                    textArea.select();
-                }
-                textArea.focus(); //SET FOCUS on the TEXTAREA
-            }
-
-            function copyToClipboard() {        
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-            }
-
-            // copy = function(text) {
-            //     createTextArea(text);
-            //     selectText();
-            //     copyToClipboard();
-            // };
 
 
-            copy = function(text) {
-                var range,
-                    selection;
+        //     function createTextArea(text) {
+        //         textArea = document.createElement('textArea');
+        //         textArea.value = text;
+        //         document.body.appendChild(textArea);
+        //     }
 
-                // if (isOS()) {
-                //     range = document.createRange();
-                //     range.focus();
-                //     range.selectNodeContents(textArea);
-                //     selection = window.getSelection();
-                //     selection.removeAllRanges();
-                //     selection.addRange(range);
-                //     urlTextArea.setSelectionRange(0, 999999);
-                // } else {
-                    urlTextArea.select();
-                // }
-                document.execCommand('copy');
-                // textArea.focus(); //SET FOCUS on the TEXTAREA
-            };
+        //     function selectText() {
+        //         var range,
+        //             selection;
 
-            return {
-                copy: copy
-            };
-        })(window, document, navigator);
+        //         if (isOS()) {
+        //             range = document.createRange();
+        //             range.focus();
+        //             range.selectNodeContents(textArea);
+        //             selection = window.getSelection();
+        //             selection.removeAllRanges();
+        //             selection.addRange(range);
+        //             textArea.setSelectionRange(0, 999999);
+        //         } else {
+        //             textArea.select();
+        //         }
+        //         textArea.focus(); //SET FOCUS on the TEXTAREA
+        //     }
 
+        //     function copyToClipboard() {        
+        //         document.execCommand('copy');
+        //         document.body.removeChild(textArea);
+        //     }
+
+        //     // copy = function(text) {
+        //     //     createTextArea(text);
+        //     //     selectText();
+        //     //     copyToClipboard();
+        //     // };
+
+
+        //     copy = function(text) {
+        //         var range,
+        //             selection;
+
+        //         // if (isOS()) {
+        //         //     range = document.createRange();
+        //         //     range.focus();
+        //         //     range.selectNodeContents(textArea);
+        //         //     selection = window.getSelection();
+        //         //     selection.removeAllRanges();
+        //         //     selection.addRange(range);
+        //         //     urlTextArea.setSelectionRange(0, 999999);
+        //         // } else {
+        //             urlTextArea.select();
+        //         // }
+        //         document.execCommand('copy');
+        //         // textArea.focus(); //SET FOCUS on the TEXTAREA
+        //     };
+
+        //     return {
+        //         copy: copy
+        //     };
+        // })(window, document, navigator);
 
     </script>
 
