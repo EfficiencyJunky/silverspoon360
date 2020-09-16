@@ -265,11 +265,14 @@ body {
     margin-right: 1rem;   */
     margin-left: 0.6rem;  
     margin-right: 0.6rem;  
+    padding-right: 0;
+    padding-left: 0;  
     resize: none;
     border: none;
     font-size: 85%;
     color: #e83e8c;
     font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+    overflow: visible;
     box-sizing: border-box;  
     background-color: transparent;
     outline: none;
