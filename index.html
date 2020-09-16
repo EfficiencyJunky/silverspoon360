@@ -308,7 +308,7 @@
                                 </code>
                                 <button id="copy-url-button" type="button" class="btn btn-secondary ml-auto">Click to Copy</button>
                             </div>
-                        </li>                    
+                        </li>
                         <li class="mb-3"><strong>Watch again with Bonus Features!</strong> Discover the things you may have missed...this time with a couple new toys to play with.
                             <ul>
                                 <li>
@@ -397,10 +397,6 @@
 
 
 
-
-
-
-
     <!-- jQuery, Popper.js, and Bootstrap.js - FOR BOOTSTRAP 4 -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" 
@@ -445,7 +441,7 @@
         document.getElementById("copy-url-button").onclick = copyURLToClipboard; 
 
         function copyURLToClipboard(event) {
-            var textarea = document.createElement('textarea');
+            let textarea = document.createElement('textarea');
             let button = event.target;
 
             textarea.innerHTML = 'https://silverspoon360.com';
@@ -455,14 +451,16 @@
             button.innerHTML = 'Copied!';
             setTimeout(function() { button.innerHTML = 'Click to copy'; }, 1500);
 
+            textarea.focus(); //SET FOCUS on the TEXTAREA
             document.execCommand('copy');
             document.body.removeChild(textarea);
+            // button.focus();
         }
     </script>
 
 
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         $('#congrats-modal').modal('show');
-    </script>
+    </script> -->
 </body>
 </html>
