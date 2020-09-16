@@ -506,17 +506,17 @@
                 var range,
                     selection;
 
-                if (isOS()) {
-                    range = document.createRange();
-                    range.focus();
-                    range.selectNodeContents(textArea);
-                    selection = window.getSelection();
-                    selection.removeAllRanges();
-                    selection.addRange(range);
-                    urlTextArea.setSelectionRange(0, 999999);
-                } else {
+                // if (isOS()) {
+                //     range = document.createRange();
+                //     range.focus();
+                //     range.selectNodeContents(textArea);
+                //     selection = window.getSelection();
+                //     selection.removeAllRanges();
+                //     selection.addRange(range);
+                //     urlTextArea.setSelectionRange(0, 999999);
+                // } else {
                     urlTextArea.select();
-                }
+                // }
                 document.execCommand('copy');
                 // textArea.focus(); //SET FOCUS on the TEXTAREA
             };
