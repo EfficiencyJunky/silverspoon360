@@ -373,12 +373,9 @@
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <div class="col-12 d-flex align-items-center mt-2 url_copy_box no-pad-right">
-                        <!-- <code>
-                            https://silverspoon360.com
-                        </code> -->
+                    <div class="d-flex flex-row align-items-center mt-2 url_copy_box no-pad-right no-margin-left-right">
                         <textarea id="url-textarea" readonly>https://silverspoon360.com</textarea>   
-                        <button id="copy-url-button-mobile" type="button" class="btn btn-secondary ml-auto">Click to Copy</button>
+                        <button id="copy-url-button-mobile" type="button" class="btn btn-secondary ml-auto">Tap to copy</button>
                     </div>
                     <!-- <div class="row justify-content-center">
                         <div class="col-sm-12">
@@ -396,7 +393,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Let's Rock!</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">close</button>
             </div>
         </div>
     </div>
@@ -456,10 +453,15 @@
             // button.focus();
         }
 
-        function copyURLToClipboardMobile(event){
+        function copyURLToClipboardMobile(event){            
             urlTextArea.select();
             document.execCommand('copy');
             urlTextArea.setSelectionRange(0,0);
+
+            let button = event.target;
+            button.innerHTML = 'Copied!';
+            setTimeout(function() { button.innerHTML = 'Tap to copy'; }, 1500);
+
         }
 
         // window.Clipboard = (function(window, document, navigator) {
