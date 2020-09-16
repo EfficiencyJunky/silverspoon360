@@ -373,7 +373,10 @@
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <button id="copy-url-button2" type="button" class="btn btn-secondary ml-auto">Click to Copy</button>
+                    <div class="url_copy_box">
+                        <textarea id="url-textarea" readonly>https://silverspoon360.com</textarea>                    
+                        <button id="copy-url-button2" type="button" class="btn btn-secondary ml-auto">Click to Copy</button>
+                    </div>
                     <div class="row justify-content-center">
                         <div class="col-sm-12">
                         Level 1: .col-sm-9
@@ -431,6 +434,7 @@
     <script>
         document.getElementById("copy-url-button").onclick = copyURLToClipboard; 
         document.getElementById("copy-url-button2").onclick = copyURLToClipboard2; 
+        let urlTextArea = document.getElementById("url-textarea");
 
         function copyURLToClipboard(event) {
             let textarea = document.createElement('textarea');
@@ -456,6 +460,7 @@
         window.Clipboard = (function(window, document, navigator) {
             var textArea,
                 copy;
+            
 
             function isOS() {
                 return navigator.userAgent.match(/ipad|iphone/i);
@@ -473,6 +478,7 @@
 
                 if (isOS()) {
                     range = document.createRange();
+                    range.focus();
                     range.selectNodeContents(textArea);
                     selection = window.getSelection();
                     selection.removeAllRanges();
@@ -489,10 +495,30 @@
                 document.body.removeChild(textArea);
             }
 
+            // copy = function(text) {
+            //     createTextArea(text);
+            //     selectText();
+            //     copyToClipboard();
+            // };
+
+
             copy = function(text) {
-                createTextArea(text);
-                selectText();
-                copyToClipboard();
+                var range,
+                    selection;
+
+                if (isOS()) {
+                    range = document.createRange();
+                    range.focus();
+                    range.selectNodeContents(textArea);
+                    selection = window.getSelection();
+                    selection.removeAllRanges();
+                    selection.addRange(range);
+                    urlTextArea.setSelectionRange(0, 999999);
+                } else {
+                    urlTextArea.select();
+                }
+                document.execCommand('copy');
+                // textArea.focus(); //SET FOCUS on the TEXTAREA
             };
 
             return {
