@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-ND6S5M6');</script>
+<!-- End Google Tag Manager -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wolf and Love - Silverspoon 360 Experience</title>
@@ -35,6 +44,8 @@
 
 
 
+
+
 <!-- CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS -->
 
   <!-- Bootstrap 4 CSS - Stable 4.5 compiled and minified -->
@@ -60,6 +71,21 @@
             color: #0078bd;
             /* color: #00A2FF; */
         }
+
+
+        #congrats-modal strong{
+            font-weight: 800;
+            /* font-style: initial; */
+        }
+
+        #congrats-modal ul{
+            margin-left:-20px;
+            /* font-style: initial; */
+        }
+
+    
+
+
    </style>
    
 <!-- CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS CSS -->
@@ -72,7 +98,14 @@
 
 
 </head>
+
 <body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-ND6S5M6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
 <div id="bgnd-overlay-with-cutouts" class="bgnd-mask-img">
 
     <div class="container vertical-align-middle">
@@ -190,8 +223,9 @@
             </div>
             <div class="modal-body">
                 <ol>
-                    <li>Click the flashing red icons to re-create the video as<br>
-                        Wolf & Love imagined it <small>(or choose your own adventure)</small>
+                    <li>Click the flashing red icons to re-create the video<br>
+                        as Wolf & Love imagined it<br> 
+                        <small>(or choose your own adventure)</small>
                     </li>
                         <video width="250px" autoplay loop muted poster="media/info/rthm_icons_ftue_img.png">
                             <source src="/media/info/rthm_icons_ftue.mp4" type="video/mp4">
@@ -208,7 +242,7 @@
                             </video>
                         </div>
                     <li>Click and drag around the video to move the camera</li>
-                        <video height="150px" autoplay loop muted poster="media/info/lead_icons_ftue_img_1.png" style="padding:15px;">
+                        <video height="150px" autoplay loop muted poster="media/info/drag_video_img.png" style="padding:15px;">
                             <source src="/media/info/drag_video.mp4" type="video/mp4">
                             Sorry, your browser doesn't support embedded videos.
                         </video>                    
@@ -240,6 +274,87 @@
         </div>
     </div>
 </div>
+
+
+
+<div id="congrats-modal" class="modal hide fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">🎉 Congratulations! Bonus features unlocked! 🎉</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="overflow: hidden;">
+                We had a ton of fun making this "quarantine inspired" music video experience. If it made you smile, then we'd love if you did one or all of the following:<br><br>
+                <ol>
+                    <li class="mb-3">
+                        <div>
+                            <strong>Share the fun!</strong> Send this website to someone else who might need a little quarantine fun-infusion
+                        </div>
+                        {link_to_share}
+                    </li>                    
+                    <li class="mb-3"><strong>Watch again with Bonus Features!</strong> Discover the things you may have missed...this time with a couple new toys to play with.
+                        <ul>
+                            <li>
+                                <div class="mb-2">
+                                    <em>New Camera Tricks:</em> Do a barrel roll!
+                                </div>
+                                <video width="250px" autoplay loop muted poster="media/congrats/bonus_buttons_img.png">
+                                    <source src="/media/congrats/bonus_buttons.mp4" type="video/mp4">
+                                        Sorry, your browser doesn't support embedded videos.
+                                </video>
+                            </li>
+                            <li>
+                                <div class="mb-2">
+                                    <em>Speed Control:</em> Adjust the video speed to take things up (or down) a notch
+                                </div>
+                                
+                                <video height="40px" autoplay loop muted poster="media/congrats/speedcontrol_img.png">
+                                    <source src="/media/congrats/speedcontrol.mp4" type="video/mp4">
+                                    Sorry, your browser doesn't support embedded videos.
+                                </video>
+                            </li>                            
+                        </ul>
+                    </li>
+                    <li class="mb-3">
+                        <div class="mb-2">
+                            <strong>Subscribe for more!</strong> We've been very productive while stuck inside during quarantine and 2020 ain't over yet!<br>
+                            Don't miss our upcoming releases!
+                        </div>
+                        {subscribe_button}
+                    </li>
+                </ol>
+                
+                <div class="mt-5">
+                    <em><strong>P.S.</strong> Thanks to our friend <a href="https://turnerkirk.com" target="_blank">Turner Kirk</a> for building this awesome website.</em>
+                </div>
+                <!-- <div class="container-fluid">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-12">
+                        Level 1: .col-sm-9
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+                            Level 2: .col-8 .col-sm-6
+                            </div>
+                            <div class="col-4 col-sm-6">
+                            Level 2: .col-4 .col-sm-6
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Wooooooot!!</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 
 <div id="mobile-device-modal" class="modal hide fade" tabindex="-1">
@@ -321,7 +436,7 @@
         });    
     </script>
     <!-- <script type="text/javascript">
-        $('#info-modal').modal('show');
-    </script> -->    
+        $('#congrats-modal').modal('show');
+    </script> -->
 </body>
 </html>

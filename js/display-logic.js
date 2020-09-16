@@ -121,6 +121,7 @@ function updateUIFromVideoTime(time){
         if(!starfoxUnlocked){
             unlockStarfox();
             yt_setPlaybackRateButtonVisibility(setHidden = false);
+            $('#congrats-modal').modal('show');
             starfoxUnlocked = true;
         }
         // updateIconHighlight(highlightSync.length-1);
