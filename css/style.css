@@ -144,15 +144,15 @@ body {
 /* since we change the background of the body for the animated gifs */
 /* this is the div that we display on top of that to create the mask */
 .bgnd-mask-img {
-    background-color: white;
-    /* background:  */
+    /* background-color: white; */
+    background: 
     /* top, transparent grey color faked with gradient */ 
-    /* linear-gradient(
+    linear-gradient(
         rgba(170, 170, 170, 0.4), 
         rgba(170, 170, 170, 0.4)
-    ), */
+    ),
     /* bottom, image mask with cutouts showing through to body bgnd image */
-    /* url("../img/bgndmask_offwhite.png"); */
+    url("../img/bgndmask_offwhite.png");
 
     height: 100%;
     width: 100%;
@@ -228,6 +228,17 @@ body {
 
 
 
+.url_copy_box {
+    box-sizing: border-box;
+    background-color: #f7f7f7;
+    color: #202020;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
 
+.url_copy_box code{
+    margin-right: 1rem;
+}
 
-
+.no-pad-right{
+    padding-right:0px;
+}

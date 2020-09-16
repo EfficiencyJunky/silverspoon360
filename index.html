@@ -92,8 +92,11 @@
    
    
 <!-- JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS -->
-   <!-- Font Awesome JS -->
+    <!-- Font Awesome JS -->
     <script src="https://kit.fontawesome.com/d4a81fd676.js" crossorigin="anonymous"></script>
+    
+    <!-- YouTube Subscribe button -->
+    <script src="https://apis.google.com/js/platform.js"></script>
 <!-- JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS -->
 
 
@@ -269,6 +272,9 @@
                 </div> -->
             </div>
             <div class="modal-footer">
+                <!-- <div class="mr-auto">
+                    This is some text here
+                </div> -->
                 <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Let's Rock!</button>
             </div>
         </div>
@@ -287,64 +293,63 @@
                 </button>
             </div>
             <div class="modal-body" style="overflow: hidden;">
-                We had a ton of fun making this "quarantine inspired" music video experience. If it made you smile, then we'd love if you did one or all of the following:<br><br>
-                <ol>
-                    <li class="mb-3">
-                        <div>
-                            <strong>Share the fun!</strong> Send this website to someone else who might need a little quarantine fun-infusion
-                        </div>
-                        {link_to_share}
-                    </li>                    
-                    <li class="mb-3"><strong>Watch again with Bonus Features!</strong> Discover the things you may have missed...this time with a couple new toys to play with.
-                        <ul>
-                            <li>
-                                <div class="mb-2">
-                                    <em>New Camera Tricks:</em> Do a barrel roll!
-                                </div>
-                                <video width="250px" autoplay loop muted poster="media/congrats/bonus_buttons_img.png">
-                                    <source src="/media/congrats/bonus_buttons.mp4" type="video/mp4">
+                <div>
+                    We had a ton of fun making this "quarantine inspired" music video experience. If it made you smile, then we'd love if you did one or all of the following:<br><br>
+                </div>
+                <div>
+                    <ol>
+                        <li class="mb-3">
+                            <div>
+                                <strong>Share the fun!</strong> Send this website to someone else who might need a little quarantine fun-infusion
+                            </div>
+                            <div class="col-12 d-flex align-items-center mt-2 url_copy_box no-pad-right">
+                                <code>
+                                    https://silverspoon360.com
+                                </code>
+                                <button id="copy-url-button" type="button" class="btn btn-secondary ml-auto">Click to Copy</button>
+                            </div>
+                        </li>                    
+                        <li class="mb-3"><strong>Watch again with Bonus Features!</strong> Discover the things you may have missed...this time with a couple new toys to play with.
+                            <ul>
+                                <li>
+                                    <div class="mb-2">
+                                        <em>New Camera Tricks:</em> Do a barrel roll!
+                                    </div>
+                                    <video width="250px" autoplay loop muted poster="media/congrats/bonus_buttons_img.png">
+                                        <source src="/media/congrats/bonus_buttons.mp4" type="video/mp4">
+                                            Sorry, your browser doesn't support embedded videos.
+                                    </video>
+                                </li>
+                                <li>
+                                    <div class="mb-2">
+                                        <em>Speed Control:</em> Adjust the video speed to take things up (or down) a notch
+                                    </div>
+                                    
+                                    <video height="40px" autoplay loop muted poster="media/congrats/speedcontrol_img.png">
+                                        <source src="/media/congrats/speedcontrol.mp4" type="video/mp4">
                                         Sorry, your browser doesn't support embedded videos.
-                                </video>
-                            </li>
-                            <li>
-                                <div class="mb-2">
-                                    <em>Speed Control:</em> Adjust the video speed to take things up (or down) a notch
-                                </div>
-                                
-                                <video height="40px" autoplay loop muted poster="media/congrats/speedcontrol_img.png">
-                                    <source src="/media/congrats/speedcontrol.mp4" type="video/mp4">
-                                    Sorry, your browser doesn't support embedded videos.
-                                </video>
-                            </li>                            
-                        </ul>
-                    </li>
-                    <li class="mb-3">
-                        <div class="mb-2">
-                            <strong>Subscribe for more!</strong> We've been very productive while stuck inside during quarantine and 2020 ain't over yet!<br>
-                            Don't miss our upcoming releases!
-                        </div>
-                        {subscribe_button}
-                    </li>
-                </ol>
-                
+                                    </video>
+                                </li>                            
+                            </ul>
+                        </li>
+                        <li class="mb-3">
+                            <div class="mb-2">
+                                <strong>Subscribe for more!</strong> We've been very productive while stuck inside during quarantine and 2020 ain't over yet!<br>
+                                Don't miss our upcoming releases!
+                            </div>
+                            <div>
+                                <a href="https://www.youtube.com/channel/UCN-AjUgErXaMT_PDWcxWYUA" role="button" class="btn btn-danger" style="display:none !important">
+                                    <i class="fab fa-youtube align-middle" style="font-size: 2em;"></i>
+                                    <span class="align-middle" style="font-size: 1.5em; margin-left:0.2em;">Subscribe</span>
+                                </a>
+                                <div class="g-ytsubscribe" data-channelid="UCN-AjUgErXaMT_PDWcxWYUA" data-layout="full" data-count="hidden"></div>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
                 <div class="mt-5">
                     <em><strong>P.S.</strong> Thanks to our friend <a href="https://turnerkirk.com" target="_blank">Turner Kirk</a> for building this awesome website.</em>
                 </div>
-                <!-- <div class="container-fluid">
-                    <div class="row justify-content-center">
-                        <div class="col-sm-12">
-                        Level 1: .col-sm-9
-                        <div class="row">
-                            <div class="col-8 col-sm-6">
-                            Level 2: .col-8 .col-sm-6
-                            </div>
-                            <div class="col-4 col-sm-6">
-                            Level 2: .col-4 .col-sm-6
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                </div> -->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Wooooooot!!</button>
@@ -435,8 +440,29 @@
             
         });    
     </script>
-    <!-- <script type="text/javascript">
+
+    <script>
+        document.getElementById("copy-url-button").onclick = copyURLToClipboard; 
+
+        function copyURLToClipboard(event) {
+            var textarea = document.createElement('textarea');
+            let button = event.target;
+
+            textarea.innerHTML = 'https://silverspoon360.com';
+            document.body.appendChild(textarea);
+            textarea.select();
+
+            button.innerHTML = 'Copied!';
+            setTimeout(function() { button.innerHTML = 'Click to copy'; }, 1500);
+
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+        }
+    </script>
+
+
+    <script type="text/javascript">
         $('#congrats-modal').modal('show');
-    </script> -->
+    </script>
 </body>
 </html>
