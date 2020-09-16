@@ -208,8 +208,9 @@
                         <!-- <a href="http://twitter.com/wolfandloveyou" target="_blank"><i class="fab fa-twitter"></i></a> -->
                 </div>
             </div>
+            
         </div>
-
+        <button id="copy-url-button2" type="button" class="btn btn-secondary ml-auto">Click to Copy</button>
     </div>
 
 </div>
@@ -429,6 +430,7 @@
 
     <script>
         document.getElementById("copy-url-button").onclick = copyURLToClipboard; 
+        document.getElementById("copy-url-button2").onclick = copyURLToClipboard; 
 
         function copyURLToClipboard(event) {
             let textarea = document.createElement('textarea');
@@ -447,7 +449,7 @@
             // button.focus();
         }
     </script>
-    
+
 
     <script type="text/javascript">
         $(window).on('load',function(){
