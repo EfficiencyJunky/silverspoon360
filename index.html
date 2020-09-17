@@ -265,35 +265,39 @@
                 </button>
             </div>
             <div class="modal-body">
-                <ol>
-                    <li>Click the flashing red icons to re-create the video<br>
-                        as Wolf & Love imagined it<br> 
-                        <small>(or choose your own adventure)</small>
-                    </li>
-                        <video width="250px" autoplay loop muted poster="media/info/rthm_icons_ftue_img.png">
-                            <source src="/media/info/rthm_icons_ftue.mp4" type="video/mp4">
-                            <source src="/media/info/rthm_icons_ftue.webm" type="video/webm">
-                            Sorry, your browser doesn't support embedded videos.
-                        </video>
-                    <li>
-                        The locked icons will be revealed as the video plays
-                    </li>
-                        <div id="lead-icons-ftue-video-mask">
-                            <video height="90px" autoplay loop muted poster="media/info/lead_icons_ftue_img_1.png">
-                                <source src="/media/info/lead_icons_ftue.mp4" type="video/mp4">
+                <div>
+                    <ol>
+                        <li>Click the flashing red icons to re-create the video<br>
+                            as Wolf & Love imagined it<br> 
+                            <small>(or choose your own adventure)</small>
+                        </li>
+                            <video width="250px" autoplay loop muted poster="media/info/rthm_icons_ftue_img.png">
+                                <source src="/media/info/rthm_icons_ftue.mp4" type="video/mp4">
+                                <source src="/media/info/rthm_icons_ftue.webm" type="video/webm">
                                 Sorry, your browser doesn't support embedded videos.
                             </video>
-                        </div>
-                    <li>Click and drag around the video to move the camera</li>
-                        <video height="150px" autoplay loop muted poster="media/info/drag_video_img.png" style="padding:15px;">
-                            <source src="/media/info/drag_video.mp4" type="video/mp4">
-                            Sorry, your browser doesn't support embedded videos.
-                        </video>                    
-                    <li>Click the <img height="40px" src="media/info/zoom.png"> button to zoom in/out from close-ups</li>
-                        
-                    <li>Watch to the end to unlock special features :)</li>
-                </ol>
-                
+                        <li>
+                            The locked icons will be revealed as the video plays
+                        </li>
+                            <div id="lead-icons-ftue-video-mask">
+                                <video height="90px" autoplay loop muted poster="media/info/lead_icons_ftue_img_1.png">
+                                    <source src="/media/info/lead_icons_ftue.mp4" type="video/mp4">
+                                    Sorry, your browser doesn't support embedded videos.
+                                </video>
+                            </div>
+                        <li>Click and drag around the video to move the camera</li>
+                            <video height="150px" autoplay loop muted poster="media/info/drag_video_img.png" style="padding:15px;">
+                                <source src="/media/info/drag_video.mp4" type="video/mp4">
+                                Sorry, your browser doesn't support embedded videos.
+                            </video>                    
+                        <li>Click the <img height="40px" src="media/info/zoom.png"> button to zoom in/out from close-ups</li>
+                            
+                        <li>Watch to the end to unlock special features :)</li>
+                    </ol>
+                </div>
+                <div class="mt-4">
+                    <em><strong>P.S.</strong> Thanks to our friend <a href="https://turnerkirk.com" target="_blank">Turner Kirk</a> for building this awesome website.</em>
+                </div>                
 
                 <!-- <div class="container-fluid">
                     <div class="row justify-content-center">
@@ -347,6 +351,7 @@
                                 <!-- <code>https://silverspoon360.com</code> -->
                                 <textarea id="copy-url-textarea" class="url-textarea" readonly>https://silverspoon360.com</textarea>
                                 <button id="copy-url-button" type="button" class="btn btn-secondary ml-auto">Click to copy</button>
+                                <!-- <button id="copy-url-button" type="button" class="btn btn-primary ml-auto">Click to copy</button> -->
                             </div>
                         </li>
                         <li class="mb-3"><strong>Watch again with Bonus Features!</strong> Discover the things you may have missed...this time with new toys to play with.
@@ -387,12 +392,12 @@
                         </li>
                     </ol>
                 </div>
-                <div class="mt-5">
+                <div class="mt-4">
                     <em><strong>P.S.</strong> Thanks to our friend <a href="https://turnerkirk.com" target="_blank">Turner Kirk</a> for building this awesome website.</em>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">dismiss</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Let's Jam!</button>
             </div>
         </div>
     </div>
@@ -458,6 +463,7 @@
     <script type="text/javascript" src="js/display-logic.js"></script>
     <script type="text/javascript" src="js/interaction-logic.js"></script>
 
+    <!-- JAVASCRIPT FOR MODALS AND POPUPS INTERACTION HANDLING -->
     <script type="text/javascript">
         document.getElementById("info-button-player").onclick = infoButtonClickHandler;
 
@@ -483,11 +489,11 @@
             
         });  
 
-        document.getElementById("copy-url-button").onclick = copyURLToClipboardInfo; 
-        document.getElementById("copy-url-button-mobile").onclick = copyURLToClipboardMobileWarning;
+        document.getElementById("copy-url-button").onclick = copyURLToClipboardInfoModal; 
+        document.getElementById("copy-url-button-mobile").onclick = copyURLToClipboardMobileDeviceWarningHeader;
 
         let copyUrlTextArea = document.getElementById("copy-url-textarea");
-        let copyUrlTextAreaMobileWarning = document.getElementById("copy-url-textarea-mobile");
+        let copyUrlTextAreaMobile = document.getElementById("copy-url-textarea-mobile");
 
         // function copyURLToClipboard(event) {
         //     let textarea = document.createElement('textarea');
@@ -500,13 +506,12 @@
         //     button.innerHTML = 'Copied!';
         //     setTimeout(function() { button.innerHTML = 'Click to copy'; }, 1500);
 
-        //     textarea.focus(); //SET FOCUS on the TEXTAREA
+        //     textarea.focus(); //SET FOCUS on the TEXTAREA - necessary when using modals
         //     document.execCommand('copy');
         //     document.body.removeChild(textarea);
-        //     // button.focus();
         // }
 
-        function copyURLToClipboardInfo(event){            
+        function copyURLToClipboardInfoModal(event){            
             copyUrlTextArea.select();
             document.execCommand('copy');
             copyUrlTextArea.setSelectionRange(0,0);
@@ -517,10 +522,10 @@
 
         }
 
-        function copyURLToClipboardMobileWarning(event){            
-            copyUrlTextAreaMobileWarning.select();
+        function copyURLToClipboardMobileDeviceWarningHeader(event){            
+            copyUrlTextAreaMobile.select();
             document.execCommand('copy');
-            copyUrlTextAreaMobileWarning.setSelectionRange(0,0);
+            copyUrlTextAreaMobile.setSelectionRange(0,0);
 
             let button = event.target;
             button.innerHTML = 'Copied!';
