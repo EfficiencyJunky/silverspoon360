@@ -112,7 +112,7 @@ function updateUIFromVideoTime(time){
         if(pageFirstLoad){
             yt_setSphericalProps(initialCameraPosition);
             il_setZoomAndRollProps(initialCameraPosition);
-
+            dataLayer.push({'ftueActive': 'true'});
             // $('#rhythm-icons-collapse').collapse('show');
             // $('#lead-icons-collapse').collapse('show');
 
@@ -136,10 +136,11 @@ function updateUIFromVideoTime(time){
         // updateIconHighlight(highlightSync.length-1);
         return;
     }
-    // this presents the FTUE "click" text from flashing if the person seeks to a later part of the video before the FTUE has a chance to show itself
+    // this prevents the FTUE "click" text from flashing if the person seeks to a later part of the video before the FTUE has a chance to show itself
     else if(beatIndex >= show_ftue && ftue){
-        ftue = false;
         ftueIconText.hidden = true;
+        ftue = false;
+        dataLayer.push({'ftueActive': 'false'});
     }
     
     updateLeadRowIcons(beatIndex);
@@ -377,9 +378,10 @@ function updateIconHighlight(beatIndex){
                 if(iconDivFlashTimerID !== undefined){
                     clearFlashingIconDivAndTimer();
                 }
-
+                
                 flashing = true;
                 iconDivToFlash = iconDiv;
+                dataLayer.push({'iconFlashing': highlightIconName});
                 iconDivFlashTimerID = window.setInterval( flashIconDiv, iconDivFlashInterval);
                 
             }
@@ -413,13 +415,14 @@ function flashIconDiv(){
 
     
     if( (timesIconDivFlashed >= numTimesToFlashDiv * 2) && (timesIconDivFlashed % 2 === 0)){
-        flashing = false;
+        flashing = false;        
     }
     else if(timesIconDivFlashed > numTimesToFlashDiv * 6){
         clearFlashingIconDivAndTimer();
         if(ftue){
             ftueIconText.hidden = true;
             ftue = false;
+            dataLayer.push({'ftueActive': 'false'});
         }             
 
     }
@@ -441,6 +444,7 @@ function clearFlashingIconDivAndTimer(){
     timesIconDivFlashed = 0;
 
     flashing = false;
+    dataLayer.push({'iconFlashing': 'false'});
 
 }
 

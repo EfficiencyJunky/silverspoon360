@@ -106,6 +106,7 @@ let youTubePlayerOptions = {
     'fs': 0, // prevents fullscreen button (doesn't matter if 'controls' is set to 0)
     'origin': "https://silverspoon360.com",
     'widget_referrer': "https://silverspoon360.com",
+    'enablejsapi': 1,
     'rel': 0 // if the rel parameter is set to 0, related videos will come from the same channel as the video that was just played.
 };
 
