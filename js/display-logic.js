@@ -88,13 +88,16 @@ adjustUIDimensions(undefined, updateVideoPlayer = false);
 yt_setTransportControlsColors(videoPlayerControlsColor, videoPlayerControlsHoverColor);
 
 // this will create the CSS for the hover color for our icons
-
 if(typeof(iconBgndImageURL) !== "undefined" && iconBgndImageURL !== false){
     createIconHoverColorCSS(iconHoverClass, iconBgndImageHoverOverlay, iconBgndImageURL);
 }
 else{
     createIconHoverColorCSS(iconHoverClass, iconHoverColor);
 }
+
+// show our rhythm icons
+// $('#rhythm-icons-collapse').collapse('show');
+// $('#lead-icons-collapse').collapse('show');
 
 // *****************************************************
 // FUNCTIONS
@@ -109,6 +112,10 @@ function updateUIFromVideoTime(time){
         if(pageFirstLoad){
             yt_setSphericalProps(initialCameraPosition);
             il_setZoomAndRollProps(initialCameraPosition);
+
+            // $('#rhythm-icons-collapse').collapse('show');
+            // $('#lead-icons-collapse').collapse('show');
+
             pageFirstLoad = false;
         }
         updateIconHighlight(0);
@@ -119,6 +126,7 @@ function updateUIFromVideoTime(time){
     else if(beatIndex >= end_of_video){        
         updateBackground(bgndSync.length-1);
         if(!starfoxUnlocked){
+            updateLeadRowIcons(end_of_video);
             unlockStarfox();
             yt_setPlaybackRateButtonVisibility(setHidden = false);
             infoModal = $('#congrats-modal');
@@ -310,6 +318,10 @@ function updateLeadRowIcons(beatIndex){
     
     assetsToUpdate.forEach(key => {
         
+        // if(key === "love"){
+        //     $('#lead-icons-collapse').collapse('show');
+        // }
+
         leadAssets[key].imgElement.src = leadAssets[key].imgUrl;
         leadAssets[key].imgElement.style.backgroundColor = leadAssets[key].bgndColor;
         
@@ -317,7 +329,13 @@ function updateLeadRowIcons(beatIndex){
         // so this animation is set
         if(leadAssets[key].hoverClass){   
             leadAssets[key].imgElement.classList.add(leadAssets[key].hoverClass);
+            
         }
+
+        if(leadAssets[key].hoverClass === iconImageHoverClass){
+            leadAssets[key].imgElement.classList.add("icon-image");
+        }
+
         leadAssets[key].revealed = true;
     });
 

@@ -255,6 +255,10 @@ function setPlayPauseButtonsClass(buttonClassToAdd){
 
     let buttonClassToRemove = (buttonClassToAdd === _playButtonClass) ? _pauseButtonClass : _playButtonClass;
 
+    // let iElementClassToAdd = (buttonClassToAdd === _playButtonClass) ? "fa-play" : "fa-pause";
+    // let iElementClassToRemove = (buttonClassToAdd === _playButtonClass) ? "fa-pause" : "fa-play";
+
+
     // if the buttonClassToAdd doesn't match either of our button classes log the error and return
     if(![_pauseButtonClass, _playButtonClass].includes(buttonClassToAdd)){        
         console.log("button class not recognized");
@@ -264,6 +268,10 @@ function setPlayPauseButtonsClass(buttonClassToAdd){
     playPauseButtonList.forEach( (button, i) => {
         button.classList.remove(buttonClassToRemove);
         button.classList.add(buttonClassToAdd);    
+
+        // let iElement = button.getElementsByTagName("i")[0];
+        // iElement.classList.remove(iElementClassToRemove);
+        // iElement.classList.add(iElementClassToAdd);
     });
 
 
@@ -476,17 +484,20 @@ function yt_pauseYouTubeVideo(){
 function yt_addPlayPauseButton(button){
 
     const playerState = _player.getPlayerState();
-    
+    // let iElement = button.getElementsByTagName("i")[0];
+
     switch(playerState){
         case YT.PlayerState.PLAYING:
         case YT.PlayerState.BUFFERING:
             button.classList.add(_pauseButtonClass);
+            // iElement.classList.add("fa-pause");       
             break;
         case YT.PlayerState.ENDED:
         case YT.PlayerState.UNSTARTED:  
         case YT.PlayerState.PAUSED:
         case YT.PlayerState.CUED:
             button.classList.add(_playButtonClass);
+            // iElement.classList.add("fa-play");
             break;
         default:
             break;

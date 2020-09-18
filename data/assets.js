@@ -34,10 +34,10 @@ const chorus_3 = trombone + stanza_half;
 const outro = chorus_3 + stanza;
 
 //  use this when youTubeID = "HjaqZ2JQeXg"
-const end_of_video = outro + bar*2;
+// const end_of_video = outro + bar*2;
 
 //  use this when youTubeID = "jesDXnhoARk"
-// const end_of_video = outro + line + bar + beat*3;
+const end_of_video = outro + line + bar + beat*3;
 
 
 
