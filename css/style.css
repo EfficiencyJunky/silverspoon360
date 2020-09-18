@@ -186,8 +186,10 @@ body {
     background: 
     /* top, transparent grey color faked with gradient */ 
     linear-gradient(
-        rgba(225, 225, 225, 0.3), 
-        rgba(225, 225, 225, 0.3)
+        rgba(225, 225, 225, 0.4), 
+        rgba(225, 225, 225, 0.4)
+        /* rgba(170, 170, 170, 0.4), 
+        rgba(170, 170, 170, 0.4)         */
     ),
     /* bottom, image mask with cutouts showing through to body bgnd image */
     url("../img/bgndmask_offwhite.png");
