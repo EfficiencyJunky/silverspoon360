@@ -96,7 +96,7 @@
     <script src="https://kit.fontawesome.com/d4a81fd676.js" crossorigin="anonymous"></script>
     
     <!-- YouTube Subscribe button -->
-    <script src="https://apis.google.com/js/platform.js"></script>
+    <!-- <script src="https://apis.google.com/js/platform.js"></script> -->
 <!-- JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS JS -->
 
 
@@ -234,17 +234,17 @@
         </div>
 
         <div class="row mb-4 mt-5">
-            <div class="col-12 d-flex justify-content-center">        
-                <div id="social-icons" class="d-flex justify-content-center">                    
+            <div class="col-12 d-flex justify-content-center">
+                <div id="social-icons" class="d-flex justify-content-center">
                         <!-- <i class="fab fa-instagram"></i> -->
-                        <a href="https://www.instagram.com/wolfandloveyou" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/wolfandlove" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.youtube.com/channel/UCN-AjUgErXaMT_PDWcxWYUA" target="_blank"><i class="fab fa-youtube"></i></a>                
-                        <a href="https://open.spotify.com/artist/1MSnah0LJXsCQrCsZNrFYz?si=y168Z2isQCyhLBTo75Hrig" target="_blank"><i class="fab fa-spotify"></i></a>
+                        <a href="https://www.instagram.com/wolfandloveyou" target="_blank"><i id="instagram" class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/wolfandlove" target="_blank"><i id="facebook" class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.youtube.com/channel/UCN-AjUgErXaMT_PDWcxWYUA" target="_blank"><i id="youtube" class="fab fa-youtube"></i></a>                
+                        <a href="https://open.spotify.com/artist/1MSnah0LJXsCQrCsZNrFYz?si=y168Z2isQCyhLBTo75Hrig" target="_blank"><i id="spotify" class="fab fa-spotify"></i></a>
                     <!-- </div>
                     <div class="d-flex justify-content-center"> -->
                         <!-- <a href="https://soundcloud.com/wolfandlove" target="_blank"><i class="fab fa-soundcloud"></i></a> -->
-                        <a href="https://music.apple.com/us/artist/wolf-and-love/1452663240" target="_blank"><i class="fas fa-music"></i></a>
+                        <a href="https://music.apple.com/us/artist/wolf-and-love/1452663240" target="_blank"><i id="applemusic" class="fas fa-music"></i></a>
                         <!-- <a href="http://twitter.com/wolfandloveyou" target="_blank"><i class="fab fa-twitter"></i></a> -->
                 </div>
             </div>
@@ -266,7 +266,7 @@
             </div>
             <div class="modal-body">
                 <div>
-                    <ol>
+                    <ol class="no-margin-left">
                         <li>Click the flashing red icons to re-create the video<br>
                             as Wolf & Love imagined it<br> 
                             <small>(or choose your own adventure)</small>
@@ -285,7 +285,7 @@
                                     Sorry, your browser doesn't support embedded videos.
                                 </video>
                             </div>
-                        <li>Click and drag around the video to move the camera</li>
+                        <li>Click and drag on the video for freestyle camera movement</li>
                             <video height="150px" autoplay loop muted poster="media/info/drag_video_img.png" style="padding:15px;">
                                 <source src="/media/info/drag_video.mp4" type="video/mp4">
                                 Sorry, your browser doesn't support embedded videos.
@@ -341,7 +341,6 @@
                     We had a ton of fun making this "quarantine inspired" music video experience. If it made you smile, then we'd love if you did one or all of the following:<br><br>
                 </div>
                 <div>
-                    <!-- <ol class="no-margin-left"> -->
                     <ol class="no-margin-left">
                         <li class="mb-3">
                             <div>
@@ -383,11 +382,12 @@
                                 Don't miss our upcoming releases!
                             </div>
                             <div>
-                                <a href="https://www.youtube.com/channel/UCN-AjUgErXaMT_PDWcxWYUA" role="button" class="btn btn-danger" style="display:none !important">
+                                <!-- <a href="https://www.youtube.com/channel/UCN-AjUgErXaMT_PDWcxWYUA" role="button" class="btn btn-danger" style="display:none !important"> -->
+                                <a href="https://www.youtube.com/channel/UCN-AjUgErXaMT_PDWcxWYUA" target="_blank" role="button" id="youtube-subscribe" class="btn btn-danger">
                                     <i class="fab fa-youtube align-middle" style="font-size: 2em;"></i>
                                     <span class="align-middle" style="font-size: 1.5em; margin-left:0.2em;">Subscribe</span>
                                 </a>
-                                <div class="g-ytsubscribe" data-channelid="UCN-AjUgErXaMT_PDWcxWYUA" data-layout="full" data-count="hidden"></div>
+                                <!-- <div id="youtube-subscribe" class="g-ytsubscribe" data-channelid="UCN-AjUgErXaMT_PDWcxWYUA" data-layout="full" data-count="hidden"></div> -->
                             </div>
                         </li>
                     </ol>
