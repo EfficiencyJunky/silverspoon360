@@ -328,6 +328,6 @@ body {
 }
 
 
-#mobile-device-warning-header .modal-body{
+#mobile-device-warning-header-modal .modal-body{
     overflow: visible !important;
 }
