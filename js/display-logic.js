@@ -112,7 +112,7 @@ function updateUIFromVideoTime(time){
         if(pageFirstLoad){
             yt_setSphericalProps(initialCameraPosition);
             il_setZoomAndRollProps(initialCameraPosition);
-            dataLayer.push({'ftueActive': 'true'});
+            dataLayer.push({'ftueActive': true});
             // $('#rhythm-icons-collapse').collapse('show');
             // $('#lead-icons-collapse').collapse('show');
 
@@ -140,7 +140,7 @@ function updateUIFromVideoTime(time){
     else if(beatIndex >= show_ftue && ftue){
         ftueIconText.hidden = true;
         ftue = false;
-        dataLayer.push({'ftueActive': 'false'});
+        dataLayer.push({'ftueActive': false});
     }
     
     updateLeadRowIcons(beatIndex);
@@ -381,7 +381,7 @@ function updateIconHighlight(beatIndex){
                 
                 flashing = true;
                 iconDivToFlash = iconDiv;
-                dataLayer.push({'iconFlashing': highlightIconName});
+                dataLayer.push({'flashingIconName': highlightIconName});
                 iconDivFlashTimerID = window.setInterval( flashIconDiv, iconDivFlashInterval);
                 
             }
@@ -422,7 +422,7 @@ function flashIconDiv(){
         if(ftue){
             ftueIconText.hidden = true;
             ftue = false;
-            dataLayer.push({'ftueActive': 'false'});
+            dataLayer.push({'ftueActive': false});
         }             
 
     }
@@ -444,7 +444,7 @@ function clearFlashingIconDivAndTimer(){
     timesIconDivFlashed = 0;
 
     flashing = false;
-    dataLayer.push({'iconFlashing': 'false'});
+    dataLayer.push({'flashingIconName': undefined});
 
 }
 
