@@ -9,9 +9,9 @@
 </a>
 
 ## About
-My friend Danny is a successful touring drummer for a few different acts as well as a sought after studio musician (he plays pretty much every instrument but his meat and potatoes is percussion). He's currently based out of LA and during the pandemic has been churning out a ton of amazing content with his own band known as Wolf & Love. 
+My friend Danny is a successful touring drummer for a few different acts ([Rhye](https://www.rhyemusic.com/), [Great Good Fine OK](https://www.greatgoodfineok.com/)) as well as a sought after studio musician (he plays pretty much every instrument but his meat and potatoes is percussion). He's currently based out of LA and during the pandemic has been churning out a ton of amazing content with his own band known as [Wolf & Love](https://www.wolfandlove.com/). 
 
-One such piece of content is a very engaging "live" [360 degree music video](https://www.youtube.com/watch?v=dw2s4GqbXZM) for the band's song "Silverspoon". I was blown away by the video when I first saw it. Like...it is truly unlike anything I've ever seen before and it perfectly captures the state of the world we live in during the 2020 insanity. It really shows what these two guys can do with a bunch of instruments and a single camera while quarantined away in their living room
+One such piece of content is a very engaging "live" [360 degree music video](https://www.youtube.com/watch?v=dw2s4GqbXZM) for the band's song "Silverspoon". I was blown away by the video when I first saw it. Like...it is truly unlike anything I've ever seen and it perfectly captures the state of the world we live in during all this 2020 insanity. It really shows what these two guys can do with a bunch of instruments and a single camera while quarantined away in their living room.
 
 Anyways, after seeing this video, I hit Danny up and asked if he'd be interested in me attempting to make a website for the video. After a few minutes of me throwing stupid ideas at him Danny said, "Well...I had originally thought it would be fun to make the video sort of like a treasure hunt". That was all I needed and over the next week I build silverspoon360.com.
 
