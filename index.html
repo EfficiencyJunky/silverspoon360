@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+<!-- <script>
+    dataLayer = [];
+</script> -->
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -541,7 +543,7 @@
 
 
     <script type="text/javascript">
-        $(window).on('load',function(){
+        $(window).on('load',function(event){
             const windowWidth = window.innerWidth;
             const windowHeight = window.innerHeight;
 
@@ -550,6 +552,18 @@
                 // document.getElementById("mobile-device-warning").hidden = false;
                 $("#mobile-device-warning-header-modal").collapse("show");
                 $("#mobile-device-warning-player").collapse("show");
+
+                let mobileDeviceWarningHeaderModal = document.getElementById("mobile-device-warning-header-modal");
+
+                dataLayer.push({
+                                    'event': 'mobileDeviceWarningSetVisible',
+                                    'gtm.element': mobileDeviceWarningHeaderModal,
+                                    'gtm.elementClasses': mobileDeviceWarningHeaderModal.className || '',
+                                    'gtm.elementId': mobileDeviceWarningHeaderModal.id || '',
+                                    'gtm.elementTarget': mobileDeviceWarningHeaderModal.target || '',
+                                    'gtm.elementUrl': mobileDeviceWarningHeaderModal.href || mobileDeviceWarningHeaderModal.action || '',
+                                    'gtm.originalEvent': event || ''
+                                });
 
                 document.getElementById("mobile-device-warning-dismiss-button").onclick = dismissMobileDeviceWarningHeader;
             }
