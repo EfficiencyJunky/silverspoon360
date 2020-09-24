@@ -131,6 +131,10 @@ function updateUIFromVideoTime(time){
             yt_setPlaybackRateButtonVisibility(setHidden = false);
             infoModal = $('#congrats-modal');
             infoModal.modal('show');
+
+            // GTM Event trigger
+            sendGTMEventForElement('infoButtonModalSetVisible', infoModal.get(0));
+
             starfoxUnlocked = true;
         }
         // updateIconHighlight(highlightSync.length-1);

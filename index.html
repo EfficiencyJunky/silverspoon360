@@ -461,6 +461,21 @@
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" 
     crossorigin="anonymous"></script>
 
+    <!-- JAVASCRIPT FOR GTM DATALAYER -->
+    <script type="text/javascript">
+        function sendGTMEventForElement(customEventName, modalHTMLObject, originalEvent = undefined){
+            dataLayer.push({
+                                    'event': customEventName,
+                                    'gtm.element': modalHTMLObject,
+                                    'gtm.elementClasses': modalHTMLObject.className || '',
+                                    'gtm.elementId': modalHTMLObject.id || '',
+                                    'gtm.elementTarget': modalHTMLObject.target || '',
+                                    'gtm.elementUrl': modalHTMLObject.href || modalHTMLObject.action || '',
+                                    'gtm.originalEvent': originalEvent || ''
+                                });
+        }
+    </script>
+
 
     <!-- JAVASCRIPT -->
     <script type="text/javascript" src="js/settings.js"></script>
@@ -470,6 +485,7 @@
     <script type="text/javascript" src="js/interaction-logic.js"></script>
 
     <!-- JAVASCRIPT FOR MODALS AND POPUPS INTERACTION HANDLING -->
+
     <script type="text/javascript">
         document.getElementById("info-button-player").onclick = infoButtonClickHandler;
 
@@ -478,6 +494,9 @@
         function infoButtonClickHandler(event){
             yt_pauseYouTubeVideo();
             infoModal.modal('show');
+
+            // GTM Event trigger
+            sendGTMEventForElement('infoButtonModalSetVisible', infoModal.get(0), event);
         }
     </script>
 
@@ -550,20 +569,14 @@
             if(windowWidth <= 420 && windowHeight >= 550){
                 // $('#mobile-device-modal').modal('show');
                 // document.getElementById("mobile-device-warning").hidden = false;
-                $("#mobile-device-warning-header-modal").collapse("show");
+                
                 $("#mobile-device-warning-player").collapse("show");
 
-                let mobileDeviceWarningHeaderModal = document.getElementById("mobile-device-warning-header-modal");
+                let mobileDeviceWarningHeaderModal = $("#mobile-device-warning-header-modal");                
+                mobileDeviceWarningHeaderModal.collapse("show");
 
-                dataLayer.push({
-                                    'event': 'mobileDeviceWarningSetVisible',
-                                    'gtm.element': mobileDeviceWarningHeaderModal,
-                                    'gtm.elementClasses': mobileDeviceWarningHeaderModal.className || '',
-                                    'gtm.elementId': mobileDeviceWarningHeaderModal.id || '',
-                                    'gtm.elementTarget': mobileDeviceWarningHeaderModal.target || '',
-                                    'gtm.elementUrl': mobileDeviceWarningHeaderModal.href || mobileDeviceWarningHeaderModal.action || '',
-                                    'gtm.originalEvent': event || ''
-                                });
+                // GTM Event trigger
+                sendGTMEventForElement('mobileDeviceWarningModalSetVisible', mobileDeviceWarningHeaderModal.get(0), event);
 
                 document.getElementById("mobile-device-warning-dismiss-button").onclick = dismissMobileDeviceWarningHeader;
             }
